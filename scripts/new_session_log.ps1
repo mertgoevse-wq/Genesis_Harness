@@ -79,7 +79,7 @@ if (Test-Path -LiteralPath $fullPath) {
 $sessionId = "${today}_${sequence}_${normalisedSlug}"
 
 $content = Get-Content -LiteralPath $TemplatePath -Raw
-$content = $content -replace '(?m)^# Session Log — <slug>$',                    "# Session Log — $normalisedSlug"
+$content = $content -replace '(?m)^# Session Log - <slug>$',                    "# Session Log - $normalisedSlug"
 $content = $content -replace '(?m)^\*\*Session ID:\*\* YYYY-MM-DD_NN_<slug>$',  "**Session ID:** $sessionId"
 $content = $content -replace '(?m)^\*\*Date:\*\* YYYY-MM-DD$',                  "**Date:** $today"
 $content = $content -replace '(?m)^\*\*Model:\*\* <exact model id, e\.g\. claude-opus-5>$', "**Model:** $Model"

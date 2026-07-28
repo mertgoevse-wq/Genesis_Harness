@@ -1,0 +1,13 @@
+name: Business Analysis Workflow
+trigger: New business idea submission
+required_agents:
+  - orchestrator
+  - business-strategist
+  - research
+required_skills:
+  - business
+execution_order:
+  1: orchestrator (plan)
+  2: research (market data gathering)
+  3: business-strategist (analysis and MVP definition)
+evaluation_step: evaluator

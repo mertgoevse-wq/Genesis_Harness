@@ -237,3 +237,9 @@ Stated explicitly so nobody documents aspiration as fact:
 - **No Genesis Engine.** That is the point of the harness, not part of it.
 
 See `docs/ROADMAP.md` for when each of these is scheduled.
+
+---
+
+## 10. Autonomous Orchestration Layer
+
+The autonomous orchestration layer acts as the executive control system, managing workflows, delegating tasks to specific agents based on the Agent Registry and Skill Registry, and tracking execution. The Orchestrator Agent executes predefined workflows (e.g., product creation, automation creation) and triggers the Evaluator Agent to verify the quality of all generated outputs according to the Evaluation Rubric.

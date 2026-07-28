@@ -1,0 +1,18 @@
+name: Product Creation Workflow
+trigger: New product idea submission
+required_agents:
+  - orchestrator
+  - product-manager
+  - architect
+  - coding
+  - qa
+required_skills:
+  - product-management
+  - software-engineering
+execution_order:
+  1: orchestrator (plan)
+  2: product-manager (PRD)
+  3: architect (design)
+  4: coding (implementation)
+  5: qa (testing)
+evaluation_step: evaluator

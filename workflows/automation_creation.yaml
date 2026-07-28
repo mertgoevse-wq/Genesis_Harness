@@ -1,0 +1,14 @@
+name: Automation Creation Workflow
+trigger: Business process submitted for automation
+required_agents:
+  - orchestrator
+  - automation-engineer
+  - qa
+required_skills:
+  - automation
+  - software-engineering
+execution_order:
+  1: orchestrator (plan)
+  2: automation-engineer (workflow design and APIs)
+  3: qa (verification)
+evaluation_step: evaluator

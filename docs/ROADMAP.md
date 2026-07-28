@@ -16,9 +16,10 @@
 | **0** | Foundation | **Complete** | Agents, skills, prompts, logging, docs, git automation |
 | **1** | Operation | Next | Prove the harness by using it; first ADRs; first real session logs |
 | **2** | AI Solution Factory | Planned | AI-powered products and automation systems |
-| **3** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
-| **4** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
-| **5** | Genesis Engine | Planned | Build the actual engine inside the harness |
+| **3** | Autonomous Orchestration | **Complete** | Orchestrator and Evaluator agents, registries, workflows |
+| **4** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
+| **5** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
+| **6** | Genesis Engine | Planned | Build the actual engine inside the harness |
 
 ---
 
@@ -87,7 +88,15 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 3 — Instrumentation
+## Phase 3 — Autonomous Orchestration System ✅
+
+**Goal:** Create the orchestration layer to autonomously manage multi-agent workflows.
+
+**Status:** Completed. The Orchestrator and Evaluator agents have been implemented alongside the Agent Registry, Skill Registry, and predefined workflow templates.
+
+---
+
+## Phase 4 — Instrumentation
 
 **Goal:** replace judgement with measurement wherever measurement is possible.
 
@@ -104,7 +113,7 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 4 — Scale
+## Phase 5 — Scale
 
 **Goal:** multiple agents working in parallel without losing coherence.
 
@@ -121,7 +130,7 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 5 — Genesis Engine
+## Phase 6 — Genesis Engine
 
 **Goal:** build the actual engine, inside the harness, using its process.
 

@@ -1,0 +1,17 @@
+{
+  "agents": [
+    "architect",
+    "coding",
+    "research",
+    "qa",
+    "simulation-scientist",
+    "game-design",
+    "business-strategist",
+    "product-manager",
+    "automation-engineer",
+    "marketing",
+    "sales",
+    "orchestrator",
+    "evaluator"
+  ]
+}

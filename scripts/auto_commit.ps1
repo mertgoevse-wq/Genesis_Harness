@@ -120,7 +120,7 @@ function Invoke-Git {
 }
 
 Write-Host ''
-Write-Host '=== Genesis Harness — auto_commit ===' -ForegroundColor White
+Write-Host '=== Genesis Harness - auto_commit ===' -ForegroundColor White
 Write-Host "Repository: $RepoRoot"
 if ($DryRun) { Write-Host 'Mode: DRY RUN (no changes will be made)' -ForegroundColor Yellow }
 
@@ -312,7 +312,7 @@ if ($branch -eq $ProtectedBranch -and -not $Force -and -not $DryRun) {
 # ---------------------------------------------------------------- Dry run exit
 if ($DryRun) {
     Write-Host ''
-    Write-Host 'DRY RUN COMPLETE — all gates evaluated, nothing was changed.' -ForegroundColor Yellow
+    Write-Host 'DRY RUN COMPLETE - all gates evaluated, nothing was changed.' -ForegroundColor Yellow
     if ($Message) { Write-Host "Would commit with message: $Message" -ForegroundColor DarkGray }
     else { Write-Host 'No -Message supplied; a real run would abort at gate 2.' -ForegroundColor DarkGray }
     exit 0
@@ -347,7 +347,7 @@ Write-Gate 'Push'
 if (-not $Push) {
     Write-Skip 'not requested (pass -Push to push)'
     Write-Host ''
-    Write-Host "DONE — committed $sha, not pushed." -ForegroundColor Green
+    Write-Host "DONE - committed $sha, not pushed." -ForegroundColor Green
     exit 0
 }
 
@@ -376,5 +376,5 @@ if ($pushResult.ExitCode -ne 0) {
 
 Write-Pass 'pushed'
 Write-Host ''
-Write-Host "DONE — committed $sha and pushed to origin/$branch." -ForegroundColor Green
+Write-Host "DONE - committed $sha and pushed to origin/$branch." -ForegroundColor Green
 exit 0
