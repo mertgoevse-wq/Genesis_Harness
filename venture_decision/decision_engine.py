@@ -33,7 +33,7 @@ class VentureDecisionEngine:
         self.technical_scorer = TechnicalScorer()
         self.risk_scorer = RiskScorer()
 
-    def evaluate(self, idea: str, context: Dict[str, Any] | None = None) -> VentureDecision:
+    def evaluate(self, idea: str, context: Dict[str, Any] | None = None, customer_intelligence: Dict[str, Any] | None = None) -> VentureDecision:
         """Evaluate a venture idea and return a decision."""
         ctx = context or {}
 
@@ -43,12 +43,22 @@ class VentureDecisionEngine:
         risk = self.risk_scorer.score(idea, ctx)
 
         monetization = market.get("monetization_score", 50.0)
+
+        # Integrate customer intelligence signals if available
+        ci = customer_intelligence or {}
+        icp = ci.get("icp", {})
+        fit_score = icp.get("fit_score", 50.0)
+        pain_points = ci.get("pain_points", [])
+        avg_pain = sum(p.get("severity", 5.0) for p in pain_points) / max(len(pain_points), 1) if pain_points else 5.0
+        customer_boost = (fit_score - 50.0) * 0.1 + (avg_pain - 5.0) * 2.0
+
         overall = (
             market["score"] * 0.25
             + competition["score"] * 0.20
             + monetization * 0.20
             + technical["score"] * 0.20
             + (100.0 - risk["score"]) * 0.15
+            + customer_boost
         )
 
         verdict = self._verdict(overall, risk["score"])
@@ -64,7 +74,7 @@ class VentureDecisionEngine:
             technical_score=round(technical["score"], 2),
             risk_score=round(risk["score"], 2),
             confidence="ASSUMED",
-            reasoning=reasoning,
+            reasoning=reasoning + [f"Customer ICP fit score: {fit_score}."] if customer_intelligence else reasoning,
             risks=risk.get("risks", []),
         )
 

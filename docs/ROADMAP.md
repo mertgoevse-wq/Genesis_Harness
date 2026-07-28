@@ -21,7 +21,8 @@
 | **4** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
 | **5** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
 | **6** | Genesis Engine | Planned | Build the actual engine inside the harness |
-| **16** | Autonomous Venture OS | **In Progress** | Opportunity intelligence, venture decision, deployment, revenue, self-improvement, live intelligence, product validation, growth intelligence |
+| **16** | Autonomous Venture OS | **Complete** | Opportunity intelligence, venture decision, deployment, revenue, self-improvement, live intelligence, product validation, growth intelligence |
+| **17** | Founder Operating System | **In Progress** | Customer intelligence, validation engine, founder decision memory, autonomous improvement loop |
 
 ---
 

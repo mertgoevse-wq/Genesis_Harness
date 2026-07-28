@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+  <defs>
+    <linearGradient id="layer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="#020617"/>
+
+  <!-- Orchestrator -->
+  <rect x="320" y="20" width="320" height="60" rx="12" fill="url(#accent)"/>
+  <text x="480" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Master Orchestrator</text>
+
+  <!-- Layer 1 -->
+  <rect x="40" y="120" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="140" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Opportunity Intelligence</text>
+  <text x="140" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Trends · Markets · Signals</text>
+
+  <rect x="280" y="120" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="380" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Customer Intelligence</text>
+  <text x="380" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Personas · ICP · Pain Points</text>
+
+  <rect x="520" y="120" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="620" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Validation Engine</text>
+  <text x="620" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">GO/MODIFY/REJECT · Score</text>
+
+  <rect x="760" y="120" width="170" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="845" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Venture Decision</text>
+  <text x="845" y="172" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Risk · Market · Build</text>
+
+  <!-- Layer 2 -->
+  <rect x="40" y="230" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="140" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">MVP Builder</text>
+  <text x="140" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">FastAPI · SQLAlchemy · Docker</text>
+
+  <rect x="280" y="230" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="380" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Product Launch</text>
+  <text x="380" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Landing · Copy · Assets</text>
+
+  <rect x="520" y="230" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="620" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Deployment Intelligence</text>
+  <text x="620" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Docker · Vercel · Supabase</text>
+
+  <rect x="760" y="230" width="170" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="845" y="258" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Revenue Intelligence</text>
+  <text x="845" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Pricing · Subscriptions</text>
+
+  <!-- Layer 3 -->
+  <rect x="40" y="340" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="140" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Growth Intelligence</text>
+  <text x="140" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">SEO · Channels · Loops</text>
+
+  <rect x="280" y="340" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="380" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Founder Memory</text>
+  <text x="380" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Decisions · Rationale · Learnings</text>
+
+  <rect x="520" y="340" width="200" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="620" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Self Improvement</text>
+  <text x="620" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Audit · Tasks · Evaluate</text>
+
+  <rect x="760" y="340" width="170" height="70" rx="10" fill="url(#layer)" stroke="#334155" stroke-width="2"/>
+  <text x="845" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#e2e8f0">Knowledge Fabric</text>
+  <text x="845" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Context · Reasoning · Memory</text>
+
+  <!-- Bottom flow -->
+  <rect x="40" y="460" width="880" height="60" rx="12" fill="none" stroke="url(#accent)" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="480" y="498" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#94a3b8">DISCOVER → ANALYZE → VALIDATE → DECIDE → BUILD → DEPLOY → MARKET → MEASURE → IMPROVE</text>
+</svg>

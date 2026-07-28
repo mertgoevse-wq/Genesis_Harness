@@ -14,9 +14,13 @@ from revenue_intelligence.subscription_models import SubscriptionModelSelector
 from revenue_intelligence.acquisition_strategy import AcquisitionStrategy
 from revenue_intelligence.growth_experiment_engine import GrowthExperimentEngine
 from self_improvement.improvement_engine import ImprovementEngine
+from self_improvement.autonomous_improvement_loop import AutonomousImprovementLoop
 from live_intelligence.orchestrator import LiveIntelligenceOrchestrator
 from product_validation_engine.validation_engine import ProductValidationEngine
 from growth_intelligence.growth_engine import GrowthEngine
+from validation_engine.validation_loop import ValidationLoop
+from customer_intelligence.customer_intelligence_engine import CustomerIntelligenceEngine
+from memory_system.founder_memory.founder_memory_store import FounderMemoryStore
 
 
 class MasterGenesisOrchestrator:
@@ -45,8 +49,15 @@ class MasterGenesisOrchestrator:
         self.product_validator = ProductValidationEngine()
         self.growth_intelligence = GrowthEngine()
 
-    def run_full_autonomous_cycle(self, goal: str) -> dict:
+        # Founder operating system subsystems
+        self.customer_intelligence = CustomerIntelligenceEngine()
+        self.validation_loop = ValidationLoop()
+        self.founder_memory = FounderMemoryStore()
+        self.autonomous_improvement = AutonomousImprovementLoop()
+
+    def run_full_autonomous_cycle(self, goal: str, context: dict = None) -> dict:
         print(f"[MasterOrchestrator] Starting autonomous OS cycle for goal: {goal}")
+        context = context or {}
 
         # 1. Product Lifecycle Initialization
         product_lifecycle = ProductLifecycleEngine(product_name=goal)
@@ -74,10 +85,15 @@ class MasterGenesisOrchestrator:
         # 5.5 Live Intelligence
         live_signals = self.live_intelligence.gather(goal)
 
-        # 5.6 Product Validation Engine
-        validation = self.product_validator.evaluate(
+        # 5.6 Customer Intelligence
+        customer_context = context or {}
+        customer_intelligence = self.customer_intelligence.analyze(goal, customer_context)
+
+        # 5.7 Validation Loop
+        validation = self.validation_loop.run(
             goal,
-            context={
+            {
+                **customer_context,
                 "demand_score": 75.0,
                 "incumbent_count": 3,
                 "differentiation_score": 70.0,
@@ -86,11 +102,8 @@ class MasterGenesisOrchestrator:
                 "urgency_score": 75.0,
                 "technical_complexity": 4,
                 "technical_readiness": 6,
-                "marketing_budget": "medium",
-                "available_channels": 4,
-                "tam_billions": 2.5,
                 "average_price": 29.0,
-                "conversion_rate": 0.02,
+                "willingness_to_pay": 60.0,
             },
         )
 
@@ -156,6 +169,28 @@ class MasterGenesisOrchestrator:
             {"quality_score": quality.get("score", 0.0), "tests": {"passed": True}}
         )
 
+        # 13.5 Founder Decision Memory
+        self.founder_memory.record_decision(
+            idea=goal,
+            verdict=validation["verdict"],
+            rationale=f"Validation loop verdict: {validation['verdict']}",
+            confidence=validation["decision"].confidence,
+            context={
+                "venture_decision": decision.verdict,
+                "validation_verdict": validation["verdict"],
+                "overall_score": validation["decision"].overall_score,
+            },
+        )
+
+        # 14. Autonomous Improvement Loop
+        autonomous_improvement = self.autonomous_improvement.run(
+            {
+                "quality_score": quality.get("score", 0.0),
+                "tests": {"passed": True},
+                "documentation_updated": True,
+            }
+        )
+
         return {
             "goal": goal,
             "status": "COMPLETED",
@@ -164,7 +199,9 @@ class MasterGenesisOrchestrator:
             "product": product,
             "opportunities": opportunities,
             "live_signals": live_signals,
-            "product_validation": validation,
+            "customer_intelligence": customer_intelligence,
+            "validation": validation,
+            "product_validation": validation["decision"],
             "venture_decision": decision,
             "revenue": revenue,
             "deployment": deployment,
@@ -173,6 +210,7 @@ class MasterGenesisOrchestrator:
             "quality": quality,
             "growth_strategy": growth_strategy,
             "improvement": improvement,
+            "autonomous_improvement": autonomous_improvement,
         }
 
     def _build_revenue_intelligence(self, goal: str) -> dict:

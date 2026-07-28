@@ -251,7 +251,7 @@ def get_db():
     def _user_model_py(self) -> str:
         return '''"""User database model."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 
 from app.database import Base
@@ -263,7 +263,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 '''
 
     def _user_schema_py(self) -> str:

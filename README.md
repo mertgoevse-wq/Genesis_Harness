@@ -33,17 +33,23 @@ Genesis Harness is evolving into a fully autonomous venture creation platform. T
 - **Self-Improvement Loop** (`self_improvement/`): Detects weaknesses, prioritizes improvements, and evaluates results.
 - **Live Intelligence** (`live_intelligence/`): Modular connectors with caching and fallback for market data, SaaS trends, GitHub signals, and startup signals.
 - **Product Validation Engine** (`product_validation_engine/`): Evaluates ideas and returns GO / MODIFY / REJECT verdicts with confidence scores.
+- **Customer Intelligence** (`customer_intelligence/`): Personas, ideal customer profiles, pain points, objections, buying signals, and interview scripts.
+- **Validation Engine** (`validation_engine/`): Continuous validation loop for landing pages, value proposition, pricing, and market demand.
+- **Founder Decision Memory** (`memory_system/founder_memory/`): Persists decisions, successful patterns, failed ideas, and rationale.
+- **Autonomous Improvement Loop** (`self_improvement/autonomous_improvement_loop.py`): Self-audit, weakness detection, task prioritization, and execution.
 - **Growth Intelligence** (`growth_intelligence/`): Landing page optimization, SEO planning, acquisition channels, and growth experiments.
 
 These subsystems are orchestrated by `orchestrator/master_orchestrator.py` and exposed through the Control Center API.
 
 ## 🏛️ System Architecture
 
+![Genesis Harness Architecture](docs/assets/architecture.svg)
+
 ```mermaid
 graph TD
     User([User Request / Goal]) --> CEO[CEO Agent / Orchestrator]
     CEO --> Router{Intelligent Model Router}
-    
+
     Router -->|System Architecture| Opus[Claude Opus 4.8]
     Router -->|Coding & Engineering| Sonnet[Claude Sonnet 4.6]
     Router -->|Large Context & Docs| Gemini[Gemini 3.6 Flash]
@@ -57,9 +63,22 @@ graph TD
     DAG --> WorkerPool[Agent Worker Pool]
     WorkerPool --> Harvester[Intelligence Harvester Subsystem]
     WorkerPool --> QA[QA & Verification Gate]
-    
+
     QA --> Output([Verified Commit & Artifacts])
 ```
+
+---
+
+## 🖼️ Visual Assets
+
+| Asset | Path |
+|---|---|
+| Logo | [`docs/assets/logo.svg`](docs/assets/logo.svg) |
+| Banner | [`docs/assets/banner.svg`](docs/assets/banner.svg) |
+| Architecture Diagram | [`docs/assets/architecture.svg`](docs/assets/architecture.svg) |
+
+> Screenshots of the Control Center and generated products will be added as the UI matures.
+
 
 ---
 

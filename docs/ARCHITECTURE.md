@@ -438,3 +438,54 @@ production-grade business intelligence modules and richer product generation.
 
 These modules are wired into `orchestrator/master_orchestrator.py`, producing a richer
 DISCOVER → ANALYZE → VALIDATE → DECIDE → BUILD → DEPLOY → MARKET → MEASURE → IMPROVE loop.
+
+
+## Genesis Founder Operating System (Phase 17 — Current Evolution)
+
+Phase 17 transforms Genesis into a founder-centric autonomous SaaS company by adding deep
+customer intelligence, continuous validation, founder memory, and a self-improving execution loop.
+
+| Subsystem | Responsibility | Key Files |
+|---|---|---|
+| **Customer Intelligence** | Personas, ICP discovery, pain points, objections, buying signals, interview scripts | `customer_intelligence/` |
+| **Validation Engine** | Continuous validation loop for landing pages, value props, pricing, and demand | `validation_engine/` |
+| **Growth Intelligence (Enhanced)** | Channel analysis, SEO opportunities, content strategy, growth loops, conversion experiments | `growth_intelligence/` |
+| **Founder Decision Memory** | Persist decisions, successful patterns, failed ideas, and rationale | `memory_system/founder_memory/` |
+| **Autonomous Improvement Loop** | Self-audit, weakness detection, task prioritization, and execution | `self_improvement/autonomous_improvement_loop.py` |
+
+### Extended Data Flow
+
+```
+ human goal
+      │
+      ▼
+ ┌─────────────────────────────────────┐
+ │       Opportunity Intelligence        │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │          Customer Intelligence        │
+ │   (personas, ICP, pain, objections)   │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │          Validation Engine            │
+ │   (BUILD / PIVOT / ABANDON)         │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │        Venture Decision Engine      │
+ └─────────────┬─────────────────────────┘
+               ▼
+        ... BUILD → DEPLOY → MARKET ...
+               ▼
+ ┌─────────────────────────────────────┐
+ │       Founder Decision Memory         │
+ │   (record rationale for learning)     │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │     Autonomous Improvement Loop     │
+ │   (audit, detect, prioritize, act)  │
+ └─────────────────────────────────────┘
+```

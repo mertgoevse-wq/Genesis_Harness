@@ -115,7 +115,7 @@ class LiveConnector(ABC):
     def _cache_valid(self, result: ConnectorResult) -> bool:
         try:
             ts = datetime.fromisoformat(result.timestamp)
-            now = datetime.now(timezone.utc) if ts.tzinfo else datetime.utcnow()
+            now = datetime.now(timezone.utc) if ts.tzinfo else datetime.now()
             return now - ts < self.cache_ttl
         except Exception:
             return False

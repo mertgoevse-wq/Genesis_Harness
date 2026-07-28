@@ -78,3 +78,5 @@ yarn-error.log*
 # Database
 *.db
 *.sqlite3
+tests/test_db.json
+logs/founder_memory.json
