@@ -109,7 +109,14 @@ $RequiredDirectories = @(
     'control-center',
     'control-center/backend',
     'control-center/events',
-    'control-center/frontend'
+    'control-center/frontend',
+    'genesis_runtime',
+    'genesis_runtime/runtime',
+    'genesis_runtime/planner',
+    'genesis_runtime/agent_execution',
+    'genesis_runtime/skill_system',
+    'genesis_runtime/memory',
+    'genesis_runtime/events'
 )
 
 foreach ($dir in $RequiredDirectories) {

@@ -272,3 +272,7 @@ Harvester v2 expands data connectors across GitHub, HuggingFace, arXiv, PapersWi
 
 ## Genesis Control Center
 Genesis Control Center (`control-center/`) provides real-time visual telemetry. It includes an `EventBus` (`events/`), a Python HTTP/WebSocket server (`backend/`), and a clean Linear/Notion-inspired single page web application (`frontend/`) to visualize agent hierarchies, running DAG tasks, model router allocations, costs, and logs.
+
+
+## Genesis Runtime Engine
+Genesis Runtime Engine (`genesis_runtime/`) provides the end-to-end execution environment. It coordinates goal decomposition (`planner/`), explicit agent lifecycle state transitions (`CREATED -> PLANNING -> READY -> RUNNING -> EVALUATING -> COMPLETED/FAILED`), dynamic skill loading (`skill_system/`), memory persistence (`memory/`), and event emission (`events/`).
