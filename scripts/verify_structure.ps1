@@ -100,7 +100,8 @@ $RequiredDirectories = @(
     'templates',
     'orchestration',
     'core',
-    'core/model_router'
+    'core/model_router',
+    'branding'
 )
 
 foreach ($dir in $RequiredDirectories) {

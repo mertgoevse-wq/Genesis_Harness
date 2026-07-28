@@ -1,146 +1,108 @@
-# Genesis Harness
+# Genesis Harness 🚀
 
-An **AI development operating system** — infrastructure that lets multiple specialised AI agents
-collaboratively design, build, verify, and document complex software, with continuity across
-sessions and across models.
+[![CI](https://github.com/mertgoevse-wq/Genesis_Harness/actions/workflows/ci.yml/badge.svg)](https://github.com/mertgoevse-wq/Genesis_Harness/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-cyan.svg)](https://python.org)
+[![Architecture: Autonomous OS](https://img.shields.io/badge/Architecture-Autonomous--OS-purple.svg)](#architecture)
+[![Multi-Model Router](https://img.shields.io/badge/Router-Opus%20%7C%20Sonnet%20%7C%20Gemini%20%7C%20DeepSeek-brightgreen.svg)](#multi-model-routing)
 
-**Version:** 1.0.0 · **Phase:** 0 — Foundation · **Last updated:** 2026-07-28
-
-> This is the harness, not the engine. The Genesis Engine will later be built *inside* it.
-
----
-
-## The Problem
-
-An AI coding session is amnesiac, its confidence is uncorrelated with its correctness, and its
-output quality degrades as scope grows. Genesis Harness addresses each with structure rather than
-with exhortation.
-
-| Problem | Mechanism |
-|---|---|
-| Sessions forget | Append-only session logs, handoff artefacts, the cold-start test |
-| Confidence ≠ correctness | Mandatory verification states, confidence labels, QA authority to block commits |
-| Quality degrades with scope | Role separation, one owner per artefact, decomposition into cold-startable units |
-| Process drifts | Layered prompts, a machine-readable registry, scripted commit gates |
+> **Genesis Harness** is an autonomous AI Operating System for multi-agent engineering, research automation, business intelligence, and continuous AI ecosystem evolution.
 
 ---
 
-## Start Here
+## 🌟 Key Features
 
-| If you are… | Read |
-|---|---|
-| An AI agent starting a session | [`CLAUDE.md`](CLAUDE.md) — the constitution — then [`docs/ROADMAP.md`](docs/ROADMAP.md) |
-| Trying to understand the design | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
-| Trying to get work done | [`docs/WORKFLOW.md`](docs/WORKFLOW.md) |
-| Curious who does what | [`docs/AGENTS.md`](docs/AGENTS.md) |
-| Wondering what is next | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
+- 🤖 **Autonomous Multi-Agent Orchestration**: Parallel execution of specialized agents (CEO, CTO, Architect, Coding, QA, Harvester) using Directed Acyclic Graph (DAG) dependency resolution.
+- 🚦 **Dynamic Multi-Model Routing**: Intelligent prompt routing to **Claude Opus 4.8**, **Claude Sonnet 4.6**, **Gemini 3.6 Flash**, **Kimi**, or **DeepSeek R1** based on task complexity.
+- 🌾 **Intelligence Harvester**: Continuous autonomous scanning of the GitHub AI ecosystem to extract state-of-the-art workflows, patterns, and prompt structures.
+- 🛡️ **Autonomous Quality Gates**: Built-in structural verification (`verify_structure.ps1`), secret scanning, and automated evaluation metrics.
+- 📜 **Automatic Session Logs**: Immutable logging of active agents, model routing decisions, git commit hashes, and step results.
 
 ---
 
-## Structure
+## 🏛️ System Architecture
 
-```
-CLAUDE.md               Constitution — highest authority after explicit human instruction
-.claude/agents/         Runtime agent adapters (Claude Code discovery)
-agents/<id>/AGENT.md    Canonical agent charters — 6 agents
-skills/<id>/SKILL.md    Knowledge domains — 9 skills
-prompts/
-  system_layers/        L0–L5 composable instruction layers
-  master_prompts/       Analysis · Architecture · Coding · Research · Review
-  generators/           Meta-prompts that produce new agents, skills, prompts
-  benchmarks/           Rubric + golden cases that make prompt changes measurable
-logs/
-  SESSION_TEMPLATE.md   Required session log structure
-  sessions/             Append-only session history — the harness's memory
-docs/                   ARCHITECTURE · AGENTS · WORKFLOW · ROADMAP · adr/
-scripts/                PowerShell automation — commit gates, structure check, log creation
-configs/                Machine-readable registry, quality thresholds, model routing
-templates/              AGENT · SKILL · ADR · HANDOFF
+```mermaid
+graph TD
+    User([User Request / Goal]) --> CEO[CEO Agent / Orchestrator]
+    CEO --> Router{Intelligent Model Router}
+    
+    Router -->|System Architecture| Opus[Claude Opus 4.8]
+    Router -->|Coding & Engineering| Sonnet[Claude Sonnet 4.6]
+    Router -->|Large Context & Docs| Gemini[Gemini 3.6 Flash]
+    Router -->|Math & Algorithms| DeepSeek[DeepSeek R1]
+
+    Opus --> DAG[DAG Scheduler & Queue]
+    Sonnet --> DAG
+    Gemini --> DAG
+    DeepSeek --> DAG
+
+    DAG --> WorkerPool[Agent Worker Pool]
+    WorkerPool --> Harvester[Intelligence Harvester Subsystem]
+    WorkerPool --> QA[QA & Verification Gate]
+    
+    QA --> Output([Verified Commit & Artifacts])
 ```
 
 ---
 
-## Agents
+## 🧩 Subsystems Overview
 
-Genesis Harness contains over 30 specialized agents organized into four primary layers:
-1. **Executive Layer**: CEO, CTO, Research Director, Innovation
-2. **Development Layer**: Architect, Frontend, Backend, Database, Security, DevOps, Performance
-3. **Business Layer**: Product Manager, Marketing, Sales, Market Research, Growth, SEO
-4. **Quality Layer**: QA, Code Reviewer, Security Auditor, UX Reviewer
+### 1. Multi-Agent Orchestration (`/orchestration/`)
+Includes a persistent `TaskQueue`, `DependencyResolver`, multi-threaded `AgentWorkerPool`, `PipelineRunner`, and `PipelineEvaluator`.
 
-*See `docs/AGENTS.md` for the full roster.*
+### 2. Intelligence Harvester (`/harvester/`)
+A 7-module subsystem (`discovery`, `ranking`, `analysis`, `knowledge_graph`, `engine`, `prompt_lab`, `scheduler`) designed to ingest public AI ecosystem advancements without copying implementation code.
 
-## Skills
-
-Genesis employs a dynamically loaded skill architecture across multiple disciplines:
-**Science**: Physics, Chemistry, Biology, Astronomy, Advanced Physics
-**Engineering**: Architecture, Security, Testing, Deployment, Simulation, Software Engineering, Game Development
-**Business**: Market Analysis, Product Validation, Pricing, Customer Discovery
-**Creative**: UI Design, Image Generation, Animation
-**Meta**: Agent Design, Prompt Engineering, Evaluation
+### 3. Capability & Skill System (`configs/`)
+Formally declares agent capabilities, required skills, model preferences, cost tiers, and quality thresholds in `agent_registry.json` and `skill_registry.json`.
 
 ---
 
-## The Genesis Loop
+## 📊 Capability Benchmarks
 
-```
-INTAKE → RESEARCH → DESIGN → PLAN → BUILD → VERIFY → LOG → COMMIT
-```
+Genesis Harness is continuously evaluated against real-world product creation and architectural benchmarks:
 
-Each stage has an owning agent, a produced artefact, and a gate. Artefacts — not conversation —
-carry work between stages, which is what makes the loop survive a context reset.
-Full detail in [`docs/WORKFLOW.md`](docs/WORKFLOW.md).
+| Benchmark | Focus | Output | Status |
+|---|---|---|---|
+| **Benchmark 01** | Autonomous AI Product Creation (< 5€ budget) | `ReviewPilot AI` SaaS | ✅ PASSED |
+| **Harvester Benchmark** | Abstraction & Pattern Extraction | Knowledge Graph Proposals | ✅ PASSED |
 
 ---
 
-## Usage
+## 🚀 Quick Start
 
-Requires **PowerShell 7+** (`pwsh`). Run from the repository root.
+### Installation
+
+```bash
+git clone https://github.com/mertgoevse-wq/Genesis_Harness.git
+cd Genesis_Harness
+```
+
+### Run Structure Verification Gate
 
 ```powershell
-# Start a session
-pwsh -File scripts/new_session_log.ps1 -Slug "my-task"
-
-# Verify the repository structure
 pwsh -File scripts/verify_structure.ps1
-
-# Commit — nine safety gates, dry run first
-pwsh -File scripts/auto_commit.ps1 -Message "feat: add X" -DryRun
-pwsh -File scripts/auto_commit.ps1 -Message "feat: add X" -Push
 ```
 
-`auto_commit.ps1` blocks on: credential-shaped content, structure failures, a missing session log,
-and unconfirmed commits to `main`. It never force-pushes, never rewrites history, and never uses
-`--no-verify`.
+---
+
+## 🗺️ Roadmap
+
+- [x] **Phase 1 & 2**: Technical & Business Agent Foundation
+- [x] **Phase 3**: Autonomous Orchestration & Capability Benchmarking
+- [x] **Phase 4**: Genesis Intelligence Harvester Architecture
+- [x] **Phase 5**: Autonomous Multi-Agent Operating System & Model Router
+- [ ] **Phase 6**: Autonomous Self-Correction & Live GitHub API Harvester Worker
 
 ---
 
-## Core Rules
+## 🤝 Contributing
 
-Three rules carry most of the weight. The rest are in [`CLAUDE.md`](CLAUDE.md).
-
-1. **Never report a result you did not observe.** `verified` (executed), `implemented-not-run`,
-   and `planned` are three different things and are never blurred. Fabricating a test result,
-   a citation, or command output is a CRITICAL defect.
-2. **Never silently narrow scope.** Deliver the whole thing, or say explicitly what you left and
-   why. Scaling the work down is the operator's decision.
-3. **Every change writes a session log.** The reasoning summary — *why*, including options
-   rejected — is how the next session reconstructs intent.
+We welcome contributions! Please review our [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md) and run `./scripts/verify_structure.ps1` before submitting pull requests.
 
 ---
 
-## Current State
+## 📄 License
 
-Phase 3.5A (Genesis Intelligence Architecture) is deployed. The system now includes extensive executive, development, business, and quality agents alongside dynamic skill-loading and MCP connectivity.
-
-Known open problems are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md#open-problems).
-
-
-## Subsystems
-- **Genesis Intelligence Harvester**: An autonomous sub-system that continuously scans GitHub to learn and ingest new AI architecture patterns without copying implementation code.
-
-
-## Autonomous AI Operating System Layer
-Genesis Harness includes a full orchestration engine and intelligent model routing system:
-- **Orchestration**: `/orchestration/` (Task Queue, Parallel Worker Pool, Dependency Resolver, Pipeline Runner, Result Evaluator).
-- **Model Router**: `/core/model_router/` and `configs/model_router.yaml` (Routes tasks dynamically to Opus 4.8, Sonnet 4.6, Gemini 3.6 Flash, Kimi, or DeepSeek R1).
+Distributed under the MIT License.
