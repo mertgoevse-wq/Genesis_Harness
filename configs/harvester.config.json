@@ -1,0 +1,35 @@
+{
+  "search_categories": [
+    "AI Agents",
+    "MCP",
+    "Claude Skills",
+    "Prompt Engineering",
+    "Multi Agent",
+    "Reasoning",
+    "LangGraph",
+    "CrewAI",
+    "AutoGen",
+    "OpenHands",
+    "Continue",
+    "Open Interpreter",
+    "Aider",
+    "RAG",
+    "Evaluation",
+    "Benchmarks",
+    "Scientific AI",
+    "Simulation",
+    "Coding Agents"
+  ],
+  "ranking_weights": {
+    "stars": 0.2,
+    "forks": 0.1,
+    "recent_activity": 0.3,
+    "documentation": 0.2,
+    "architecture_quality": 0.1,
+    "tests": 0.05,
+    "maintainability": 0.05
+  },
+  "scheduler": {
+    "cron_interval": "0 0 * * 0"
+  }
+}

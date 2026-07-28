@@ -370,6 +370,23 @@
       "primarySkills": [],
       "supportingSkills": [],
       "masterPrompt": null
+    },
+    {
+      "id": "harvester-agent",
+      "name": "Harvester Agent",
+      "roleClass": "Executive",
+      "owns": "Genesis Improvement Engine",
+      "canBlock": "System upgrades with poor architecture",
+      "charter": "agents/harvester-agent/AGENT.md",
+      "adapter": ".claude/agents/harvester-agent.md",
+      "primarySkills": [
+        "evaluation",
+        "architecture"
+      ],
+      "supportingSkills": [
+        "prompt-engineering"
+      ],
+      "masterPrompt": null
     }
   ],
   "skills": [

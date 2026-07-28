@@ -134,3 +134,7 @@ Three rules carry most of the weight. The rest are in [`CLAUDE.md`](CLAUDE.md).
 Phase 3.5A (Genesis Intelligence Architecture) is deployed. The system now includes extensive executive, development, business, and quality agents alongside dynamic skill-loading and MCP connectivity.
 
 Known open problems are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md#open-problems).
+
+
+## Subsystems
+- **Genesis Intelligence Harvester**: An autonomous sub-system that continuously scans GitHub to learn and ingest new AI architecture patterns without copying implementation code.

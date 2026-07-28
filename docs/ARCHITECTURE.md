@@ -256,3 +256,7 @@ The core intelligence layer connecting the harness's capabilities.
 - **Self Improvement**: Post-task evaluation of missed capabilities or knowledge gaps (`self_improvement_protocol.md`).
 - **MCP Integration**: Connection to external tools and databases, governed by security and validation rules in `docs/MCP_ARCHITECTURE.md`.
 - **Benchmarking**: Explicit agent, product, and code evaluation rubrics stored in `prompts/benchmarks/genesis_evaluation/`.
+
+
+## Genesis Intelligence Harvester
+The Harvester sits alongside the Agent layer. It comprises Discovery, Ranking, Analysis, Knowledge Graph, Engine, and Prompt Lab modules. It feeds abstract architectural patterns back into the Genesis Core via formal Improvement Proposals (ADRs).

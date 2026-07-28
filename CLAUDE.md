@@ -344,3 +344,9 @@ This file may be changed only by:
 2. An ADR in `docs/adr/` approved by the human operator.
 
 Every amendment bumps the version at the top and is recorded in a session log.
+
+
+## Harvester Rules
+- The Harvester MUST NOT extract copyrighted source code.
+- Only structural patterns, workflows, and prompts may be ingested.
+- The Harvester operates via the `harvester-agent`.
