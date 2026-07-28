@@ -314,3 +314,13 @@ Phase 8 transforms Genesis Harness into an active, production-grade **Autonomous
 - **Autonomous Project Memory (`memory_system/project_memory/`)**: Tracks complete milestone timelines from idea to post-launch.
 - **Quality Intelligence (`quality_intelligence/`)**: Multi-dimension quality scoring for architecture, business, market, and technical execution.
 - **Execution Tools (`execution_tools/`)**: Tool selection and security boundary checks.
+
+
+## Genesis Autonomous Software Engineering Factory (Phase 9)
+Phase 9 transforms Genesis into an autonomous **Software Engineering Factory**:
+- **Software Factory Engine (`software_factory/`)**: Requirements analysis, architecture planning, development, testing, code review, and deployment release.
+- **Engineering Team Assembly (`engineering_team/`)**: Coordinates team formation across Architect, Developers, QA, Security, and DevOps.
+- **Coding Pipeline (`coding_pipeline/`)**: Requirement -> Architecture -> Issues -> Implementation -> Testing -> Review -> Security -> Release.
+- **GitHub Engine (`github_engine/`)**: Repository analysis, issue creation, branch planning, and PR generation.
+- **Code & Testing Intelligence (`code_intelligence/` & `testing_intelligence/`)**: Repository parsing, code quality scoring, and automated coverage analysis.
+- **Security Engineering Layer (`security_intelligence/`)**: Secret scanning, vulnerability risk analysis, and permission review.

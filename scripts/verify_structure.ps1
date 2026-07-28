@@ -181,7 +181,21 @@ $RequiredDirectories = @(
     'skill_intelligence',
     'quality_intelligence',
     'execution_tools',
-    'memory_system/project_memory'
+    'memory_system/project_memory',
+    'software_factory',
+    'software_factory/factory',
+    'software_factory/planning',
+    'software_factory/development',
+    'software_factory/testing',
+    'software_factory/review',
+    'software_factory/deployment',
+    'engineering_team',
+    'coding_pipeline',
+    'github_engine',
+    'code_intelligence',
+    'testing_intelligence',
+    'security_intelligence',
+    'memory_system/engineering_memory'
 )
 
 foreach ($dir in $RequiredDirectories) {
