@@ -206,7 +206,8 @@ $RequiredDirectories = @(
     'research_connectors',
     'research_benchmarks',
     'memory_system/research_memory',
-    'docs/evolution/research_discoveries'
+    'docs/evolution/research_discoveries',
+    'orchestrator'
 )
 
 foreach ($dir in $RequiredDirectories) {
