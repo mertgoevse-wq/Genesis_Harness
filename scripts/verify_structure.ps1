@@ -217,7 +217,10 @@ $RequiredDirectories = @(
     'agent_runtime/core',
     'agent_runtime/execution',
     'agent_runtime/reflection',
-    'agent_runtime/telemetry'
+    'agent_runtime/telemetry',
+    'control-center/backend',
+    'control-center/frontend',
+    'control-center/events'
 )
 
 foreach ($dir in $RequiredDirectories) {
