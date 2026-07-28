@@ -227,7 +227,13 @@ $RequiredDirectories = @(
     'product_launch/business_generation',
     'product_launch/engineering_generation',
     'product_launch/marketing_generation',
-    'generated_products'
+    'generated_products',
+    'mvp_builder',
+    'mvp_builder/analysis',
+    'mvp_builder/architecture',
+    'mvp_builder/generation',
+    'mvp_builder/repository',
+    'mvp_builder/deployment'
 )
 
 foreach ($dir in $RequiredDirectories) {
