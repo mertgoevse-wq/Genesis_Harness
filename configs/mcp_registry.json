@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "mcp_servers": [
+    {
+      "name": "github-mcp",
+      "server_url": "mcp://github.com",
+      "capabilities": [
+        "repo_read",
+        "repo_write",
+        "issue_create",
+        "pr_create"
+      ],
+      "security_boundary": "ReadWrite",
+      "recommended_agents": [
+        "coding",
+        "architect"
+      ]
+    },
+    {
+      "name": "sqlite-mcp",
+      "server_url": "mcp://localhost/sqlite",
+      "capabilities": [
+        "query_read",
+        "schema_inspect"
+      ],
+      "security_boundary": "ReadOnly",
+      "recommended_agents": [
+        "database-engineer"
+      ]
+    }
+  ]
+}

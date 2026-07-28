@@ -350,3 +350,8 @@ Every amendment bumps the version at the top and is recorded in a session log.
 - The Harvester MUST NOT extract copyrighted source code.
 - Only structural patterns, workflows, and prompts may be ingested.
 - The Harvester operates via the `harvester-agent`.
+
+
+## Tool Intelligence Rules
+- Every tool MUST define security classification, cost tier, and skill requirements in `configs/tool_registry.json`.
+- MCP tools MUST adhere to security boundary constraints in `configs/mcp_registry.json`.

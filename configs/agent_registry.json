@@ -56,7 +56,16 @@
       ],
       "preferred_model": "Claude Opus 4.8",
       "cost_tier": "High",
-      "quality_threshold": 0.95
+      "quality_threshold": 0.95,
+      "preferred_tools": [
+        "GitHub",
+        "Anthropic API"
+      ],
+      "fallback_tools": [],
+      "required_mcp": [],
+      "security_constraints": [
+        "Read Only System Configs"
+      ]
     },
     "coding": {
       "capabilities": [
@@ -69,7 +78,22 @@
       ],
       "preferred_model": "Claude Sonnet 4.6",
       "cost_tier": "Medium",
-      "quality_threshold": 0.9
+      "quality_threshold": 0.9,
+      "preferred_tools": [
+        "GitHub",
+        "Docker",
+        "Anthropic API"
+      ],
+      "fallback_tools": [
+        "GitLab"
+      ],
+      "required_mcp": [
+        "github-mcp"
+      ],
+      "security_constraints": [
+        "No Hardcoded Credentials",
+        "Sandbox Execution"
+      ]
     },
     "ceo": {
       "capabilities": [

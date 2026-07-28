@@ -126,7 +126,18 @@ $RequiredDirectories = @(
     'evolution/optimization',
     'evolution/experiments',
     'evolution/proposals',
-    'docs/evolution'
+    'docs/evolution',
+    'tool_intelligence',
+    'tool_intelligence/registry',
+    'tool_intelligence/discovery',
+    'tool_intelligence/evaluator',
+    'tool_intelligence/adapters',
+    'tool_intelligence/recommendations',
+    'mcp',
+    'mcp/registry',
+    'mcp/discovery',
+    'mcp/adapters',
+    'mcp/security'
 )
 
 foreach ($dir in $RequiredDirectories) {

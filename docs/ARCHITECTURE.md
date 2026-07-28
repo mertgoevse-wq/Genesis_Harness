@@ -284,3 +284,7 @@ Genesis Memory System (`memory_system/`) persists long-term architectural insigh
 
 ## Genesis Self Evolution Loop
 Genesis Self Evolution Loop (`evolution/`) continuously monitors agent execution metrics (`evaluation/`), identifies prompt or skill weaknesses (`optimization/`), executes benchmark experiments (`experiments/`), and generates Genesis Evolution Reports in `docs/evolution/` (`proposals/`). Self-modifications are strictly non-autonomous and require formal approval.
+
+
+## Genesis Tool Intelligence & MCP Architecture
+Genesis Tool Intelligence (`tool_intelligence/`) and MCP System (`mcp/`) discover, evaluate, and sand-box external tools and Model Context Protocol servers. It maintains `configs/tool_registry.json` and `configs/mcp_registry.json`, dynamically routing tools to agents based on security constraints and capability matching.

@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "GitHub",
+      "category": "Version Control & CI",
+      "purpose": "Repository management, PR review, issue tracking",
+      "api_support": true,
+      "mcp_support": true,
+      "cost": "Free/Paid",
+      "security_level": "High",
+      "recommended_agents": [
+        "coding",
+        "architect",
+        "devops-engineer"
+      ],
+      "required_skills": [
+        "software-engineering",
+        "deployment"
+      ]
+    },
+    {
+      "name": "Docker",
+      "category": "Containerization",
+      "purpose": "Containerized application packaging and execution",
+      "api_support": true,
+      "mcp_support": false,
+      "cost": "Free",
+      "security_level": "Medium",
+      "recommended_agents": [
+        "devops-engineer",
+        "backend-engineer"
+      ],
+      "required_skills": [
+        "deployment"
+      ]
+    },
+    {
+      "name": "Supabase",
+      "category": "Database & Auth",
+      "purpose": "Serverless Postgres database, auth, and real-time subscriptions",
+      "api_support": true,
+      "mcp_support": true,
+      "cost": "Freemium",
+      "security_level": "High",
+      "recommended_agents": [
+        "database-engineer",
+        "backend-engineer"
+      ],
+      "required_skills": [
+        "software-engineering"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "category": "Deployment & Hosting",
+      "purpose": "Frontend and edge function deployment platform",
+      "api_support": true,
+      "mcp_support": false,
+      "cost": "Freemium",
+      "security_level": "Medium",
+      "recommended_agents": [
+        "frontend-engineer",
+        "devops-engineer"
+      ],
+      "required_skills": [
+        "deployment"
+      ]
+    },
+    {
+      "name": "Anthropic API",
+      "category": "LLM Backend",
+      "purpose": "Claude 3.5 & Opus 4.8 inference backend",
+      "api_support": true,
+      "mcp_support": true,
+      "cost": "Usage-Based",
+      "security_level": "High",
+      "recommended_agents": [
+        "architect",
+        "coding",
+        "ceo"
+      ],
+      "required_skills": [
+        "prompt-engineering"
+      ]
+    }
+  ]
+}
