@@ -105,7 +105,11 @@ $RequiredDirectories = @(
     'harvester/connectors',
     'harvester/knowledge_graph',
     'harvester/recommendation',
-    'tests'
+    'tests',
+    'control-center',
+    'control-center/backend',
+    'control-center/events',
+    'control-center/frontend'
 )
 
 foreach ($dir in $RequiredDirectories) {

@@ -268,3 +268,7 @@ Genesis operates as an autonomous OS. The `orchestration/` package schedules DAG
 
 ## Genesis Intelligence Harvester v2
 Harvester v2 expands data connectors across GitHub, HuggingFace, arXiv, PapersWithCode, Anthropic, Google, OpenAI, LangChain, LangGraph, CrewAI, AutoGen, and MCP Registry. It extracts concepts into a Knowledge Graph (Agent, Skill, Tool, Pattern, Workflow) and outputs Genesis Improvement Proposals (GIPs).
+
+
+## Genesis Control Center
+Genesis Control Center (`control-center/`) provides real-time visual telemetry. It includes an `EventBus` (`events/`), a Python HTTP/WebSocket server (`backend/`), and a clean Linear/Notion-inspired single page web application (`frontend/`) to visualize agent hierarchies, running DAG tasks, model router allocations, costs, and logs.
