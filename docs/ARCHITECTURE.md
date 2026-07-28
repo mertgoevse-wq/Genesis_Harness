@@ -292,3 +292,7 @@ Genesis Tool Intelligence (`tool_intelligence/`) and MCP System (`mcp/`) discove
 
 ## Genesis Autonomous Product Factory Architecture
 Genesis Autonomous Product Factory (`product_factory/`) orchestrates end-to-end AI product creation (`IDEA -> RESEARCHING -> VALIDATING -> DESIGNING -> BUILDING -> TESTING -> DEPLOYING -> LAUNCHED -> LEARNING`). It utilizes specialized agents (`product-founder`, `customer-researcher`, `business-modeler`, `ux-researcher`, `growth-strategist`, `financial-analyst`, `investor-agent`), PRD generation (`product_management/prd_generator.py`), and binds directly to Genesis Runtime, Harvester, and Memory System.
+
+
+## Genesis Autonomous Founder Intelligence Architecture
+Genesis Founder Intelligence (`founder_intelligence/`) scans market trends (`market_scanner/`), generates top 50 AI business opportunities (`idea_engine/`), calculates 0-100 StartupScores (`startup_analysis/`), and runs simulated VC investment reviews (`investor_engine/`). High-scoring startup candidates (>80) are passed directly into the Product Factory.

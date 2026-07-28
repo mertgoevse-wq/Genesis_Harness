@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "AI Startup Candidate #1",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 86
+  },
+  {
+    "id": 2,
+    "title": "AI Startup Candidate #2",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 87
+  },
+  {
+    "id": 3,
+    "title": "AI Startup Candidate #3",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 88
+  },
+  {
+    "id": 4,
+    "title": "AI Startup Candidate #4",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 89
+  },
+  {
+    "id": 5,
+    "title": "AI Startup Candidate #5",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 85
+  },
+  {
+    "id": 6,
+    "title": "AI Startup Candidate #6",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 86
+  },
+  {
+    "id": 7,
+    "title": "AI Startup Candidate #7",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 87
+  },
+  {
+    "id": 8,
+    "title": "AI Startup Candidate #8",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 88
+  },
+  {
+    "id": 9,
+    "title": "AI Startup Candidate #9",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 89
+  },
+  {
+    "id": 10,
+    "title": "AI Startup Candidate #10",
+    "problem_score": 9,
+    "market_score": 9,
+    "competition_score": 7,
+    "monetization_score": 9,
+    "build_difficulty": 4,
+    "ai_advantage_score": 9,
+    "startup_score": 85
+  }
+]
