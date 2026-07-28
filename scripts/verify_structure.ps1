@@ -207,7 +207,12 @@ $RequiredDirectories = @(
     'research_benchmarks',
     'memory_system/research_memory',
     'docs/evolution/research_discoveries',
-    'orchestrator'
+    'orchestrator',
+    'knowledge_fabric',
+    'knowledge_fabric/core',
+    'knowledge_fabric/connectors',
+    'knowledge_fabric/reasoning',
+    'global_context'
 )
 
 foreach ($dir in $RequiredDirectories) {

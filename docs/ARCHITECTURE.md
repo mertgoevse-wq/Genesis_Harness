@@ -334,3 +334,11 @@ Phase 10 transforms Genesis into a **Scientific Research Intelligence Platform**
 - **Research Benchmarking (`research_benchmarks/`)**: Evaluates novelty score, evidence quality, and reasoning quality.
 - **Specialized Research Agents**: Research Director, Scientific Analyst, Experiment Designer, Technology Scout.
 - **Research Discoveries**: Integrated with Evolution Loop under `docs/evolution/research_discoveries/`.
+
+
+## Genesis Autonomous Knowledge & Intelligence Fabric (Phase 11 Fabric)
+Phase 11 introduces the central **Knowledge & Intelligence Fabric**:
+- **Knowledge Fabric Core (`knowledge_fabric/core/`)**: Knowledge orchestrator, intelligence router, context manager.
+- **Subsystem Connectors (`knowledge_fabric/connectors/`)**: Connectors for agents, skills, tools, memory, research, and venture pipelines.
+- **Cross-Domain Reasoning Engine (`knowledge_fabric/reasoning/`)**: Cross-domain reasoner, decision engine, recommendation engine.
+- **Global Context System (`global_context/`)**: Context builder, ranker, and retriever.
