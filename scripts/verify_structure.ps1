@@ -116,7 +116,11 @@ $RequiredDirectories = @(
     'genesis_runtime/agent_execution',
     'genesis_runtime/skill_system',
     'genesis_runtime/memory',
-    'genesis_runtime/events'
+    'genesis_runtime/events',
+    'memory_system',
+    'memory_system/storage',
+    'memory_system/retrieval',
+    'memory_system/learning'
 )
 
 foreach ($dir in $RequiredDirectories) {

@@ -276,3 +276,7 @@ Genesis Control Center (`control-center/`) provides real-time visual telemetry. 
 
 ## Genesis Runtime Engine
 Genesis Runtime Engine (`genesis_runtime/`) provides the end-to-end execution environment. It coordinates goal decomposition (`planner/`), explicit agent lifecycle state transitions (`CREATED -> PLANNING -> READY -> RUNNING -> EVALUATING -> COMPLETED/FAILED`), dynamic skill loading (`skill_system/`), memory persistence (`memory/`), and event emission (`events/`).
+
+
+## Genesis Persistent Intelligence Memory System
+Genesis Memory System (`memory_system/`) persists long-term architectural insights, successful workflows, prompt structures, failures, and benchmark results. It syncs with the `harvester/knowledge_graph` and features semantic retrieval (`retrieval/`) and post-project retrospectives (`learning/agent_memory.py`).
