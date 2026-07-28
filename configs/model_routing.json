@@ -1,0 +1,86 @@
+{
+  "$comment": "Guidance for matching model capability to work type. This is advisory, not enforced by any script — the operator selects the model. Recorded here so routing decisions are explicit and reviewable rather than habitual.",
+  "version": "1.0.0",
+  "lastUpdated": "2026-07-28",
+
+  "tiers": {
+    "deep": {
+      "models": ["claude-opus-5", "claude-fable-5"],
+      "useFor": [
+        "architecture and system design",
+        "irreversible or expensive-to-reverse decisions",
+        "scientific modelling and numerical scheme selection",
+        "multi-subsystem refactoring",
+        "debugging where the mechanism is unknown",
+        "designing agents, skills, and prompts"
+      ],
+      "rationale": "Work where being wrong is expensive and the error would not be obvious."
+    },
+    "standard": {
+      "models": ["claude-sonnet-5"],
+      "useFor": [
+        "implementing a specified unit against a clear contract",
+        "writing tests from stated acceptance criteria",
+        "documentation from an existing structure",
+        "mechanical refactoring with a safety net",
+        "routine code review"
+      ],
+      "rationale": "Well-specified work where the contract carries most of the difficulty."
+    },
+    "fast": {
+      "models": ["claude-haiku-4-5-20251001"],
+      "useFor": [
+        "structural checks and file inventory",
+        "format conversion",
+        "high-frequency narrow lookups",
+        "worker agents in a fan-out with a strong output contract"
+      ],
+      "rationale": "Narrow, verifiable tasks where the output is easy to check."
+    }
+  },
+
+  "agentDefaults": {
+    "architect": "deep",
+    "research": "deep",
+    "simulation-scientist": "deep",
+    "game-design": "standard",
+    "coding": "standard",
+    "qa": "standard"
+  },
+
+  "escalationRules": [
+    {
+      "when": "the same task has failed twice at the current tier",
+      "action": "escalate one tier rather than retrying a third time",
+      "rationale": "Two failures usually indicate the task exceeds the tier, not bad luck. A third retry costs more than the escalation."
+    },
+    {
+      "when": "the task is irreversible or outward-facing",
+      "action": "use the deep tier regardless of apparent simplicity",
+      "rationale": "Reversal cost dominates token cost."
+    },
+    {
+      "when": "the output cannot be cheaply verified",
+      "action": "use the deep tier",
+      "rationale": "Cheap generation plus expensive verification is a false economy."
+    },
+    {
+      "when": "verification is a mechanical check the harness can run",
+      "action": "a lower tier is acceptable — let the gate catch the error",
+      "rationale": "A structure check or a failing test is a cheaper reviewer than a stronger model."
+    }
+  ],
+
+  "antiPatterns": [
+    "Routing by task length rather than by task difficulty.",
+    "Using the deep tier for work whose output a script already validates.",
+    "Retrying a failed task at the same tier more than twice.",
+    "Fanning out to many parallel agents when one agent's context would hold the whole task.",
+    "Choosing a tier by habit and never recording the choice."
+  ],
+
+  "notes": [
+    "Model identifiers here are the ones documented for this environment as of 2026-07-28. Verify against current documentation before depending on an exact string.",
+    "No routing is enforced automatically. Record the model actually used in the session log — that field is what makes routing decisions reviewable after the fact."
+  ]
+}

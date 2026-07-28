@@ -1,0 +1,152 @@
+{
+  "$comment": "Machine-readable registry of the Genesis Harness foundation. Read by scripts/verify_structure.ps1. Adding an agent or skill here without creating its files will fail the structure gate.",
+  "harness": {
+    "name": "Genesis Harness",
+    "version": "1.0.0",
+    "phase": "0-foundation",
+    "constitution": "CLAUDE.md",
+    "lastUpdated": "2026-07-28"
+  },
+  "paths": {
+    "agents": "agents",
+    "agentAdapters": ".claude/agents",
+    "skills": "skills",
+    "prompts": "prompts",
+    "systemLayers": "prompts/system_layers",
+    "masterPrompts": "prompts/master_prompts",
+    "generators": "prompts/generators",
+    "benchmarks": "prompts/benchmarks",
+    "logs": "logs",
+    "sessions": "logs/sessions",
+    "docs": "docs",
+    "adr": "docs/adr",
+    "scripts": "scripts",
+    "configs": "configs",
+    "templates": "templates"
+  },
+  "agents": [
+    {
+      "id": "architect",
+      "name": "Architect Agent",
+      "roleClass": "Software Architect",
+      "owns": "System structure, contracts, technology decisions, scalability",
+      "canBlock": "Implementation that violates a defined contract",
+      "charter": "agents/architect/AGENT.md",
+      "adapter": ".claude/agents/architect.md",
+      "primarySkills": ["software-engineering"],
+      "supportingSkills": ["ai-agents", "simulation", "game-development"],
+      "masterPrompt": "prompts/master_prompts/architecture.md"
+    },
+    {
+      "id": "research",
+      "name": "Research Agent",
+      "roleClass": "Research Lead",
+      "owns": "Factual claims about the outside world",
+      "canBlock": "Decisions built on unverified claims",
+      "charter": "agents/research/AGENT.md",
+      "adapter": ".claude/agents/research.md",
+      "primarySkills": [],
+      "supportingSkills": ["physics", "chemistry", "biology", "astronomy", "simulation", "game-development", "software-engineering", "ai-agents", "prompt-engineering"],
+      "masterPrompt": "prompts/master_prompts/research.md"
+    },
+    {
+      "id": "coding",
+      "name": "Coding Agent",
+      "roleClass": "Implementation",
+      "owns": "Source file contents",
+      "canBlock": null,
+      "charter": "agents/coding/AGENT.md",
+      "adapter": ".claude/agents/coding.md",
+      "primarySkills": ["software-engineering"],
+      "supportingSkills": ["simulation", "game-development", "ai-agents", "prompt-engineering"],
+      "masterPrompt": "prompts/master_prompts/coding.md"
+    },
+    {
+      "id": "simulation-scientist",
+      "name": "Simulation Scientist Agent",
+      "roleClass": "Domain Science",
+      "owns": "Physical and numerical correctness",
+      "canBlock": "Simulation implementations that are unstable or physically invalid",
+      "charter": "agents/simulation-scientist/AGENT.md",
+      "adapter": ".claude/agents/simulation-scientist.md",
+      "primarySkills": ["simulation"],
+      "supportingSkills": ["physics", "chemistry", "biology", "astronomy", "software-engineering"],
+      "masterPrompt": null
+    },
+    {
+      "id": "game-design",
+      "name": "Game Design Agent",
+      "roleClass": "Systems Design",
+      "owns": "Player experience",
+      "canBlock": "Player-facing systems that are incoherent or unspecifiable",
+      "charter": "agents/game-design/AGENT.md",
+      "adapter": ".claude/agents/game-design.md",
+      "primarySkills": ["game-development"],
+      "supportingSkills": ["simulation", "software-engineering", "physics"],
+      "masterPrompt": null
+    },
+    {
+      "id": "qa",
+      "name": "QA Agent",
+      "roleClass": "Verification",
+      "owns": "The definition of done",
+      "canBlock": "Any commit",
+      "charter": "agents/qa/AGENT.md",
+      "adapter": ".claude/agents/qa.md",
+      "primarySkills": ["software-engineering"],
+      "supportingSkills": ["simulation", "game-development", "physics", "chemistry", "biology", "astronomy"],
+      "masterPrompt": "prompts/master_prompts/review.md"
+    }
+  ],
+  "skills": [
+    { "id": "physics",              "category": "science",     "path": "skills/physics/SKILL.md" },
+    { "id": "chemistry",            "category": "science",     "path": "skills/chemistry/SKILL.md" },
+    { "id": "biology",              "category": "science",     "path": "skills/biology/SKILL.md" },
+    { "id": "astronomy",            "category": "science",     "path": "skills/astronomy/SKILL.md" },
+    { "id": "simulation",           "category": "engineering", "path": "skills/simulation/SKILL.md" },
+    { "id": "game-development",     "category": "engineering", "path": "skills/game-development/SKILL.md" },
+    { "id": "software-engineering", "category": "engineering", "path": "skills/software-engineering/SKILL.md" },
+    { "id": "ai-agents",            "category": "meta",        "path": "skills/ai-agents/SKILL.md" },
+    { "id": "prompt-engineering",   "category": "meta",        "path": "skills/prompt-engineering/SKILL.md" }
+  ],
+  "systemLayers": [
+    { "id": "L0", "name": "Identity",             "path": "prompts/system_layers/L0_identity.md",             "loadOrder": 0, "always": true },
+    { "id": "L1", "name": "Operating Principles", "path": "prompts/system_layers/L1_operating_principles.md", "loadOrder": 1, "always": true },
+    { "id": "L2", "name": "Domain Context",       "path": "prompts/system_layers/L2_domain_context.md",       "loadOrder": 2, "always": true },
+    { "id": "L3", "name": "Task Contract",        "path": "prompts/system_layers/L3_task_contract.md",        "loadOrder": 3, "always": true },
+    { "id": "L4", "name": "Output Contract",      "path": "prompts/system_layers/L4_output_contract.md",      "loadOrder": 4, "always": true },
+    { "id": "L5", "name": "Reasoning Layer",      "path": "prompts/system_layers/L5_reasoning_layer.md",      "loadOrder": 5, "always": false, "loadWhen": "complex-task" }
+  ],
+  "masterPrompts": [
+    { "id": "project_analysis", "path": "prompts/master_prompts/project_analysis.md", "owningAgent": "any" },
+    { "id": "architecture",     "path": "prompts/master_prompts/architecture.md",     "owningAgent": "architect" },
+    { "id": "coding",           "path": "prompts/master_prompts/coding.md",           "owningAgent": "coding" },
+    { "id": "research",         "path": "prompts/master_prompts/research.md",         "owningAgent": "research" },
+    { "id": "review",           "path": "prompts/master_prompts/review.md",           "owningAgent": "qa" }
+  ],
+  "generators": [
+    { "id": "agent_generator",  "path": "prompts/generators/agent_generator.md",  "produces": ["agents/<id>/AGENT.md", ".claude/agents/<id>.md"] },
+    { "id": "skill_generator",  "path": "prompts/generators/skill_generator.md",  "produces": ["skills/<id>/SKILL.md"] },
+    { "id": "prompt_generator", "path": "prompts/generators/prompt_generator.md", "produces": ["prompts/master_prompts/<id>.md", "prompts/system_layers/<id>.md"] }
+  ],
+  "templates": {
+    "agent":   "templates/AGENT_TEMPLATE.md",
+    "skill":   "templates/SKILL_TEMPLATE.md",
+    "adr":     "templates/ADR_TEMPLATE.md",
+    "handoff": "templates/HANDOFF_TEMPLATE.md",
+    "session": "logs/SESSION_TEMPLATE.md"
+  },
+  "workflow": {
+    "name": "Genesis Loop",
+    "stages": [
+      { "n": 1, "id": "intake",   "owner": "any",                  "produces": "task contract" },
+      { "n": 2, "id": "research", "owner": "research",             "produces": "findings report" },
+      { "n": 3, "id": "design",   "owner": "architect",            "produces": "architecture spec + ADR" },
+      { "n": 4, "id": "plan",     "owner": "architect",            "produces": "implementation units" },
+      { "n": 5, "id": "build",    "owner": "coding",               "produces": "code + verification evidence" },
+      { "n": 6, "id": "verify",   "owner": "qa",                   "produces": "QA report" },
+      { "n": 7, "id": "log",      "owner": "any",                  "produces": "session log" },
+      { "n": 8, "id": "commit",   "owner": "any",                  "produces": "commit + push" }
+    ]
+  }
+}

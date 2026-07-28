@@ -1,0 +1,239 @@
+# Genesis Harness — Architecture
+
+**Version:** 1.0.0 · **Last updated:** 2026-07-28 · **Phase:** 0 — Foundation
+
+---
+
+## 1. What This System Is
+
+Genesis Harness is an **AI development operating system**: infrastructure that lets multiple
+specialised AI agents collaboratively design, build, verify, and document complex software, with
+continuity across sessions and across models.
+
+It is not the Genesis Engine. It is the harness the Genesis Engine will later be built inside.
+
+**The central problem it solves:** an AI session is amnesiac, its confidence is uncorrelated with
+its correctness, and its output quality degrades as scope grows. The harness addresses each with
+structure rather than with exhortation.
+
+| Problem | Mechanism |
+|---|---|
+| Sessions forget | Append-only session logs + handoff artefacts + the cold-start test |
+| Confidence ≠ correctness | Mandatory verification states, confidence labels, QA authority to block |
+| Quality degrades with scope | Role separation, one owner per artefact, decomposition into cold-startable units |
+| Process drifts | Layered prompts, machine-readable registry, scripted gates |
+
+---
+
+## 2. Subsystem Map
+
+```
+                         ┌──────────────┐
+                         │   CLAUDE.md  │  Constitution — highest authority
+                         │ (the rules)  │  after explicit human instruction
+                         └───────┬──────┘
+                                 │ governs
+         ┌───────────────────────┼───────────────────────┐
+         ▼                       ▼                       ▼
+  ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+  │   AGENTS    │ loads   │   SKILLS    │         │   PROMPTS   │
+  │   (who)     │────────▶│   (what     │         │   (how they │
+  │             │         │  they know) │         │  are told)  │
+  │ agents/     │         │ skills/     │         │ prompts/    │
+  │ .claude/    │         │             │         │             │
+  └──────┬──────┘         └─────────────┘         └──────┬──────┘
+         │                                                │
+         │ produce                          compose into ─┘
+         ▼
+  ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+  │   OUTPUTS   │────────▶│    LOGS     │         │    DOCS     │
+  │  handoffs,  │ recorded│  (memory)   │ inform  │  (truth)    │
+  │  code, ADRs │  in     │  logs/      │────────▶│  docs/      │
+  └──────┬──────┘         └─────────────┘         └─────────────┘
+         │
+         │ gated by
+         ▼
+  ┌─────────────┐         ┌─────────────┐
+  │   SCRIPTS   │ reads   │   CONFIGS   │
+  │ (enforce)   │────────▶│ (registry)  │
+  │ scripts/    │         │ configs/    │
+  └─────────────┘         └─────────────┘
+```
+
+---
+
+## 3. Components
+
+| Component | Responsibility | Owns | Depends on |
+|---|---|---|---|
+| **Constitution** (`CLAUDE.md`) | Defines roles, philosophy, workflow, rules, quality bar | The rules | Nothing |
+| **Agents** (`agents/`, `.claude/agents/`) | Roles with scope, authority, workflow, output contract | Their deliverables | Constitution, skills, prompts |
+| **Skills** (`skills/`) | Knowledge domains + domain-specific guardrails | Domain competence | Nothing |
+| **Prompts** (`prompts/`) | Layered instruction composition and benchmarking | Instruction shape | Constitution |
+| **Logs** (`logs/`) | Append-only session memory | Project history | Nothing |
+| **Docs** (`docs/`) | Current-state truth: architecture, agents, workflow, roadmap | Shared understanding | Everything above |
+| **Configs** (`configs/`) | Machine-readable registry and thresholds | Operative numbers | Nothing |
+| **Scripts** (`scripts/`) | Enforcement: commit gates, structure checks, log creation | Automation | Configs |
+| **Templates** (`templates/`) | Structural forms for artefacts | Artefact uniformity | Nothing |
+
+---
+
+## 4. The Three Core Separations
+
+The whole design rests on three separations. Collapsing any of them is what makes multi-agent
+systems fail.
+
+### 4.1 Role vs Knowledge — agents vs skills
+
+An **agent** is *who does the work*: a scope, an authority, a workflow, an output contract.
+A **skill** is *what it knows*: a domain, its methods, its guardrails.
+
+Six agents × nine skills would be fifty-four documents if fused. Separated, an agent gains a new
+domain by loading a skill, and a skill improves for every agent at once.
+
+**Test:** if the answer to "why do we need this?" is *"it needs to know about X"*, you want a
+skill. If it is *"someone must own deciding X"*, you want an agent.
+
+### 4.2 Stable vs Volatile — the prompt layers
+
+| Layer | Volatility |
+|---|---|
+| L0 identity, L1 principles, L4 output contract | Rare |
+| L2 domain context | Per phase |
+| L3 task contract | Per task |
+| L5 reasoning layer | Rare, opt-in |
+
+A correction placed in the wrong layer either evaporates (behaviour fix put in L3) or contaminates
+everything (task fix put in L0). The routing table in `prompts/README.md` exists to prevent this.
+
+### 4.3 Claim vs Evidence — verification states
+
+Three states, never blurred: **verified** (executed and observed) · **implemented** (exists,
+unrun) · **planned** (does not exist).
+
+Four confidence labels for external claims: **VERIFIED** · **KNOWN** · **ASSUMED** · **UNKNOWN**.
+
+This separation is why the QA Agent can block a commit and why a benchmark's truthfulness axis
+can reject an output outright.
+
+---
+
+## 5. Data Flow — The Genesis Loop
+
+```
+ human request
+      │
+      ▼
+ ┌──────────┐   task contract (L3)
+ │ 1 INTAKE ├──────────────────────────┐
+ └──────────┘                          │
+      │                                ▼
+      ▼                          ┌───────────┐
+ ┌──────────┐  findings report   │  research │
+ │2 RESEARCH│◀───────────────────┤   agent   │
+ └────┬─────┘                    └───────────┘
+      │ verified constraints
+      ▼
+ ┌──────────┐  architecture spec + ADR + implementation units
+ │ 3 DESIGN │◀── architect agent
+ └────┬─────┘
+      │ handoff (contracts, acceptance criteria)
+      ▼
+ ┌──────────┐
+ │ 4 PLAN   │  units decomposed until cold-startable
+ └────┬─────┘
+      │
+      ▼
+ ┌──────────┐  code + verification evidence
+ │ 5 BUILD  │◀── coding agent  (+ simulation-scientist / game-design specs)
+ └────┬─────┘
+      │ handoff (what was verified, what was not)
+      ▼
+ ┌──────────┐  QA report — VERDICT
+ │ 6 VERIFY │◀── qa agent          ── CRITICAL ──▶ back to BUILD
+ └────┬─────┘
+      │ PASS
+      ▼
+ ┌──────────┐  session log written to logs/sessions/
+ │ 7 LOG    │
+ └────┬─────┘
+      │
+      ▼
+ ┌──────────┐  auto_commit.ps1 — 9 gates
+ │ 8 COMMIT │
+ └──────────┘
+```
+
+**Artefacts are the transport, not conversation.** Every arrow above is a file, which is what
+makes the loop survive a context reset.
+
+---
+
+## 6. Invariants
+
+Statements that must be true at all times. Violating one is a defect, not a style choice.
+
+| # | Invariant | Enforced by |
+|---|---|---|
+| 1 | Every registered agent has both a charter and a runtime adapter | `verify_structure.ps1` |
+| 2 | Every registered skill has a `SKILL.md` | `verify_structure.ps1` |
+| 3 | Exactly one agent holds authority over any given artefact | Review (`agents/README.md` §Collaboration) |
+| 4 | Every session that changes the repository has a session log | `auto_commit.ps1` gate 6 |
+| 5 | No commit contains credential-shaped content | `auto_commit.ps1` gate 3 |
+| 6 | Session logs are append-only | Constitution §7.3; review |
+| 7 | A `PASS` verdict requires actual execution | QA charter; `quality_gates.json` |
+| 8 | Every external claim carries a confidence label | L4 output contract |
+| 9 | The charter is authoritative over its adapter | `agents/README.md` |
+| 10 | Config numbers are operative over constitution prose | `CLAUDE.md` §9 |
+| 11 | No markdown file exceeds 800 lines | `verify_structure.ps1` (warning) |
+| 12 | Every script parses without syntax errors | `verify_structure.ps1` |
+
+---
+
+## 7. Load Envelope
+
+The foundation is documentation and scripts, so the relevant limits are **context** and
+**maintenance**, not throughput.
+
+| Dimension | Now | Comfortable | Breaks at |
+|---|---|---|---|
+| Agents | 6 | ~12 | Beyond ~15, authority overlap becomes hard to reason about |
+| Skills | 9 | ~20 | Beyond ~25, skill selection itself needs tooling |
+| Session logs | 0 | ~500 | Reading "the last two" stays O(1); search needs an index past ~500 |
+| Full-context load | ~4k lines of markdown | ~8k | Selective loading is already required; L2 exists to bound it |
+| Structure check | <1s | — | Line-counting every markdown file becomes slow past ~2000 files |
+
+**First bottleneck:** context, not compute. This is why skills are loaded selectively, why L2
+carries only current-phase facts, and why agents read the two most recent logs rather than all of
+them.
+
+---
+
+## 8. Design Decisions
+
+| Decision | Alternative rejected | Reason |
+|---|---|---|
+| Charter + adapter split for agents | Single file in `.claude/agents/` | Native adapters must stay short to be cheap to load; charters must be long to be complete |
+| Skills as a separate axis from agents | Knowledge embedded in each agent | Avoids N×M duplication; a skill improvement propagates to every agent that loads it |
+| Layered prompts (L0–L5) | One system prompt per agent | Makes a fix land in one place and routes it correctly by volatility |
+| PowerShell scripts | Cross-platform shell or Node | The environment is Windows-first; adding a runtime needs an ADR |
+| JSON registry driving the structure check | Hardcoded file lists in the script | Registering a component automatically extends verification |
+| Append-only logs | Editable status document | The history of what was believed is evidence; rewriting it destroys the audit trail |
+| Manual benchmarks | Automated runner now | An honest manual method beats a fake automated one; the runner is Phase 2 |
+
+Decisions taken from Phase 1 onward are recorded as ADRs in `docs/adr/`.
+
+---
+
+## 9. What Does Not Exist Yet
+
+Stated explicitly so nobody documents aspiration as fact:
+
+- **No runtime code.** The repository is specification, documentation, and PowerShell scripts.
+- **No test runner.** Verification is by script execution and structural checks.
+- **No automated benchmark runner.** Cases are defined; execution is manual.
+- **No ADRs.** `docs/adr/` is established by convention; the first ADR arrives with Phase 1.
+- **No CI.** Gates run locally via `auto_commit.ps1`.
+- **No Genesis Engine.** That is the point of the harness, not part of it.
+
+See `docs/ROADMAP.md` for when each of these is scheduled.
