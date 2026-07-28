@@ -137,7 +137,21 @@ $RequiredDirectories = @(
     'mcp/registry',
     'mcp/discovery',
     'mcp/adapters',
-    'mcp/security'
+    'mcp/security',
+    'product_factory',
+    'product_factory/discovery',
+    'product_factory/validation',
+    'product_factory/strategy',
+    'product_factory/product_management',
+    'product_factory/ux',
+    'product_factory/architecture',
+    'product_factory/development',
+    'product_factory/deployment',
+    'product_factory/marketing',
+    'product_factory/analytics',
+    'product_factory/evaluation',
+    'product_factory/pipeline',
+    'docs/products'
 )
 
 foreach ($dir in $RequiredDirectories) {

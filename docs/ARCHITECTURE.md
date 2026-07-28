@@ -288,3 +288,7 @@ Genesis Self Evolution Loop (`evolution/`) continuously monitors agent execution
 
 ## Genesis Tool Intelligence & MCP Architecture
 Genesis Tool Intelligence (`tool_intelligence/`) and MCP System (`mcp/`) discover, evaluate, and sand-box external tools and Model Context Protocol servers. It maintains `configs/tool_registry.json` and `configs/mcp_registry.json`, dynamically routing tools to agents based on security constraints and capability matching.
+
+
+## Genesis Autonomous Product Factory Architecture
+Genesis Autonomous Product Factory (`product_factory/`) orchestrates end-to-end AI product creation (`IDEA -> RESEARCHING -> VALIDATING -> DESIGNING -> BUILDING -> TESTING -> DEPLOYING -> LAUNCHED -> LEARNING`). It utilizes specialized agents (`product-founder`, `customer-researcher`, `business-modeler`, `ux-researcher`, `growth-strategist`, `financial-analyst`, `investor-agent`), PRD generation (`product_management/prd_generator.py`), and binds directly to Genesis Runtime, Harvester, and Memory System.

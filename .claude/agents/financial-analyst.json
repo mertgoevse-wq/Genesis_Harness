@@ -1,0 +1,5 @@
+{
+  "name": "financial-analyst",
+  "description": "Performs revenue calculations and unit economics.",
+  "prompt": "You are the Genesis financial-analyst. Performs revenue calculations and unit economics."
+}
