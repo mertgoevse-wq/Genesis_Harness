@@ -1,7 +1,7 @@
 # Genesis Harness — Roadmap
 
-**Version:** 1.1.0 · **Last updated:** 2026-07-28
-**Current phase:** 1 — Operation / Package Consolidation (complete)
+**Version:** 1.2.0 · **Last updated:** 2026-07-28
+**Current phase:** 2 — LLM Core & API (in progress)
 
 > This document is the authoritative record of *where the project is*. Update it at the end of
 > every phase. `prompts/system_layers/L2_domain_context.md` mirrors the current-state summary —
@@ -15,7 +15,7 @@
 |---|---|---|---|
 | **0** | Foundation | **Complete** | Agents, skills, prompts, logging, docs, git automation |
 | **1** | Operation / Package Consolidation | **Complete** | Installable `genesis` package, CLI, tests, pruned stubs |
-| **2** | LLM Core & API | Planned | LLM-backed reasoning, FastAPI service |
+| **2** | LLM Core & API | **In Progress** | LLM-backed reasoning, FastAPI service |
 | **3** | Persistency & Multi-User | Planned | PostgreSQL, auth, user projects, analysis history |
 | **4** | Monetization & Deployment | Planned | Stripe subscriptions, hosting, CI/CD |
 | **5** | Live Market Intelligence | Planned | Real external data connectors, autonomous improvement |
@@ -58,22 +58,23 @@ single installable, testable `genesis/` Python package.
 - [x] `python -m genesis analyze "..."` returns structured JSON.
 - [x] `pytest tests/` passes (31 tests).
 - [x] `ruff check genesis/ tests/` passes.
-- [x] `scripts/verify_structure.ps1` passes (one pre-existing warning).
+- [x] `scripts/verify_structure.ps1` passes.
 - [x] Top-level directories reduced from 60+ to ≤20.
 - [x] `genesis/` package has ≤40 Python files.
 
 ### Explicitly not delivered
 
-- LLM integration remains future work (Phase 2).
+- LLM integration is only the client layer; business modules still use deterministic heuristics.
 - Web API / dashboard remains future work (Phase 2/3).
 - Database persistence remains future work (Phase 3).
 - Real external API integrations remain future work (Phase 5).
 
 ### Honest status
 
-The package is now installable and the tests pass. The logic is still
-heuristic/fallback-based — the next phase is required to add real LLM-backed
-reasoning.
+The package is now installable and the tests pass. The LLM client layer is in
+place with a deterministic fallback, but the business modules still rely on
+heuristic scoring. The next step is to wire the client into the decision and
+builder modules.
 
 ---
 
@@ -86,7 +87,7 @@ via a web API.
 
 | # | Item | Acceptance criteria |
 |---|---|---|
-| 2.1 | Anthropic/OpenAI client wrapper | `genesis/llm/client.py` with mockable interface |
+| 2.1 | Anthropic/OpenAI client wrapper | `genesis/llm/client.py` with mockable interface ✅ |
 | 2.2 | LLM-backed venture reasoning | `decision/engine.py` enriches deterministic scores with LLM rationale |
 | 2.3 | Prompt-specific MVP generation | `builder/mvp.py` generates code that differs meaningfully per prompt |
 | 2.4 | FastAPI app | `genesis/api/app.py` with `/api/v1/analyze` and `/health` |
@@ -153,7 +154,7 @@ Executable by a fresh agent with no memory of any prior session.
 
 | # | Problem | Severity | Raised | Status |
 |---|---|---|---|---|
-| 1 | `prompts/system_layers/fable5_layer.md` is 2,123 lines and contains third-party content. | HIGH | 2026-07-28 | Open — operator to decide: delete, archive, or keep. |
+| 1 | `prompts/system_layers/fable5_layer.md` is 2,123 lines and contains third-party content. | HIGH | 2026-07-28 | **Resolved** — archived to `_archive/prompts/system_layers/fable5_layer.md`. |
 | 2 | All intelligence signals are fallback/assumed; no real external data yet. | MEDIUM | 2026-07-28 | Open — Phase 5 addresses this. |
 | 3 | MVP builder output is still largely template-based and not prompt-specific. | MEDIUM | 2026-07-28 | Open — Phase 2 addresses this. |
 

@@ -510,3 +510,28 @@ surviving real logic was preserved and wired into a single orchestrator.
   `docs/adr/0001-consolidate-genesis-package.md`).
 - Added a focused test suite under `tests/` covering every consolidated
   subsystem and the CLI.
+
+### Phase 1.1 — Legacy Cleanup and LLM Foundation
+
+After the initial consolidation the repository still contained a large amount
+of stub code (old phase builders, empty modules, generated product artefacts,
+and a vendored copy of third-party skills in `external/`). These were
+archived or removed to reduce surface area and prevent accidental coupling to
+legacy stubs. The remaining runtime is the `genesis/` package plus the harness
+scripts and documentation.
+
+To move from static heuristics to real reasoning, Genesis now ships with a
+provider-agnostic LLM client layer under `genesis/llm/`:
+
+| Component | Purpose |
+|---|---|
+| `genesis/llm/base.py` | `LLMClient` protocol and `StructuredOutput` wrapper |
+| `genesis/llm/fallback.py` | Deterministic offline client used by default |
+| `genesis/llm/anthropic_client.py` | Anthropic SDK adapter |
+| `genesis/llm/openai_client.py` | OpenAI SDK adapter |
+| `genesis/llm/client.py` | Factory that resolves provider from `Settings` |
+
+The layer follows the dependency-inversion principle: business modules depend
+on the `LLMClient` protocol, not on a concrete SDK. API keys are loaded from
+environment variables via `genesis.config.Settings`. The fallback client keeps
+the system runnable and testable without API keys.

@@ -302,7 +302,11 @@ Write-Section 'Size limits'
 
 $oversized = @()
 $markdownFiles = Get-ChildItem -LiteralPath $RepoRoot -Recurse -File -Filter '*.md' -ErrorAction SilentlyContinue |
-    Where-Object { $_.FullName -notmatch '\\\.git\\' }
+    Where-Object {
+        $_.FullName -notmatch '\\\.git\\' -and
+        $_.FullName -notmatch '\\_archive\\' -and
+        $_.FullName -notmatch '\\external\\'
+    }
 
 foreach ($md in $markdownFiles) {
     $lineCount = (Get-Content -LiteralPath $md.FullName | Measure-Object -Line).Lines

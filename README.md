@@ -13,6 +13,8 @@
 
 - 🤖 **Opportunity Intelligence**: Detect market opportunities, trends, and
   competitor gaps.
+- 🧠 **LLM Client Layer**: Provider-agnostic wrapper for Anthropic, OpenAI, and an
+  offline fallback. No hardcoded secrets.
 - 📊 **Venture Decision Engine**: Weighted scoring across market, competition,
   technical, and risk dimensions.
 - ✅ **Product Validation Engine**: GO / MODIFY / REJECT verdicts with
@@ -39,6 +41,7 @@ genesis/
 ├── __main__.py         # CLI entry point
 ├── orchestrator.py     # MasterGenesisOrchestrator
 ├── config.py           # Central settings (Pydantic BaseSettings)
+├── llm/                # Provider-agnostic LLM client layer
 ├── decision/           # Venture + product validation
 ├── intelligence/       # Opportunity detection + live connectors
 ├── revenue/            # Pricing, subscriptions, acquisition, experiments
@@ -71,6 +74,24 @@ pip install -e ".[dev]"
 python -m genesis analyze "AI Customer Support SaaS"
 ```
 
+### Configure an LLM provider (optional)
+
+Copy the example environment file and add your API key if you want real
+LLM-backed reasoning instead of the deterministic offline fallback:
+
+```bash
+cp .env.example .env
+# edit .env with your provider and API key
+```
+
+Supported providers:
+
+| Provider | Environment variable |
+|---|---|
+| `fallback` (default, offline) | none |
+| `anthropic` | `ANTHROPIC_API_KEY` |
+| `openai` | `OPENAI_API_KEY` |
+
 ### Run tests
 
 ```bash
@@ -96,10 +117,11 @@ pwsh -File scripts/verify_structure.ps1
 
 ## ️ Roadmap
 
-Current phase: **Phase 1 — Package Consolidation** (in progress).
+Current phase: **Phase 2 — LLM Core & API** (in progress).
 
 - [x] Consolidate 60+ directories into the `genesis/` Python package.
 - [x] Add `pyproject.toml`, CLI entry point, and test suite.
+- [x] Add a provider-agnostic LLM client layer with offline fallback.
 - [ ] Phase 2 — LLM-backed analysis and FastAPI service.
 
 See [`docs/ROADMAP.md`](docs/ROADMAP.md) for details.

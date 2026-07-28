@@ -48,6 +48,13 @@ Thumbs.db
 # Generated products
 /generated_products/
 
+# Vendored / temporary external dependencies (use pyproject.toml, not copy-paste)
+/external/
+/external.deleteme/
+
+# Build artifacts from editable install
+/genesis.egg-info/
+
 # Archived legacy stubs
 /_archive/
 
