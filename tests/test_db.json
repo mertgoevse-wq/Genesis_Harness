@@ -5,5 +5,19 @@
     "data": {
       "name": "Test Workflow"
     }
+  },
+  {
+    "id": 2,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
+  },
+  {
+    "id": 3,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
   }
 ]

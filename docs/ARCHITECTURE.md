@@ -366,6 +366,56 @@ Phase 14 transforms Genesis into an autonomous **Product Launch Engine**:
 - **Real Standalone Demo Workflow (`scripts/run_product_launch.py`)**: End-to-end execution script creating complete product packages from high-level prompts.
 
 
+## Genesis Autonomous Venture Operating System (Phase 16 — Current Evolution)
+
+The next evolution of Genesis Harness transforms it from an AI development framework into an
+autonomous business operating system. Five new subsystems were added to support end-to-end
+venture creation:
+
+| Subsystem | Responsibility | Key Files |
+|---|---|---|
+| **Opportunity Intelligence** | Discover market opportunities, technology trends, and SaaS ideas | `opportunity_intelligence/` |
+| **Venture Decision Engine** | Score venture ideas across market, competition, monetization, technical complexity, and risk | `venture_decision/` |
+| **Deployment Intelligence** | Generate deployment configurations for Docker, Vercel, Supabase, and cloud | `deployment_intelligence/` |
+| **Revenue Intelligence** | Recommend pricing, subscription models, acquisition channels, and growth experiments | `revenue_intelligence/` |
+| **Self-Improvement Loop** | Detect weaknesses, prioritize improvements, and evaluate results | `self_improvement/` |
+
+These subsystems are wired into `orchestrator/master_orchestrator.py`, which now produces a richer
+autonomous cycle output including opportunities, venture decision, revenue strategy, deployment
+plan, and self-improvement tasks.
+
+### Data Flow
+
+```
+ human goal
+      │
+      ▼
+ ┌─────────────────────────────────────┐
+ │       Opportunity Intelligence        │
+ │  (signals, trends, competitor gaps)   │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │        Venture Decision Engine      │
+ │  (GO / MAYBE / NO-GO with scores)  │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │        Revenue Intelligence         │
+ │  (pricing, subscriptions, growth)   │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │       Deployment Intelligence       │
+ │  (Docker, Vercel, Supabase, cloud)   │
+ └─────────────┬─────────────────────────┘
+               ▼
+ ┌─────────────────────────────────────┐
+ │       Self-Improvement Loop         │
+ │  (weakness detection, task queue)   │
+ └─────────────────────────────────────┘
+```
+
 ## Genesis Autonomous MVP Builder & Deployment Engine (Phase 15)
 Phase 15 transforms Genesis into an autonomous **MVP Builder**:
 - **Autonomous MVP Codebase Pipeline (`mvp_builder/`)**: Product analysis, system architecture design, schema design, API design, frontend generation, backend generation, test generation, and deployment packaging.

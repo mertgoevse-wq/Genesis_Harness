@@ -1,7 +1,7 @@
 # Genesis Harness — Roadmap
 
-**Version:** 1.0.0 · **Last updated:** 2026-07-28
-**Current phase:** 0 — Foundation (complete, unverified in use)
+**Version:** 1.0.1 · **Last updated:** 2026-07-28
+**Current phase:** 16 — Autonomous Venture Operating System (in progress, partial implementation)
 
 > This document is the authoritative record of *where the project is*. Update it at the end of
 > every phase. `prompts/system_layers/L2_domain_context.md` mirrors the current-state summary —
@@ -21,6 +21,7 @@
 | **4** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
 | **5** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
 | **6** | Genesis Engine | Planned | Build the actual engine inside the harness |
+| **16** | Autonomous Venture OS | **In Progress** | Opportunity intelligence, venture decision, deployment, revenue, self-improvement |
 
 ---
 

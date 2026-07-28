@@ -20,6 +20,20 @@
 
 ---
 
+## 🌐 Autonomous Venture Operating System
+
+Genesis Harness is evolving into a fully autonomous venture creation platform. The latest evolution adds business intelligence subsystems that discover opportunities, decide venture viability, optimize revenue, plan deployments, and continuously improve themselves.
+
+### Business Intelligence Subsystems
+
+- **Opportunity Intelligence** (`opportunity_intelligence/`): Discovers market opportunities via research connectors, trend monitoring, competitor analysis, and SaaS opportunity detection.
+- **Venture Decision Engine** (`venture_decision/`): Produces go/no-go verdicts with scoring across market size, competition, monetization, technical complexity, and risk.
+- **Deployment Intelligence** (`deployment_intelligence/`): Generates deployment artifacts for Docker, Vercel, Supabase, and generic cloud providers.
+- **Revenue Intelligence** (`revenue_intelligence/`): Recommends pricing tiers, subscription models, customer acquisition strategies, and growth experiments.
+- **Self-Improvement Loop** (`self_improvement/`): Detects weaknesses, prioritizes improvements, and evaluates results.
+
+These subsystems are orchestrated by `orchestrator/master_orchestrator.py` and exposed through the Control Center API.
+
 ## 🏛️ System Architecture
 
 ```mermaid
