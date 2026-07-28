@@ -101,7 +101,11 @@ $RequiredDirectories = @(
     'orchestration',
     'core',
     'core/model_router',
-    'branding'
+    'branding',
+    'harvester/connectors',
+    'harvester/knowledge_graph',
+    'harvester/recommendation',
+    'tests'
 )
 
 foreach ($dir in $RequiredDirectories) {

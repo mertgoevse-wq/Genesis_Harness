@@ -31,5 +31,27 @@
   },
   "scheduler": {
     "cron_interval": "0 0 * * 0"
-  }
+  },
+  "version": "2.0.0",
+  "supported_sources": [
+    "GitHub",
+    "HuggingFace",
+    "arXiv",
+    "PapersWithCode",
+    "Anthropic Docs",
+    "Google AI Docs",
+    "OpenAI Docs",
+    "LangChain",
+    "LangGraph",
+    "CrewAI",
+    "AutoGen",
+    "MCP Registry"
+  ],
+  "knowledge_graph_entities": [
+    "Agent",
+    "Skill",
+    "Tool",
+    "Pattern",
+    "Workflow"
+  ]
 }

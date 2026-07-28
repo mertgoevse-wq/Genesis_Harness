@@ -264,3 +264,7 @@ The Harvester sits alongside the Agent layer. It comprises Discovery, Ranking, A
 
 ## Autonomous AI Operating System Layer
 Genesis operates as an autonomous OS. The `orchestration/` package schedules DAG-resolved tasks to an `AgentWorkerPool`, while `core/model_router/` evaluates task types and dispatches prompts to the optimal LLM backend.
+
+
+## Genesis Intelligence Harvester v2
+Harvester v2 expands data connectors across GitHub, HuggingFace, arXiv, PapersWithCode, Anthropic, Google, OpenAI, LangChain, LangGraph, CrewAI, AutoGen, and MCP Registry. It extracts concepts into a Knowledge Graph (Agent, Skill, Tool, Pattern, Workflow) and outputs Genesis Improvement Proposals (GIPs).
