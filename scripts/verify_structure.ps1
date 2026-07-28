@@ -220,7 +220,14 @@ $RequiredDirectories = @(
     'agent_runtime/telemetry',
     'control-center/backend',
     'control-center/frontend',
-    'control-center/events'
+    'control-center/events',
+    'product_launch',
+    'product_launch/idea_processing',
+    'product_launch/product_generation',
+    'product_launch/business_generation',
+    'product_launch/engineering_generation',
+    'product_launch/marketing_generation',
+    'generated_products'
 )
 
 foreach ($dir in $RequiredDirectories) {

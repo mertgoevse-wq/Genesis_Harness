@@ -357,3 +357,10 @@ Phase 13 delivers a live human-facing dashboard and product interface:
 - **Control Center Backend API (`control-center/backend/api_server.py`)**: REST endpoints serving system status, active agents, skills, workflows, projects, telemetry, and quality scores.
 - **Genesis Dashboard Application (`control-center/frontend/`)**: Modern dark-mode Web Dashboard UI (`index.html`, `style.css`, `app.js`).
 - **Real User Workflow (`scripts/run_saas_idea_workflow.py`)**: End-to-end execution script triggering Founder Intelligence & Research Intelligence to produce validated SaaS venture specifications.
+
+
+## Genesis Autonomous Product Launch Engine (Phase 14)
+Phase 14 transforms Genesis into an autonomous **Product Launch Engine**:
+- **Autonomous Product Generation Pipeline (`product_launch/`)**: Idea processing, product spec generation, business plan generation, codebase planning, landing page creation, and marketing strategy.
+- **Generated Product Workspaces (`generated_products/<product_name>/`)**: Complete product packages containing `README.md`, `BUSINESS_PLAN.md`, `MARKET_ANALYSIS.md`, `PRD.md`, `TECHNICAL_ARCHITECTURE.md`, `ROADMAP.md`, `SECURITY_REVIEW.md`, `DEPLOYMENT_PLAN.md`, and `MARKETING_PLAN.md`.
+- **Real Standalone Demo Workflow (`scripts/run_product_launch.py`)**: End-to-end execution script creating complete product packages from high-level prompts.
