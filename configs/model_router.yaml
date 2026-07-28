@@ -1,0 +1,27 @@
+# Genesis Model Routing Policy
+routing_rules:
+  architecture:
+    primary: "Claude Opus 4.8"
+    fallback: "Claude Sonnet 4.6"
+    tier: "High"
+    description: "System design, strategic decisions, complex trade-offs"
+  coding:
+    primary: "Claude Sonnet 4.6"
+    fallback: "Gemini 3.6 Flash"
+    tier: "Medium"
+    description: "Software development, refactoring, implementation"
+  analysis:
+    primary: "Gemini 3.6 Flash"
+    fallback: "Claude Sonnet 4.6"
+    tier: "Medium"
+    description: "Large context analysis, documentation, parallel tasks"
+  boilerplate:
+    primary: "Kimi"
+    fallback: "Gemini 3.6 Flash"
+    tier: "Low"
+    description: "Standard repetitive code, initial setup"
+  math_algorithms:
+    primary: "DeepSeek R1"
+    fallback: "Claude Opus 4.8"
+    tier: "High"
+    description: "Complex math, algorithm optimization, physics simulations"

@@ -2,28 +2,42 @@
   "$comment": "Operative numeric thresholds. Per CLAUDE.md section 9, when this file and the constitution disagree about a NUMBER, this file wins and the constitution must be corrected. When they disagree about a PRINCIPLE, the constitution wins.",
   "version": "1.0.0",
   "lastUpdated": "2026-07-28",
-
   "size": {
     "maxFileLines": 800,
-    "typicalFileLines": [200, 400],
+    "typicalFileLines": [
+      200,
+      400
+    ],
     "maxFunctionLines": 50,
     "maxNestingDepth": 4,
     "maxFileSizeKB": 512,
     "$comment": "maxFileLines is enforced for markdown by scripts/verify_structure.ps1 as a warning. Enforcement for source files begins when runtime code exists."
   },
-
   "testing": {
     "minCoveragePercent": 80,
     "coverageEnforced": false,
     "$comment": "coverageEnforced is false because no test runner exists in this repository yet. It becomes true in Phase 2 when a runner is introduced (see docs/ROADMAP.md).",
-    "requiredTestTypes": ["unit", "integration", "e2e"],
+    "requiredTestTypes": [
+      "unit",
+      "integration",
+      "e2e"
+    ],
     "regressionTestPerFixedBug": true
   },
-
   "severity": {
-    "levels": ["CRITICAL", "HIGH", "MEDIUM", "LOW"],
-    "blocksCommit": ["CRITICAL"],
-    "blocksMerge": ["CRITICAL", "HIGH"],
+    "levels": [
+      "CRITICAL",
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
+    "blocksCommit": [
+      "CRITICAL"
+    ],
+    "blocksMerge": [
+      "CRITICAL",
+      "HIGH"
+    ],
     "definitions": {
       "CRITICAL": "Security vulnerability, data loss risk, or a fabricated result",
       "HIGH": "Bug, broken contract, or missing error handling",
@@ -31,30 +45,80 @@
       "LOW": "Style or minor suggestion"
     }
   },
-
   "commitGates": {
-    "secretScan": { "enabled": true, "blocking": true },
-    "structureCheck": { "enabled": true, "blocking": true, "script": "scripts/verify_structure.ps1" },
-    "sessionLogPresent": { "enabled": true, "blocking": true },
-    "largeFileCheck": { "enabled": true, "blocking": false, "thresholdKB": 512 },
-    "protectedBranchConfirmation": { "enabled": true, "branches": ["main"] },
+    "secretScan": {
+      "enabled": true,
+      "blocking": true
+    },
+    "structureCheck": {
+      "enabled": true,
+      "blocking": true,
+      "script": "scripts/verify_structure.ps1"
+    },
+    "sessionLogPresent": {
+      "enabled": true,
+      "blocking": true
+    },
+    "largeFileCheck": {
+      "enabled": true,
+      "blocking": false,
+      "thresholdKB": 512
+    },
+    "protectedBranchConfirmation": {
+      "enabled": true,
+      "branches": [
+        "main"
+      ]
+    },
     "forcePushAllowed": false,
     "historyRewriteAllowed": false,
-    "noVerifyAllowed": false
+    "noVerifyAllowed": false,
+    "securityScan": {
+      "enabled": true,
+      "blocking": true
+    },
+    "agentOutputEvaluation": {
+      "enabled": true,
+      "blocking": true,
+      "minScore": 0.85
+    }
   },
-
   "secretPatterns": [
-    { "name": "AWS access key",    "pattern": "AKIA[0-9A-Z]{16}" },
-    { "name": "Private key block", "pattern": "-----BEGIN [A-Z ]*PRIVATE KEY-----" },
-    { "name": "GitHub token",      "pattern": "gh[pousr]_[A-Za-z0-9]{36,}" },
-    { "name": "Slack token",       "pattern": "xox[baprs]-[A-Za-z0-9-]{10,}" },
-    { "name": "Anthropic API key", "pattern": "sk-ant-[A-Za-z0-9_\\-]{20,}" },
-    { "name": "Bearer token",      "pattern": "bearer\\s+[A-Za-z0-9_\\-\\.]{24,}" },
-    { "$comment": "Authoritative implementation lives in scripts/auto_commit.ps1. This list documents the intent; it is not read at runtime." }
+    {
+      "name": "AWS access key",
+      "pattern": "AKIA[0-9A-Z]{16}"
+    },
+    {
+      "name": "Private key block",
+      "pattern": "-----BEGIN [A-Z ]*PRIVATE KEY-----"
+    },
+    {
+      "name": "GitHub token",
+      "pattern": "gh[pousr]_[A-Za-z0-9]{36,}"
+    },
+    {
+      "name": "Slack token",
+      "pattern": "xox[baprs]-[A-Za-z0-9-]{10,}"
+    },
+    {
+      "name": "Anthropic API key",
+      "pattern": "sk-ant-[A-Za-z0-9_\\-]{20,}"
+    },
+    {
+      "name": "Bearer token",
+      "pattern": "bearer\\s+[A-Za-z0-9_\\-\\.]{24,}"
+    },
+    {
+      "$comment": "Authoritative implementation lives in scripts/auto_commit.ps1. This list documents the intent; it is not read at runtime."
+    }
   ],
-
   "documentation": {
-    "requiredDocs": ["docs/ARCHITECTURE.md", "docs/AGENTS.md", "docs/WORKFLOW.md", "docs/ROADMAP.md"],
+    "requiredDocs": [
+      "docs/ARCHITECTURE.md",
+      "docs/AGENTS.md",
+      "docs/WORKFLOW.md",
+      "docs/ROADMAP.md"
+    ],
     "updatedInSameCommit": true,
     "adrRequiredFor": [
       "technology selection",
@@ -64,32 +128,55 @@
     ],
     "absoluteDatesOnly": true
   },
-
   "logging": {
     "sessionLogRequired": true,
     "appendOnly": true,
     "namingPattern": "YYYY-MM-DD_NN_<slug>.md",
     "requiredFields": [
-      "date", "model", "agents used", "task",
-      "reasoning summary", "changes", "tests",
-      "problems", "next actions"
+      "date",
+      "model",
+      "agents used",
+      "task",
+      "reasoning summary",
+      "changes",
+      "tests",
+      "problems",
+      "next actions"
     ],
     "fabricatedResultsSeverity": "CRITICAL"
   },
-
   "verification": {
-    "allowedStatuses": ["verified", "implemented-not-run", "failing", "not applicable"],
+    "allowedStatuses": [
+      "verified",
+      "implemented-not-run",
+      "failing",
+      "not applicable"
+    ],
     "passRequiresExecution": true,
     "$comment": "A QA verdict of PASS requires actual execution. Code review alone yields NOT VERIFIED.",
-    "confidenceLabels": ["VERIFIED", "KNOWN", "ASSUMED", "UNKNOWN"],
+    "confidenceLabels": [
+      "VERIFIED",
+      "KNOWN",
+      "ASSUMED",
+      "UNKNOWN"
+    ],
     "unlabelledExternalClaimSeverity": "HIGH"
   },
-
   "benchmarks": {
-    "rubricAxes": ["truthfulness", "instruction_compliance", "completeness", "usability", "efficiency"],
+    "rubricAxes": [
+      "truthfulness",
+      "instruction_compliance",
+      "completeness",
+      "usability",
+      "efficiency"
+    ],
     "maxScorePerAxis": 5,
     "maxTotal": 25,
-    "thresholds": { "ship": 23, "acceptable": 19, "revise": 14 },
+    "thresholds": {
+      "ship": 23,
+      "acceptable": 19,
+      "revise": 14
+    },
     "truthfulnessFloor": 2,
     "$comment": "A truthfulness score of 1 rejects the output regardless of total.",
     "requireCaseBeforeChange": true,

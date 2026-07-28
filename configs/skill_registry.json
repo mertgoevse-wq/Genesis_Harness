@@ -29,5 +29,23 @@
     "animation",
     "advanced-physics",
     "business-analysis"
-  ]
+  ],
+  "skill_metadata": {
+    "software-engineering": {
+      "category": "Technical",
+      "complexity": "High"
+    },
+    "architecture": {
+      "category": "Technical",
+      "complexity": "High"
+    },
+    "business-analysis": {
+      "category": "Business",
+      "complexity": "Medium"
+    },
+    "market-analysis": {
+      "category": "Business",
+      "complexity": "Medium"
+    }
+  }
 }

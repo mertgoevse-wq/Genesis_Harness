@@ -97,7 +97,10 @@ $RequiredDirectories = @(
     'docs',
     'scripts',
     'configs',
-    'templates'
+    'templates',
+    'orchestration',
+    'core',
+    'core/model_router'
 )
 
 foreach ($dir in $RequiredDirectories) {

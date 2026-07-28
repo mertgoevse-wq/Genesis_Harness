@@ -260,3 +260,7 @@ The core intelligence layer connecting the harness's capabilities.
 
 ## Genesis Intelligence Harvester
 The Harvester sits alongside the Agent layer. It comprises Discovery, Ranking, Analysis, Knowledge Graph, Engine, and Prompt Lab modules. It feeds abstract architectural patterns back into the Genesis Core via formal Improvement Proposals (ADRs).
+
+
+## Autonomous AI Operating System Layer
+Genesis operates as an autonomous OS. The `orchestration/` package schedules DAG-resolved tasks to an `AgentWorkerPool`, while `core/model_router/` evaluates task types and dispatches prompts to the optimal LLM backend.

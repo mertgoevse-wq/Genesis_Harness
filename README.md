@@ -138,3 +138,9 @@ Known open problems are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md#open-prob
 
 ## Subsystems
 - **Genesis Intelligence Harvester**: An autonomous sub-system that continuously scans GitHub to learn and ingest new AI architecture patterns without copying implementation code.
+
+
+## Autonomous AI Operating System Layer
+Genesis Harness includes a full orchestration engine and intelligent model routing system:
+- **Orchestration**: `/orchestration/` (Task Queue, Parallel Worker Pool, Dependency Resolver, Pipeline Runner, Result Evaluator).
+- **Model Router**: `/core/model_router/` and `configs/model_router.yaml` (Routes tasks dynamically to Opus 4.8, Sonnet 4.6, Gemini 3.6 Flash, Kimi, or DeepSeek R1).

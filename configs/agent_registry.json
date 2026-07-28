@@ -33,5 +33,71 @@
     "testing",
     "ux-reviewer",
     "harvester-agent"
-  ]
+  ],
+  "capabilities_schema": {
+    "fields": [
+      "capabilities",
+      "required_skills",
+      "preferred_model",
+      "cost_tier",
+      "quality_threshold"
+    ]
+  },
+  "agent_capabilities": {
+    "architect": {
+      "capabilities": [
+        "System Design",
+        "ADR Creation",
+        "Component Modularization"
+      ],
+      "required_skills": [
+        "architecture",
+        "software-engineering"
+      ],
+      "preferred_model": "Claude Opus 4.8",
+      "cost_tier": "High",
+      "quality_threshold": 0.95
+    },
+    "coding": {
+      "capabilities": [
+        "Python/JS Implementation",
+        "Refactoring",
+        "Bug Fixing"
+      ],
+      "required_skills": [
+        "software-engineering"
+      ],
+      "preferred_model": "Claude Sonnet 4.6",
+      "cost_tier": "Medium",
+      "quality_threshold": 0.9
+    },
+    "ceo": {
+      "capabilities": [
+        "Strategic Decision Making",
+        "Resource Allocation",
+        "Vision"
+      ],
+      "required_skills": [
+        "business-analysis",
+        "market-analysis"
+      ],
+      "preferred_model": "Claude Opus 4.8",
+      "cost_tier": "High",
+      "quality_threshold": 0.95
+    },
+    "harvester-agent": {
+      "capabilities": [
+        "GitHub Crawling",
+        "Pattern Extraction",
+        "ADR Proposal"
+      ],
+      "required_skills": [
+        "evaluation",
+        "architecture"
+      ],
+      "preferred_model": "Gemini 3.6 Flash",
+      "cost_tier": "Low",
+      "quality_threshold": 0.85
+    }
+  }
 }
