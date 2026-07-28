@@ -160,7 +160,18 @@ $RequiredDirectories = @(
     'founder_intelligence/validation',
     'docs/intelligence/trends',
     'docs/products/candidates',
-    'docs/investment_reviews'
+    'docs/investment_reviews',
+    'venture_pipeline',
+    'venture_pipeline/pipeline',
+    'venture_pipeline/discovery',
+    'venture_pipeline/validation',
+    'venture_pipeline/business',
+    'venture_pipeline/investment',
+    'venture_pipeline/decisions',
+    'knowledge_graph',
+    'agent_factory',
+    'branding',
+    'docs/intelligence/discoveries'
 )
 
 foreach ($dir in $RequiredDirectories) {

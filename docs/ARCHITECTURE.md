@@ -296,3 +296,11 @@ Genesis Autonomous Product Factory (`product_factory/`) orchestrates end-to-end 
 
 ## Genesis Autonomous Founder Intelligence Architecture
 Genesis Founder Intelligence (`founder_intelligence/`) scans market trends (`market_scanner/`), generates top 50 AI business opportunities (`idea_engine/`), calculates 0-100 StartupScores (`startup_analysis/`), and runs simulated VC investment reviews (`investor_engine/`). High-scoring startup candidates (>80) are passed directly into the Product Factory.
+
+
+## Genesis Autonomous Venture & Engineering OS (Phase 7)
+Phase 7 elevates Genesis Harness into the **Genesis Autonomous Venture & Engineering Operating System**. Key additions include:
+- **Venture Pipeline (`venture_pipeline/`)**: End-to-end opportunity scanning, demand prediction, business model generation, VC simulation, and runtime building.
+- **Knowledge Graph (`knowledge_graph/`)**: Expanded relationship engine mapping Agents, Skills, Tools, Models, Products, and Code Patterns.
+- **Agent Factory (`agent_factory/`)**: Dynamic agent team assembly based on prompt domain context.
+- **Model Performance Tracker (`core/model_router/`)**: Task complexity analysis and fallback routing.
