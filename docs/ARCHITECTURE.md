@@ -324,3 +324,13 @@ Phase 9 transforms Genesis into an autonomous **Software Engineering Factory**:
 - **GitHub Engine (`github_engine/`)**: Repository analysis, issue creation, branch planning, and PR generation.
 - **Code & Testing Intelligence (`code_intelligence/` & `testing_intelligence/`)**: Repository parsing, code quality scoring, and automated coverage analysis.
 - **Security Engineering Layer (`security_intelligence/`)**: Secret scanning, vulnerability risk analysis, and permission review.
+
+
+## Genesis Autonomous Research & Scientific Intelligence Platform (Phase 10)
+Phase 10 transforms Genesis into a **Scientific Research Intelligence Platform**:
+- **Autonomous Research Engine (`research_intelligence/`)**: Research orchestrator, paper scanning, trend detection, hypothesis evaluation, experiment design, and report generation.
+- **Scientific Source Connectors (`research_connectors/`)**: Connectors for arXiv, PapersWithCode, HuggingFace, and DeepMind/Anthropic/OpenAI research feeds.
+- **Scientific Memory (`memory_system/research_memory/`)**: Long-term research discoveries and hypothesis history.
+- **Research Benchmarking (`research_benchmarks/`)**: Evaluates novelty score, evidence quality, and reasoning quality.
+- **Specialized Research Agents**: Research Director, Scientific Analyst, Experiment Designer, Technology Scout.
+- **Research Discoveries**: Integrated with Evolution Loop under `docs/evolution/research_discoveries/`.

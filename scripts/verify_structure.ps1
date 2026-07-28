@@ -195,7 +195,18 @@ $RequiredDirectories = @(
     'code_intelligence',
     'testing_intelligence',
     'security_intelligence',
-    'memory_system/engineering_memory'
+    'memory_system/engineering_memory',
+    'research_intelligence',
+    'research_intelligence/research_engine',
+    'research_intelligence/discovery',
+    'research_intelligence/analysis',
+    'research_intelligence/hypothesis',
+    'research_intelligence/experiments',
+    'research_intelligence/reports',
+    'research_connectors',
+    'research_benchmarks',
+    'memory_system/research_memory',
+    'docs/evolution/research_discoveries'
 )
 
 foreach ($dir in $RequiredDirectories) {
