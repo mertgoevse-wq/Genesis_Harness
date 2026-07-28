@@ -171,7 +171,17 @@ $RequiredDirectories = @(
     'knowledge_graph',
     'agent_factory',
     'branding',
-    'docs/intelligence/discoveries'
+    'docs/intelligence/discoveries',
+    'venture_execution',
+    'venture_execution/orchestrator',
+    'venture_execution/workflows',
+    'venture_execution/checkpoints',
+    'venture_execution/reports',
+    'agent_collaboration',
+    'skill_intelligence',
+    'quality_intelligence',
+    'execution_tools',
+    'memory_system/project_memory'
 )
 
 foreach ($dir in $RequiredDirectories) {
