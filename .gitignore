@@ -48,6 +48,9 @@ Thumbs.db
 # Generated products
 /generated_products/
 
+# Archived legacy stubs
+/_archive/
+
 # Local caches
 .cache/
 

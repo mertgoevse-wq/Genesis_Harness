@@ -84,7 +84,10 @@ $SecretPatterns = @(
 # Paths whose contents legitimately contain the patterns above (they document them).
 $SecretScanExclusions = @(
     'scripts/auto_commit.ps1',
-    'configs/quality_gates.json'
+    'configs/quality_gates.json',
+    # Generated deployment templates contain literal connection-string placeholders.
+    'genesis/builder/mvp.py',
+    'genesis/builder/providers/docker.py'
 )
 
 $script:GateNumber = 0

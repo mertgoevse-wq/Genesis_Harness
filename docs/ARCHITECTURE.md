@@ -440,18 +440,25 @@ These modules are wired into `orchestrator/master_orchestrator.py`, producing a 
 DISCOVER → ANALYZE → VALIDATE → DECIDE → BUILD → DEPLOY → MARKET → MEASURE → IMPROVE loop.
 
 
-## Genesis Founder Operating System (Phase 17 — Current Evolution)
+## Phase 1 — Consolidated Python Package (Current Evolution)
 
-Phase 17 transforms Genesis into a founder-centric autonomous SaaS company by adding deep
-customer intelligence, continuous validation, founder memory, and a self-improving execution loop.
+The runtime has been consolidated into a single installable `genesis/` Python
+package. Legacy stubs and duplicate subsystems were removed or archived, and the
+surviving real logic was preserved and wired into a single orchestrator.
 
-| Subsystem | Responsibility | Key Files |
+| Module | Responsibility | Source of truth |
 |---|---|---|
-| **Customer Intelligence** | Personas, ICP discovery, pain points, objections, buying signals, interview scripts | `customer_intelligence/` |
-| **Validation Engine** | Continuous validation loop for landing pages, value props, pricing, and demand | `validation_engine/` |
-| **Growth Intelligence (Enhanced)** | Channel analysis, SEO opportunities, content strategy, growth loops, conversion experiments | `growth_intelligence/` |
-| **Founder Decision Memory** | Persist decisions, successful patterns, failed ideas, and rationale | `memory_system/founder_memory/` |
-| **Autonomous Improvement Loop** | Self-audit, weakness detection, task prioritization, and execution | `self_improvement/autonomous_improvement_loop.py` |
+| `genesis/decision/` | Venture scoring and product validation | `genesis/decision/engine.py`, `genesis/decision/validation.py` |
+| `genesis/intelligence/` | Opportunity detection and live signal connectors | `genesis/intelligence/opportunity.py`, `genesis/intelligence/connectors/` |
+| `genesis/revenue/` | Pricing, subscription, acquisition, and growth experiments | `genesis/revenue/` |
+| `genesis/growth/` | Growth strategy, SEO, customer intelligence, validation loop | `genesis/growth/` |
+| `genesis/builder/` | MVP scaffolding and deployment artefacts | `genesis/builder/mvp.py`, `genesis/builder/deploy.py` |
+| `genesis/memory/` | Founder decision memory and knowledge store | `genesis/memory/` |
+| `genesis/improvement/` | Weakness detection, task prioritization, autonomous loop | `genesis/improvement/` |
+| `genesis/orchestrator.py` | Coordinates the modules above | `genesis/orchestrator.py` |
+| `genesis/__main__.py` | CLI entry point | `genesis/__main__.py` |
+| `genesis/api/` | API surface reserved for Phase 2 | `genesis/api/__init__.py` |
+| `genesis/core/` | Shared core utilities | `genesis/core/__init__.py` |
 
 ### Extended Data Flow
 
@@ -459,7 +466,7 @@ customer intelligence, continuous validation, founder memory, and a self-improvi
  human goal
       │
       ▼
- ┌─────────────────────────────────────┐
+ ┌─────────────────────────────────────
  │       Opportunity Intelligence        │
  └─────────────┬─────────────────────────┘
                ▼
@@ -471,21 +478,35 @@ customer intelligence, continuous validation, founder memory, and a self-improvi
  ┌─────────────────────────────────────┐
  │          Validation Engine            │
  │   (BUILD / PIVOT / ABANDON)         │
- └─────────────┬─────────────────────────┘
+ └──────────────────────────────────────┘
                ▼
  ┌─────────────────────────────────────┐
  │        Venture Decision Engine      │
- └─────────────┬─────────────────────────┘
+ └─────────────┬─────────────────────────
                ▼
         ... BUILD → DEPLOY → MARKET ...
                ▼
  ┌─────────────────────────────────────┐
  │       Founder Decision Memory         │
  │   (record rationale for learning)     │
- └─────────────┬─────────────────────────┘
+ └──────────────────────────────────────┘
                ▼
  ┌─────────────────────────────────────┐
  │     Autonomous Improvement Loop     │
  │   (audit, detect, prioritize, act)  │
  └─────────────────────────────────────┘
 ```
+
+### What Changed
+
+- Added `pyproject.toml` with package metadata, dependencies, and tool
+  configuration for `ruff` and `pytest`.
+- Created the `genesis/` package and migrated the core real logic from the
+  old top-level directories.
+- Added `genesis/__main__.py` so `python -m genesis analyze "..."` works.
+- Replaced the monolithic `orchestrator/master_orchestrator.py` with a slim
+  `genesis/orchestrator.py` that only imports the consolidated modules.
+- Removed or archived duplicate and stub-only directories (see
+  `docs/adr/0001-consolidate-genesis-package.md`).
+- Added a focused test suite under `tests/` covering every consolidated
+  subsystem and the CLI.
