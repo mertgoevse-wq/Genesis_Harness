@@ -14,6 +14,9 @@ from revenue_intelligence.subscription_models import SubscriptionModelSelector
 from revenue_intelligence.acquisition_strategy import AcquisitionStrategy
 from revenue_intelligence.growth_experiment_engine import GrowthExperimentEngine
 from self_improvement.improvement_engine import ImprovementEngine
+from live_intelligence.orchestrator import LiveIntelligenceOrchestrator
+from product_validation_engine.validation_engine import ProductValidationEngine
+from growth_intelligence.growth_engine import GrowthEngine
 
 
 class MasterGenesisOrchestrator:
@@ -36,6 +39,11 @@ class MasterGenesisOrchestrator:
         self.acquisition_strategy = AcquisitionStrategy()
         self.growth_experiments = GrowthExperimentEngine()
         self.self_improvement = ImprovementEngine()
+
+        # Revenue-driven evolution subsystems
+        self.live_intelligence = LiveIntelligenceOrchestrator()
+        self.product_validator = ProductValidationEngine()
+        self.growth_intelligence = GrowthEngine()
 
     def run_full_autonomous_cycle(self, goal: str) -> dict:
         print(f"[MasterOrchestrator] Starting autonomous OS cycle for goal: {goal}")
@@ -62,6 +70,29 @@ class MasterGenesisOrchestrator:
 
         # 5. Opportunity Discovery
         opportunities = self.opportunity_detector.detect(goal, limit=3)
+
+        # 5.5 Live Intelligence
+        live_signals = self.live_intelligence.gather(goal)
+
+        # 5.6 Product Validation Engine
+        validation = self.product_validator.evaluate(
+            goal,
+            context={
+                "demand_score": 75.0,
+                "incumbent_count": 3,
+                "differentiation_score": 70.0,
+                "monetization_score": 80.0,
+                "pain_score": 80.0,
+                "urgency_score": 75.0,
+                "technical_complexity": 4,
+                "technical_readiness": 6,
+                "marketing_budget": "medium",
+                "available_channels": 4,
+                "tam_billions": 2.5,
+                "average_price": 29.0,
+                "conversion_rate": 0.02,
+            },
+        )
 
         # 6. Venture Decision
         decision = self.venture_decision.evaluate(
@@ -106,7 +137,21 @@ class MasterGenesisOrchestrator:
         # 11. Quality & Security Evaluation
         quality = self.quality_evaluator.calculate_quality_score(software)
 
-        # 12. Self-Improvement Analysis
+        # 12. Growth Intelligence
+        growth_strategy = self.growth_intelligence.recommend(
+            goal,
+            context={
+                "target_audience": "startups",
+                "marketing_budget": "medium",
+                "available_channels": 4,
+                "has_testimonials": False,
+                "has_demo_video": False,
+                "keyword_research_done": False,
+                "blog_active": False,
+            },
+        )
+
+        # 13. Self-Improvement Analysis
         improvement = self.self_improvement.analyze(
             {"quality_score": quality.get("score", 0.0), "tests": {"passed": True}}
         )
@@ -118,12 +163,15 @@ class MasterGenesisOrchestrator:
             "trends": trends,
             "product": product,
             "opportunities": opportunities,
+            "live_signals": live_signals,
+            "product_validation": validation,
             "venture_decision": decision,
             "revenue": revenue,
             "deployment": deployment,
             "venture": venture,
             "software": software,
             "quality": quality,
+            "growth_strategy": growth_strategy,
             "improvement": improvement,
         }
 

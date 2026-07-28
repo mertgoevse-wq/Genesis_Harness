@@ -1,5 +1,24 @@
-from fastapi import FastAPI
-app = FastAPI()
+"""FastAPI application entrypoint."""
 
-@app.get('/health')
-def health(): return {'status': 'ok'}
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.routers import health, users
+
+app = FastAPI(title="Genesis MVP", version="0.1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(health.router, tags=["health"])
+app.include_router(users.router, prefix="/api/v1", tags=["users"])
+
+
+@app.get("/")
+def root():
+    return {"message": "Genesis MVP is running"}

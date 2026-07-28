@@ -31,6 +31,9 @@ Genesis Harness is evolving into a fully autonomous venture creation platform. T
 - **Deployment Intelligence** (`deployment_intelligence/`): Generates deployment artifacts for Docker, Vercel, Supabase, and generic cloud providers.
 - **Revenue Intelligence** (`revenue_intelligence/`): Recommends pricing tiers, subscription models, customer acquisition strategies, and growth experiments.
 - **Self-Improvement Loop** (`self_improvement/`): Detects weaknesses, prioritizes improvements, and evaluates results.
+- **Live Intelligence** (`live_intelligence/`): Modular connectors with caching and fallback for market data, SaaS trends, GitHub signals, and startup signals.
+- **Product Validation Engine** (`product_validation_engine/`): Evaluates ideas and returns GO / MODIFY / REJECT verdicts with confidence scores.
+- **Growth Intelligence** (`growth_intelligence/`): Landing page optimization, SEO planning, acquisition channels, and growth experiments.
 
 These subsystems are orchestrated by `orchestrator/master_orchestrator.py` and exposed through the Control Center API.
 
@@ -97,6 +100,12 @@ cd Genesis_Harness
 
 ```powershell
 pwsh -File scripts/verify_structure.ps1
+```
+
+### Run Tests
+
+```bash
+python -m unittest discover -s tests -p "test_*.py"
 ```
 
 ---

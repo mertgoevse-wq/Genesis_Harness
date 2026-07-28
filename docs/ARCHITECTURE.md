@@ -421,3 +421,20 @@ Phase 15 transforms Genesis into an autonomous **MVP Builder**:
 - **Autonomous MVP Codebase Pipeline (`mvp_builder/`)**: Product analysis, system architecture design, schema design, API design, frontend generation, backend generation, test generation, and deployment packaging.
 - **Generated MVP Workspace (`generated_products/<product>/mvp/`)**: Fullstack application codebase containing `frontend/`, `backend/`, `database/`, `tests/`, `docker/`, `docs/`, `README.md`, `ARCHITECTURE.md`, `API_SPEC.md`, `DATABASE_SCHEMA.md`, and `DEPLOYMENT.md`.
 - **Real Standalone Demo Workflow (`scripts/run_mvp_builder.py`)**: End-to-end execution script creating complete application codebases from prompts.
+
+
+## Genesis Revenue-Driven Evolution (Phase 16+)
+
+Phase 16+ hardens Genesis into a revenue-driven autonomous SaaS company by adding
+production-grade business intelligence modules and richer product generation.
+
+| Subsystem | Responsibility | Key Files |
+|---|---|---|
+| **Live Intelligence** | Real-world data connectors with caching/fallback for market, SaaS, GitHub, and startup signals | `live_intelligence/` |
+| **Product Validation Engine** | GO / MODIFY / REJECT verdicts with confidence scores across market, competition, pricing, pain, complexity, acquisition, and revenue | `product_validation_engine/` |
+| **Growth Intelligence** | Landing page optimization, SEO planning, acquisition channels, and growth experiments | `growth_intelligence/` |
+| **Upgraded MVP Builder** | Production-quality FastAPI + SQLAlchemy + Pydantic scaffold with tests and Docker | `mvp_builder/builder_engine.py` |
+| **Upgraded Deployment Intelligence** | Real Docker, Vercel, Supabase, and cloud artifact templates with production checklists | `deployment_intelligence/providers/` |
+
+These modules are wired into `orchestrator/master_orchestrator.py`, producing a richer
+DISCOVER → ANALYZE → VALIDATE → DECIDE → BUILD → DEPLOY → MARKET → MEASURE → IMPROVE loop.

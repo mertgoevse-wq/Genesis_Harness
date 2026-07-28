@@ -19,5 +19,33 @@
     "data": {
       "name": "Test Workflow"
     }
+  },
+  {
+    "id": 4,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
+  },
+  {
+    "id": 5,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
+  },
+  {
+    "id": 6,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
+  },
+  {
+    "id": 7,
+    "category": "Workflow",
+    "data": {
+      "name": "Test Workflow"
+    }
   }
 ]

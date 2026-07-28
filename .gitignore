@@ -48,6 +48,9 @@ Thumbs.db
 # Generated products
 /generated_products/
 
+# Local caches
+.cache/
+
 # Pytest
 .pytest_cache/
 
