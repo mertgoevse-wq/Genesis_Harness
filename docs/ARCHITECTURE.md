@@ -342,3 +342,11 @@ Phase 11 introduces the central **Knowledge & Intelligence Fabric**:
 - **Subsystem Connectors (`knowledge_fabric/connectors/`)**: Connectors for agents, skills, tools, memory, research, and venture pipelines.
 - **Cross-Domain Reasoning Engine (`knowledge_fabric/reasoning/`)**: Cross-domain reasoner, decision engine, recommendation engine.
 - **Global Context System (`global_context/`)**: Context builder, ranker, and retriever.
+
+
+## Genesis Autonomous Agent Runtime 2.0 (Phase 12)
+Phase 12 transforms Genesis into a distributed **Autonomous Agent Runtime 2.0**:
+- **Runtime Core (`agent_runtime/core/`)**: Full lifecycle state machine (`CREATED`, `INITIALIZING`, `LOADING_CONTEXT`, `EXECUTING`, `COMMUNICATING`, `WAITING`, `EVALUATING`, `LEARNING`, `COMPLETED`, `FAILED`).
+- **Parallel Execution Graph (`agent_runtime/execution/`)**: Parallel executor, task queue, and dependency graph manager.
+- **Message Bus Integration (`agent_collaboration/message_bus.py`)**: Inter-agent messaging bus, conversation memory, and knowledge sharing.
+- **Self-Reflection & Telemetry (`agent_runtime/reflection/` & `telemetry/`)**: Execution review, failure analysis, and dashboard telemetry.

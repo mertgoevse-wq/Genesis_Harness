@@ -212,7 +212,12 @@ $RequiredDirectories = @(
     'knowledge_fabric/core',
     'knowledge_fabric/connectors',
     'knowledge_fabric/reasoning',
-    'global_context'
+    'global_context',
+    'agent_runtime',
+    'agent_runtime/core',
+    'agent_runtime/execution',
+    'agent_runtime/reflection',
+    'agent_runtime/telemetry'
 )
 
 foreach ($dir in $RequiredDirectories) {
