@@ -280,3 +280,7 @@ Genesis Runtime Engine (`genesis_runtime/`) provides the end-to-end execution en
 
 ## Genesis Persistent Intelligence Memory System
 Genesis Memory System (`memory_system/`) persists long-term architectural insights, successful workflows, prompt structures, failures, and benchmark results. It syncs with the `harvester/knowledge_graph` and features semantic retrieval (`retrieval/`) and post-project retrospectives (`learning/agent_memory.py`).
+
+
+## Genesis Self Evolution Loop
+Genesis Self Evolution Loop (`evolution/`) continuously monitors agent execution metrics (`evaluation/`), identifies prompt or skill weaknesses (`optimization/`), executes benchmark experiments (`experiments/`), and generates Genesis Evolution Reports in `docs/evolution/` (`proposals/`). Self-modifications are strictly non-autonomous and require formal approval.

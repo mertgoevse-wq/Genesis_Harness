@@ -120,7 +120,13 @@ $RequiredDirectories = @(
     'memory_system',
     'memory_system/storage',
     'memory_system/retrieval',
-    'memory_system/learning'
+    'memory_system/learning',
+    'evolution',
+    'evolution/evaluation',
+    'evolution/optimization',
+    'evolution/experiments',
+    'evolution/proposals',
+    'docs/evolution'
 )
 
 foreach ($dir in $RequiredDirectories) {
