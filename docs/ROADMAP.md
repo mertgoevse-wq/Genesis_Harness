@@ -15,9 +15,10 @@
 |---|---|---|---|
 | **0** | Foundation | **Complete** | Agents, skills, prompts, logging, docs, git automation |
 | **1** | Operation | Next | Prove the harness by using it; first ADRs; first real session logs |
-| **2** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
-| **3** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
-| **4** | Genesis Engine | Planned | Build the actual engine inside the harness |
+| **2** | AI Solution Factory | Planned | AI-powered products and automation systems |
+| **3** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
+| **4** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
+| **5** | Genesis Engine | Planned | Build the actual engine inside the harness |
 
 ---
 
@@ -72,7 +73,21 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 2 — Instrumentation
+## Phase 2 — AI Solution Factory
+
+**Goal:** Create reusable infrastructure that can discover, design and build AI-powered products and automation systems.
+
+**Deliverables:**
+- Business Strategist Agent
+- Product Manager Agent
+- Automation Engineer Agent
+- Marketing Agent
+- Sales Agent
+- Related skills and prompt generators
+
+---
+
+## Phase 3 — Instrumentation
 
 **Goal:** replace judgement with measurement wherever measurement is possible.
 
@@ -89,7 +104,7 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 3 — Scale
+## Phase 4 — Scale
 
 **Goal:** multiple agents working in parallel without losing coherence.
 
@@ -106,7 +121,7 @@ ceremony rather than defending it — over-applied process is a real failure mod
 
 ---
 
-## Phase 4 — Genesis Engine
+## Phase 5 — Genesis Engine
 
 **Goal:** build the actual engine, inside the harness, using its process.
 

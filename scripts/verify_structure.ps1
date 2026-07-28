@@ -299,7 +299,7 @@ if ($oversized.Count -eq 0) {
     if (-not $Quiet) { Write-Host "   PASS  no markdown file exceeds $MaxMarkdownLines lines" -ForegroundColor Green }
 } else {
     foreach ($f in $oversized) {
-        Write-Warning-Item ("{0} is {1} lines (limit {2}) — CLAUDE.md section 8.1" -f $f.File, $f.Lines, $MaxMarkdownLines)
+        Write-Warning-Item ("{0} is {1} lines (limit {2}) - CLAUDE.md section 8.1" -f $f.File, $f.Lines, $MaxMarkdownLines)
     }
 }
 
