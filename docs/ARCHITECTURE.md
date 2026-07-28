@@ -243,3 +243,16 @@ See `docs/ROADMAP.md` for when each of these is scheduled.
 ## 10. Autonomous Orchestration Layer
 
 The autonomous orchestration layer acts as the executive control system, managing workflows, delegating tasks to specific agents based on the Agent Registry and Skill Registry, and tracking execution. The Orchestrator Agent executes predefined workflows (e.g., product creation, automation creation) and triggers the Evaluator Agent to verify the quality of all generated outputs according to the Evaluation Rubric.
+
+---
+
+## 11. Genesis Cognitive OS (Phase 3.5A)
+
+The core intelligence layer connecting the harness's capabilities.
+
+- **4-Layer Agent Architecture**: Executive, Development, Business, and Quality layers containing over 30 specialized agents.
+- **Dynamic Skill Loading**: Evaluates complexity and injects necessary knowledge modules into agent context based on `skill_loading_protocol.md`.
+- **Agent Selection**: Primary and support agent routing via `agent_selection_protocol.md`.
+- **Self Improvement**: Post-task evaluation of missed capabilities or knowledge gaps (`self_improvement_protocol.md`).
+- **MCP Integration**: Connection to external tools and databases, governed by security and validation rules in `docs/MCP_ARCHITECTURE.md`.
+- **Benchmarking**: Explicit agent, product, and code evaluation rubrics stored in `prompts/benchmarks/genesis_evaluation/`.

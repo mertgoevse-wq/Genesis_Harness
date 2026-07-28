@@ -17,6 +17,7 @@
 | **1** | Operation | Next | Prove the harness by using it; first ADRs; first real session logs |
 | **2** | AI Solution Factory | Planned | AI-powered products and automation systems |
 | **3** | Autonomous Orchestration | **Complete** | Orchestrator and Evaluator agents, registries, workflows |
+| **3.5A** | Genesis Intelligence Architecture | **Complete** | Layered agent/skill system, MCP, evaluation protocols, Cognitive OS |
 | **4** | Instrumentation | Planned | Benchmark runner, test runner, CI, measurement |
 | **5** | Scale | Planned | Multi-agent orchestration, parallel execution, cost routing |
 | **6** | Genesis Engine | Planned | Build the actual engine inside the harness |
@@ -93,6 +94,14 @@ ceremony rather than defending it — over-applied process is a real failure mod
 **Goal:** Create the orchestration layer to autonomously manage multi-agent workflows.
 
 **Status:** Completed. The Orchestrator and Evaluator agents have been implemented alongside the Agent Registry, Skill Registry, and predefined workflow templates.
+
+---
+
+## Phase 3.5A — Genesis Intelligence Architecture ✅
+
+**Goal:** Evolve Genesis into a world-class autonomous AI operating architecture based on modern agentic patterns.
+
+**Status:** Completed. Added 19 new specialized agents across 4 layers (Executive, Development, Business, Quality). Added 14 new skills. Established Genesis Cognitive OS, evaluation metrics, and dynamic skill-loading/agent-selection protocols. Integrated MCP architecture docs.
 
 ---
 

@@ -98,9 +98,16 @@ phase in the session log.
 
 ---
 
-## 3. Additional Reasoning Layer
+## 3. Additional System Layers
 
 Before performing complex tasks, consult **`prompts/system_layers/L5_reasoning_layer.md`**.
+
+For autonomous multi-agent operation, consult the **Genesis Cognitive OS** and associated protocols:
+- `prompts/system_layers/genesis_cognitive_os.md` (Core Identity & Principles)
+- `prompts/system_layers/agent_selection_protocol.md`
+- `prompts/system_layers/skill_loading_protocol.md`
+- `prompts/system_layers/self_improvement_protocol.md`
+- `prompts/system_layers/memory_architecture.md`
 
 Apply its principles:
 - structured planning
@@ -155,14 +162,13 @@ but skipping a stage must be stated explicitly.
 
 ### 4.1 Agent Roster
 
-| Agent | Owns | Charter |
-|---|---|---|
-| Architect | System design, tech decisions, scalability | `agents/architect/AGENT.md` |
-| Research | Papers, docs, comparisons, prior art | `agents/research/AGENT.md` |
-| Coding | Production code, refactoring, debugging | `agents/coding/AGENT.md` |
-| Simulation Scientist | Physics, chemistry, biology, mathematics | `agents/simulation-scientist/AGENT.md` |
-| Game Design | Loops, UX, progression, player interaction | `agents/game-design/AGENT.md` |
-| QA | Test plans, validation, bug detection | `agents/qa/AGENT.md` |
+Genesis Harness contains over 30 specialized agents divided into four primary layers. See `docs/AGENTS.md` and `configs/agent_registry.json` for the full roster.
+
+**Primary Layers**:
+1. **Executive Layer**: CEO, CTO, Research Director, Innovation
+2. **Development Layer**: Architect, Frontend, Backend, Database, Security, DevOps, Performance
+3. **Business Layer**: Product Manager, Marketing, Sales, Market Research, Growth, SEO
+4. **Quality Layer**: QA, Code Reviewer, Security Auditor, UX Reviewer
 
 ### 4.2 Handoff Contract
 

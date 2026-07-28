@@ -1,0 +1,18 @@
+name: Simulation Pipeline Workflow
+trigger: Scientific hypothesis submission
+required_agents:
+  - research
+  - simulation-scientist
+  - coding
+  - qa
+required_skills:
+  - advanced-physics
+  - simulation
+  - software-engineering
+execution_order:
+  1: research (Scientific Hypothesis Research)
+  2: simulation-scientist (Mathematical Model)
+  3: coding (Implementation)
+  4: coding (Visualization)
+  5: qa (Validation)
+evaluation_step: evaluator

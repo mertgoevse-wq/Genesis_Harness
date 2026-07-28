@@ -12,6 +12,25 @@
     "marketing",
     "sales",
     "orchestrator",
-    "evaluator"
+    "evaluator",
+    "ceo",
+    "cto",
+    "research-director",
+    "innovation",
+    "frontend-engineer",
+    "backend-engineer",
+    "database-engineer",
+    "security-engineer",
+    "devops-engineer",
+    "performance-engineer",
+    "market-research",
+    "growth",
+    "seo",
+    "customer-research",
+    "revenue-optimization",
+    "code-reviewer",
+    "security-auditor",
+    "testing",
+    "ux-reviewer"
   ]
 }

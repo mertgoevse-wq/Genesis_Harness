@@ -62,26 +62,22 @@ templates/              AGENT · SKILL · ADR · HANDOFF
 
 ## Agents
 
-| Agent | Owns | Can block |
-|---|---|---|
-| [Architect](agents/architect/AGENT.md) | Structure, contracts, technology decisions | Implementation violating a contract |
-| [Research](agents/research/AGENT.md) | Factual claims about the outside world | Decisions built on unverified claims |
-| [Coding](agents/coding/AGENT.md) | Source file contents | — |
-| [Simulation Scientist](agents/simulation-scientist/AGENT.md) | Physical and numerical correctness | Unstable or invalid models |
-| [Game Design](agents/game-design/AGENT.md) | Player experience | Incoherent player-facing systems |
-| [QA](agents/qa/AGENT.md) | The definition of done | **Any commit** |
+Genesis Harness contains over 30 specialized agents organized into four primary layers:
+1. **Executive Layer**: CEO, CTO, Research Director, Innovation
+2. **Development Layer**: Architect, Frontend, Backend, Database, Security, DevOps, Performance
+3. **Business Layer**: Product Manager, Marketing, Sales, Market Research, Growth, SEO
+4. **Quality Layer**: QA, Code Reviewer, Security Auditor, UX Reviewer
+
+*See `docs/AGENTS.md` for the full roster.*
 
 ## Skills
 
-**Science** — [physics](skills/physics/SKILL.md) · [chemistry](skills/chemistry/SKILL.md) ·
-[biology](skills/biology/SKILL.md) · [astronomy](skills/astronomy/SKILL.md)
-
-**Engineering** — [simulation](skills/simulation/SKILL.md) ·
-[game-development](skills/game-development/SKILL.md) ·
-[software-engineering](skills/software-engineering/SKILL.md)
-
-**Meta** — [ai-agents](skills/ai-agents/SKILL.md) ·
-[prompt-engineering](skills/prompt-engineering/SKILL.md)
+Genesis employs a dynamically loaded skill architecture across multiple disciplines:
+**Science**: Physics, Chemistry, Biology, Astronomy, Advanced Physics
+**Engineering**: Architecture, Security, Testing, Deployment, Simulation, Software Engineering, Game Development
+**Business**: Market Analysis, Product Validation, Pricing, Customer Discovery
+**Creative**: UI Design, Image Generation, Animation
+**Meta**: Agent Design, Prompt Engineering, Evaluation
 
 ---
 
@@ -135,7 +131,6 @@ Three rules carry most of the weight. The rest are in [`CLAUDE.md`](CLAUDE.md).
 
 ## Current State
 
-The foundation exists and the scripts execute. **The harness has not yet been used to build
-anything**, so its process claims are untested in practice. Phase 1 exists to test them.
+Phase 3.5A (Genesis Intelligence Architecture) is deployed. The system now includes extensive executive, development, business, and quality agents alongside dynamic skill-loading and MCP connectivity.
 
 Known open problems are tracked in [`docs/ROADMAP.md`](docs/ROADMAP.md#open-problems).

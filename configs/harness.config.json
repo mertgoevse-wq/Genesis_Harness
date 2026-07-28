@@ -33,8 +33,14 @@
       "canBlock": "Implementation that violates a defined contract",
       "charter": "agents/architect/AGENT.md",
       "adapter": ".claude/agents/architect.md",
-      "primarySkills": ["software-engineering"],
-      "supportingSkills": ["ai-agents", "simulation", "game-development"],
+      "primarySkills": [
+        "software-engineering"
+      ],
+      "supportingSkills": [
+        "ai-agents",
+        "simulation",
+        "game-development"
+      ],
       "masterPrompt": "prompts/master_prompts/architecture.md"
     },
     {
@@ -46,7 +52,17 @@
       "charter": "agents/research/AGENT.md",
       "adapter": ".claude/agents/research.md",
       "primarySkills": [],
-      "supportingSkills": ["physics", "chemistry", "biology", "astronomy", "simulation", "game-development", "software-engineering", "ai-agents", "prompt-engineering"],
+      "supportingSkills": [
+        "physics",
+        "chemistry",
+        "biology",
+        "astronomy",
+        "simulation",
+        "game-development",
+        "software-engineering",
+        "ai-agents",
+        "prompt-engineering"
+      ],
       "masterPrompt": "prompts/master_prompts/research.md"
     },
     {
@@ -57,8 +73,15 @@
       "canBlock": null,
       "charter": "agents/coding/AGENT.md",
       "adapter": ".claude/agents/coding.md",
-      "primarySkills": ["software-engineering"],
-      "supportingSkills": ["simulation", "game-development", "ai-agents", "prompt-engineering"],
+      "primarySkills": [
+        "software-engineering"
+      ],
+      "supportingSkills": [
+        "simulation",
+        "game-development",
+        "ai-agents",
+        "prompt-engineering"
+      ],
       "masterPrompt": "prompts/master_prompts/coding.md"
     },
     {
@@ -69,8 +92,16 @@
       "canBlock": "Simulation implementations that are unstable or physically invalid",
       "charter": "agents/simulation-scientist/AGENT.md",
       "adapter": ".claude/agents/simulation-scientist.md",
-      "primarySkills": ["simulation"],
-      "supportingSkills": ["physics", "chemistry", "biology", "astronomy", "software-engineering"],
+      "primarySkills": [
+        "simulation"
+      ],
+      "supportingSkills": [
+        "physics",
+        "chemistry",
+        "biology",
+        "astronomy",
+        "software-engineering"
+      ],
       "masterPrompt": null
     },
     {
@@ -81,8 +112,14 @@
       "canBlock": "Player-facing systems that are incoherent or unspecifiable",
       "charter": "agents/game-design/AGENT.md",
       "adapter": ".claude/agents/game-design.md",
-      "primarySkills": ["game-development"],
-      "supportingSkills": ["simulation", "software-engineering", "physics"],
+      "primarySkills": [
+        "game-development"
+      ],
+      "supportingSkills": [
+        "simulation",
+        "software-engineering",
+        "physics"
+      ],
       "masterPrompt": null
     },
     {
@@ -93,60 +130,555 @@
       "canBlock": "Any commit",
       "charter": "agents/qa/AGENT.md",
       "adapter": ".claude/agents/qa.md",
-      "primarySkills": ["software-engineering"],
-      "supportingSkills": ["simulation", "game-development", "physics", "chemistry", "biology", "astronomy"],
+      "primarySkills": [
+        "software-engineering"
+      ],
+      "supportingSkills": [
+        "simulation",
+        "game-development",
+        "physics",
+        "chemistry",
+        "biology",
+        "astronomy"
+      ],
       "masterPrompt": "prompts/master_prompts/review.md"
+    },
+    {
+      "id": "ceo",
+      "name": "CEO Agent",
+      "roleClass": "Executive",
+      "owns": "Outputs for Executive",
+      "canBlock": null,
+      "charter": "agents/ceo/AGENT.md",
+      "adapter": ".claude/agents/ceo.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "cto",
+      "name": "CTO Agent",
+      "roleClass": "Executive",
+      "owns": "Outputs for Executive",
+      "canBlock": null,
+      "charter": "agents/cto/AGENT.md",
+      "adapter": ".claude/agents/cto.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "research-director",
+      "name": "Research Director Agent",
+      "roleClass": "Executive",
+      "owns": "Outputs for Executive",
+      "canBlock": null,
+      "charter": "agents/research-director/AGENT.md",
+      "adapter": ".claude/agents/research-director.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation Agent",
+      "roleClass": "Executive",
+      "owns": "Outputs for Executive",
+      "canBlock": null,
+      "charter": "agents/innovation/AGENT.md",
+      "adapter": ".claude/agents/innovation.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "frontend-engineer",
+      "name": "Frontend Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/frontend-engineer/AGENT.md",
+      "adapter": ".claude/agents/frontend-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "backend-engineer",
+      "name": "Backend Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/backend-engineer/AGENT.md",
+      "adapter": ".claude/agents/backend-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "database-engineer",
+      "name": "Database Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/database-engineer/AGENT.md",
+      "adapter": ".claude/agents/database-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "security-engineer",
+      "name": "Security Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/security-engineer/AGENT.md",
+      "adapter": ".claude/agents/security-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "devops-engineer",
+      "name": "DevOps Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/devops-engineer/AGENT.md",
+      "adapter": ".claude/agents/devops-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "performance-engineer",
+      "name": "Performance Engineer Agent",
+      "roleClass": "Implementation",
+      "owns": "Outputs for Implementation",
+      "canBlock": null,
+      "charter": "agents/performance-engineer/AGENT.md",
+      "adapter": ".claude/agents/performance-engineer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "market-research",
+      "name": "Market Research Agent",
+      "roleClass": "Business",
+      "owns": "Outputs for Business",
+      "canBlock": null,
+      "charter": "agents/market-research/AGENT.md",
+      "adapter": ".claude/agents/market-research.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "growth",
+      "name": "Growth Agent",
+      "roleClass": "Business",
+      "owns": "Outputs for Business",
+      "canBlock": null,
+      "charter": "agents/growth/AGENT.md",
+      "adapter": ".claude/agents/growth.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "seo",
+      "name": "SEO Agent",
+      "roleClass": "Business",
+      "owns": "Outputs for Business",
+      "canBlock": null,
+      "charter": "agents/seo/AGENT.md",
+      "adapter": ".claude/agents/seo.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "customer-research",
+      "name": "Customer Research Agent",
+      "roleClass": "Business",
+      "owns": "Outputs for Business",
+      "canBlock": null,
+      "charter": "agents/customer-research/AGENT.md",
+      "adapter": ".claude/agents/customer-research.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "revenue-optimization",
+      "name": "Revenue Optimization Agent",
+      "roleClass": "Business",
+      "owns": "Outputs for Business",
+      "canBlock": null,
+      "charter": "agents/revenue-optimization/AGENT.md",
+      "adapter": ".claude/agents/revenue-optimization.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "code-reviewer",
+      "name": "Code Reviewer Agent",
+      "roleClass": "Verification",
+      "owns": "Outputs for Verification",
+      "canBlock": null,
+      "charter": "agents/code-reviewer/AGENT.md",
+      "adapter": ".claude/agents/code-reviewer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "security-auditor",
+      "name": "Security Auditor Agent",
+      "roleClass": "Verification",
+      "owns": "Outputs for Verification",
+      "canBlock": null,
+      "charter": "agents/security-auditor/AGENT.md",
+      "adapter": ".claude/agents/security-auditor.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "testing",
+      "name": "Testing Agent",
+      "roleClass": "Verification",
+      "owns": "Outputs for Verification",
+      "canBlock": null,
+      "charter": "agents/testing/AGENT.md",
+      "adapter": ".claude/agents/testing.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
+    },
+    {
+      "id": "ux-reviewer",
+      "name": "UX Reviewer Agent",
+      "roleClass": "Verification",
+      "owns": "Outputs for Verification",
+      "canBlock": null,
+      "charter": "agents/ux-reviewer/AGENT.md",
+      "adapter": ".claude/agents/ux-reviewer.md",
+      "primarySkills": [],
+      "supportingSkills": [],
+      "masterPrompt": null
     }
   ],
   "skills": [
-    { "id": "physics",              "category": "science",     "path": "skills/physics/SKILL.md" },
-    { "id": "chemistry",            "category": "science",     "path": "skills/chemistry/SKILL.md" },
-    { "id": "biology",              "category": "science",     "path": "skills/biology/SKILL.md" },
-    { "id": "astronomy",            "category": "science",     "path": "skills/astronomy/SKILL.md" },
-    { "id": "simulation",           "category": "engineering", "path": "skills/simulation/SKILL.md" },
-    { "id": "game-development",     "category": "engineering", "path": "skills/game-development/SKILL.md" },
-    { "id": "software-engineering", "category": "engineering", "path": "skills/software-engineering/SKILL.md" },
-    { "id": "ai-agents",            "category": "meta",        "path": "skills/ai-agents/SKILL.md" },
-    { "id": "prompt-engineering",   "category": "meta",        "path": "skills/prompt-engineering/SKILL.md" }
+    {
+      "id": "physics",
+      "category": "science",
+      "path": "skills/physics/SKILL.md"
+    },
+    {
+      "id": "chemistry",
+      "category": "science",
+      "path": "skills/chemistry/SKILL.md"
+    },
+    {
+      "id": "biology",
+      "category": "science",
+      "path": "skills/biology/SKILL.md"
+    },
+    {
+      "id": "astronomy",
+      "category": "science",
+      "path": "skills/astronomy/SKILL.md"
+    },
+    {
+      "id": "simulation",
+      "category": "engineering",
+      "path": "skills/simulation/SKILL.md"
+    },
+    {
+      "id": "game-development",
+      "category": "engineering",
+      "path": "skills/game-development/SKILL.md"
+    },
+    {
+      "id": "software-engineering",
+      "category": "engineering",
+      "path": "skills/software-engineering/SKILL.md"
+    },
+    {
+      "id": "ai-agents",
+      "category": "meta",
+      "path": "skills/ai-agents/SKILL.md"
+    },
+    {
+      "id": "prompt-engineering",
+      "category": "meta",
+      "path": "skills/prompt-engineering/SKILL.md"
+    },
+    {
+      "id": "agent-design",
+      "category": "meta",
+      "path": "skills/agent-design/SKILL.md"
+    },
+    {
+      "id": "evaluation",
+      "category": "meta",
+      "path": "skills/evaluation/SKILL.md"
+    },
+    {
+      "id": "market-analysis",
+      "category": "business",
+      "path": "skills/market-analysis/SKILL.md"
+    },
+    {
+      "id": "product-validation",
+      "category": "business",
+      "path": "skills/product-validation/SKILL.md"
+    },
+    {
+      "id": "pricing",
+      "category": "business",
+      "path": "skills/pricing/SKILL.md"
+    },
+    {
+      "id": "customer-discovery",
+      "category": "business",
+      "path": "skills/customer-discovery/SKILL.md"
+    },
+    {
+      "id": "architecture",
+      "category": "engineering",
+      "path": "skills/architecture/SKILL.md"
+    },
+    {
+      "id": "security",
+      "category": "engineering",
+      "path": "skills/security/SKILL.md"
+    },
+    {
+      "id": "testing",
+      "category": "engineering",
+      "path": "skills/testing/SKILL.md"
+    },
+    {
+      "id": "deployment",
+      "category": "engineering",
+      "path": "skills/deployment/SKILL.md"
+    },
+    {
+      "id": "ui-design",
+      "category": "creative",
+      "path": "skills/ui-design/SKILL.md"
+    },
+    {
+      "id": "image-generation",
+      "category": "creative",
+      "path": "skills/image-generation/SKILL.md"
+    },
+    {
+      "id": "animation",
+      "category": "creative",
+      "path": "skills/animation/SKILL.md"
+    },
+    {
+      "id": "advanced-physics",
+      "category": "science",
+      "path": "skills/advanced-physics/SKILL.md"
+    }
   ],
   "systemLayers": [
-    { "id": "L0", "name": "Identity",             "path": "prompts/system_layers/L0_identity.md",             "loadOrder": 0, "always": true },
-    { "id": "L1", "name": "Operating Principles", "path": "prompts/system_layers/L1_operating_principles.md", "loadOrder": 1, "always": true },
-    { "id": "L2", "name": "Domain Context",       "path": "prompts/system_layers/L2_domain_context.md",       "loadOrder": 2, "always": true },
-    { "id": "L3", "name": "Task Contract",        "path": "prompts/system_layers/L3_task_contract.md",        "loadOrder": 3, "always": true },
-    { "id": "L4", "name": "Output Contract",      "path": "prompts/system_layers/L4_output_contract.md",      "loadOrder": 4, "always": true },
-    { "id": "L5", "name": "Reasoning Layer",      "path": "prompts/system_layers/L5_reasoning_layer.md",      "loadOrder": 5, "always": false, "loadWhen": "complex-task" }
+    {
+      "id": "L0",
+      "name": "Identity",
+      "path": "prompts/system_layers/L0_identity.md",
+      "loadOrder": 0,
+      "always": true
+    },
+    {
+      "id": "L1",
+      "name": "Operating Principles",
+      "path": "prompts/system_layers/L1_operating_principles.md",
+      "loadOrder": 1,
+      "always": true
+    },
+    {
+      "id": "L2",
+      "name": "Domain Context",
+      "path": "prompts/system_layers/L2_domain_context.md",
+      "loadOrder": 2,
+      "always": true
+    },
+    {
+      "id": "L3",
+      "name": "Task Contract",
+      "path": "prompts/system_layers/L3_task_contract.md",
+      "loadOrder": 3,
+      "always": true
+    },
+    {
+      "id": "L4",
+      "name": "Output Contract",
+      "path": "prompts/system_layers/L4_output_contract.md",
+      "loadOrder": 4,
+      "always": true
+    },
+    {
+      "id": "L5",
+      "name": "Reasoning Layer",
+      "path": "prompts/system_layers/L5_reasoning_layer.md",
+      "loadOrder": 5,
+      "always": false,
+      "loadWhen": "complex-task"
+    },
+    {
+      "id": "L6",
+      "name": "Genesis Cognitive OS",
+      "path": "prompts/system_layers/genesis_cognitive_os.md",
+      "loadOrder": 6,
+      "always": true
+    },
+    {
+      "id": "L7",
+      "name": "Agent Selection Protocol",
+      "path": "prompts/system_layers/agent_selection_protocol.md",
+      "loadOrder": 7,
+      "always": true
+    },
+    {
+      "id": "L8",
+      "name": "Skill Loading Protocol",
+      "path": "prompts/system_layers/skill_loading_protocol.md",
+      "loadOrder": 8,
+      "always": true
+    },
+    {
+      "id": "L9",
+      "name": "Self Improvement Protocol",
+      "path": "prompts/system_layers/self_improvement_protocol.md",
+      "loadOrder": 9,
+      "always": true
+    },
+    {
+      "id": "L10",
+      "name": "Memory Architecture",
+      "path": "prompts/system_layers/memory_architecture.md",
+      "loadOrder": 10,
+      "always": true
+    }
   ],
   "masterPrompts": [
-    { "id": "project_analysis", "path": "prompts/master_prompts/project_analysis.md", "owningAgent": "any" },
-    { "id": "architecture",     "path": "prompts/master_prompts/architecture.md",     "owningAgent": "architect" },
-    { "id": "coding",           "path": "prompts/master_prompts/coding.md",           "owningAgent": "coding" },
-    { "id": "research",         "path": "prompts/master_prompts/research.md",         "owningAgent": "research" },
-    { "id": "review",           "path": "prompts/master_prompts/review.md",           "owningAgent": "qa" }
+    {
+      "id": "project_analysis",
+      "path": "prompts/master_prompts/project_analysis.md",
+      "owningAgent": "any"
+    },
+    {
+      "id": "architecture",
+      "path": "prompts/master_prompts/architecture.md",
+      "owningAgent": "architect"
+    },
+    {
+      "id": "coding",
+      "path": "prompts/master_prompts/coding.md",
+      "owningAgent": "coding"
+    },
+    {
+      "id": "research",
+      "path": "prompts/master_prompts/research.md",
+      "owningAgent": "research"
+    },
+    {
+      "id": "review",
+      "path": "prompts/master_prompts/review.md",
+      "owningAgent": "qa"
+    }
   ],
   "generators": [
-    { "id": "agent_generator",  "path": "prompts/generators/agent_generator.md",  "produces": ["agents/<id>/AGENT.md", ".claude/agents/<id>.md"] },
-    { "id": "skill_generator",  "path": "prompts/generators/skill_generator.md",  "produces": ["skills/<id>/SKILL.md"] },
-    { "id": "prompt_generator", "path": "prompts/generators/prompt_generator.md", "produces": ["prompts/master_prompts/<id>.md", "prompts/system_layers/<id>.md"] }
+    {
+      "id": "agent_generator",
+      "path": "prompts/generators/agent_generator.md",
+      "produces": [
+        "agents/<id>/AGENT.md",
+        ".claude/agents/<id>.md"
+      ]
+    },
+    {
+      "id": "skill_generator",
+      "path": "prompts/generators/skill_generator.md",
+      "produces": [
+        "skills/<id>/SKILL.md"
+      ]
+    },
+    {
+      "id": "prompt_generator",
+      "path": "prompts/generators/prompt_generator.md",
+      "produces": [
+        "prompts/master_prompts/<id>.md",
+        "prompts/system_layers/<id>.md"
+      ]
+    }
   ],
   "templates": {
-    "agent":   "templates/AGENT_TEMPLATE.md",
-    "skill":   "templates/SKILL_TEMPLATE.md",
-    "adr":     "templates/ADR_TEMPLATE.md",
+    "agent": "templates/AGENT_TEMPLATE.md",
+    "skill": "templates/SKILL_TEMPLATE.md",
+    "adr": "templates/ADR_TEMPLATE.md",
     "handoff": "templates/HANDOFF_TEMPLATE.md",
     "session": "logs/SESSION_TEMPLATE.md"
   },
   "workflow": {
     "name": "Genesis Loop",
     "stages": [
-      { "n": 1, "id": "intake",   "owner": "any",                  "produces": "task contract" },
-      { "n": 2, "id": "research", "owner": "research",             "produces": "findings report" },
-      { "n": 3, "id": "design",   "owner": "architect",            "produces": "architecture spec + ADR" },
-      { "n": 4, "id": "plan",     "owner": "architect",            "produces": "implementation units" },
-      { "n": 5, "id": "build",    "owner": "coding",               "produces": "code + verification evidence" },
-      { "n": 6, "id": "verify",   "owner": "qa",                   "produces": "QA report" },
-      { "n": 7, "id": "log",      "owner": "any",                  "produces": "session log" },
-      { "n": 8, "id": "commit",   "owner": "any",                  "produces": "commit + push" }
+      {
+        "n": 1,
+        "id": "intake",
+        "owner": "any",
+        "produces": "task contract"
+      },
+      {
+        "n": 2,
+        "id": "research",
+        "owner": "research",
+        "produces": "findings report"
+      },
+      {
+        "n": 3,
+        "id": "design",
+        "owner": "architect",
+        "produces": "architecture spec + ADR"
+      },
+      {
+        "n": 4,
+        "id": "plan",
+        "owner": "architect",
+        "produces": "implementation units"
+      },
+      {
+        "n": 5,
+        "id": "build",
+        "owner": "coding",
+        "produces": "code + verification evidence"
+      },
+      {
+        "n": 6,
+        "id": "verify",
+        "owner": "qa",
+        "produces": "QA report"
+      },
+      {
+        "n": 7,
+        "id": "log",
+        "owner": "any",
+        "produces": "session log"
+      },
+      {
+        "n": 8,
+        "id": "commit",
+        "owner": "any",
+        "produces": "commit + push"
+      }
     ]
   }
 }
