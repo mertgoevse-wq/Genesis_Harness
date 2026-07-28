@@ -487,6 +487,11 @@
       "id": "advanced-physics",
       "category": "science",
       "path": "skills/advanced-physics/SKILL.md"
+    },
+    {
+      "id": "business-analysis",
+      "category": "business",
+      "path": "skills/business-analysis/SKILL.md"
     }
   ],
   "systemLayers": [
