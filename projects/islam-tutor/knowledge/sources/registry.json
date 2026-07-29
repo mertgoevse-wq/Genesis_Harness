@@ -1,0 +1,144 @@
+{
+  "$comment": "Whitelist aller erlaubten Quellen. Ein Inhalt, dessen source_id hier nicht steht, wird von scripts/verify_knowledge.py zurueckgewiesen. Lizenzangaben sind nach bestem Wissen erfasst und muessen vor kommerzieller Nutzung juristisch geprueft werden - das Feld license_status sagt, wo das noch offen ist.",
+  "version": "0.1.0",
+  "updated": "2026-07-29",
+
+  "sources": [
+    {
+      "id": "tanzil-uthmani",
+      "type": "quran_text",
+      "title": "Tanzil Quran Text (Uthmani)",
+      "publisher": "Tanzil Project",
+      "url": "https://tanzil.net/download/",
+      "language": "ar",
+      "license": "Creative Commons Attribution 3.0",
+      "license_status": "stated_by_publisher",
+      "checksum_required": true,
+      "imported": false,
+      "import_script": "scripts/ingest_quran.py",
+      "note": "Vorgesehene Primaerquelle fuer den arabischen Korantext. Noch nicht importiert. Bis zum Import bleibt jeder Korantext in der Wissensbasis auf scholar_review_pending."
+    },
+    {
+      "id": "quran-com-api",
+      "type": "quran_api",
+      "title": "Quran.com API v4",
+      "publisher": "Quran.com",
+      "url": "https://api-docs.quran.com/",
+      "language": "multi",
+      "license": "siehe API-Nutzungsbedingungen",
+      "license_status": "needs_verification",
+      "checksum_required": true,
+      "imported": false,
+      "note": "Alternative Bezugsquelle fuer Text, Uebersetzungen und Rezitations-Audio. Nutzungsbedingungen vor Einbindung pruefen."
+    },
+    {
+      "id": "kfc-mushaf",
+      "type": "quran_text",
+      "title": "Mushaf al-Madinah, King Fahd Complex for the Printing of the Holy Quran",
+      "publisher": "King Fahd Glorious Quran Printing Complex, Madinah",
+      "url": "https://qurancomplex.gov.sa/",
+      "language": "ar",
+      "license": "Verlagsrechte beim Herausgeber",
+      "license_status": "needs_verification",
+      "checksum_required": true,
+      "imported": false,
+      "note": "Referenzausgabe zum Abgleich. Digitale Weiterverwendung erfordert Klaerung mit dem Herausgeber."
+    },
+    {
+      "id": "trans-bubenheim-elyas",
+      "type": "quran_translation",
+      "title": "Der edle Qur'an und die Uebersetzung seiner Bedeutungen in die deutsche Sprache",
+      "translator": "Frank Bubenheim und Nadeem Elyas",
+      "publisher": "King Fahd Glorious Quran Printing Complex",
+      "language": "de",
+      "license": "Verlagsrechte beim Herausgeber",
+      "license_status": "needs_verification",
+      "imported": false,
+      "note": "Verbreitete deutsche Uebersetzung. Lizenz fuer digitale Nutzung muss geklaert werden."
+    },
+    {
+      "id": "trans-sahih-international",
+      "type": "quran_translation",
+      "title": "The Qur'an: Sahih International Translation",
+      "translator": "Sahih International",
+      "publisher": "Al-Muntada Al-Islami",
+      "language": "en",
+      "license": "weit verbreitet, Status je Ausgabe unterschiedlich",
+      "license_status": "needs_verification",
+      "imported": false
+    },
+    {
+      "id": "trans-yusuf-ali",
+      "type": "quran_translation",
+      "title": "The Holy Qur'an: Text, Translation and Commentary",
+      "translator": "Abdullah Yusuf Ali",
+      "publisher": "Erstausgabe 1934",
+      "language": "en",
+      "license": "in vielen Jurisdiktionen gemeinfrei",
+      "license_status": "likely_public_domain_verify_jurisdiction",
+      "imported": false,
+      "note": "Aeltere Uebersetzung, sprachlich archaisch. Als Vergleichsuebersetzung nuetzlich."
+    },
+    {
+      "id": "sunnah-com",
+      "type": "hadith_collection",
+      "title": "Sunnah.com Hadith-Datenbank",
+      "publisher": "Sunnah.com",
+      "url": "https://sunnah.com/",
+      "language": "ar, en",
+      "license": "siehe Nutzungsbedingungen",
+      "license_status": "needs_verification",
+      "imported": false,
+      "note": "Zugriff auf Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasai, Ibn Majah mit Referenznummern und Grading."
+    },
+    {
+      "id": "editorial-fiqh-summary",
+      "type": "editorial",
+      "title": "Redaktionelle Zusammenfassung etablierter Fiqh-Inhalte",
+      "publisher": "Islam Tutor AI Projektteam",
+      "language": "de, en",
+      "license": "projektintern",
+      "license_status": "internal",
+      "imported": true,
+      "provenance_ceiling": "scholar_review_pending",
+      "note": "Fuer Gebets- und Reinigungsablaeufe, die in Standardwerken breit dokumentiert sind. WICHTIG: Inhalte mit dieser source_id koennen NICHT auf verified gesetzt werden. Sie bleiben scholar_review_pending, bis eine qualifizierte Person sie abnimmt und eine Primaerquelle nachtraegt. Das Feld provenance_ceiling wird von verify_knowledge.py durchgesetzt."
+    },
+    {
+      "id": "editorial-arabic-didactics",
+      "type": "editorial",
+      "title": "Redaktionelle Sprachdidaktik Arabisch",
+      "publisher": "Islam Tutor AI Projektteam",
+      "language": "de, en",
+      "license": "projektintern",
+      "license_status": "internal",
+      "imported": true,
+      "provenance_ceiling": "verified",
+      "note": "Sprachliche Inhalte - Buchstabenformen, Aussprache, Lernreihenfolge - sind linguistisch und nicht religionsrechtlich. Sie duerfen verified sein, wenn sie sprachwissenschaftlich korrekt sind."
+    }
+  ],
+
+  "planned_sources": [
+    {
+      "type": "recitation_audio",
+      "candidates": ["everyayah.com", "Quran.com Audio API"],
+      "blocked_on": "Lizenzklaerung je Rezitator",
+      "note": "Ohne geklaerte Lizenz kein Audio. Kein TTS-Fallback fuer Korantext - siehe ADR-0002."
+    },
+    {
+      "type": "fiqh_primary",
+      "candidates": [
+        "Standardwerke der vier sunnitischen Rechtsschulen",
+        "Institutionelle Fiqh-Kompendien"
+      ],
+      "blocked_on": "Auswahl und Lizenz, dann Pruefung durch qualifizierte Person",
+      "note": "Erst hiermit koennen Fiqh-Inhalte den Status verified erreichen."
+    }
+  ],
+
+  "rules": [
+    "Eine source_id, die hier nicht steht, laesst die Validierung fehlschlagen.",
+    "provenance=verified erfordert eine Quelle mit checksum_required=true und imported=true, ODER eine editorial-Quelle mit provenance_ceiling=verified.",
+    "license_status=needs_verification blockiert die produktive Auslieferung des betroffenen Inhalts.",
+    "Neue Quellen werden nur von quran-research-agent oder islamic-content-agent eingetragen."
+  ]
+}

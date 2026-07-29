@@ -1,0 +1,8 @@
+{
+    "start": "Start",
+    "settings": "Settings",
+    "namaz_qiyam": "Standing (Qiyam)",
+    "namaz_ruku": "Bowing (Ruku)",
+    "namaz_sujud": "Prostration (Sujud)",
+    "error_hash": "Security Warning: Quran source could not be verified!"
+}

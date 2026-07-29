@@ -1,0 +1,7 @@
+{
+  "name": "arabic-language-agent",
+  "version": "1.0.0",
+  "description": "Handles Arabic script, transliteration, and Tajweed",
+  "skills": ["arabic-script", "tajweed", "transliteration"],
+  "layer": "Data"
+}

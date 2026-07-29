@@ -1,0 +1,376 @@
+{
+  "id": "fajr",
+  "name": {
+    "arabic": "صَلَاةُ الْفَجْر",
+    "transliteration": "Salat al-Fajr",
+    "translations": {
+      "de": "Morgengebet",
+      "en": "Dawn prayer",
+      "tr": "Sabah namazı"
+    }
+  },
+  "order": 1,
+  "provenance": "scholar_review_pending",
+  "sources": [
+    {
+      "source_id": "editorial-fiqh-summary"
+    }
+  ],
+  "review_note": "Ablauf und Texte stammen aus einer redaktionellen Zusammenfassung breit dokumentierter Inhalte. Fachliche Abnahme durch eine qualifizierte Person steht aus. Der Status wird dem Nutzer angezeigt.",
+  "last_updated": "2026-07-29",
+  "units": {
+    "fard": 2,
+    "sunnah_before": {
+      "count": 2,
+      "ruling": "sunnah_muakkadah",
+      "madhhab": "common",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    }
+  },
+  "time_window": {
+    "description": "Von Beginn der Morgendaemmerung bis kurz vor Sonnenaufgang.",
+    "starts": "Beginn der echten Morgendaemmerung (Fajr as-Sadiq)",
+    "ends": "Sonnenaufgang",
+    "sources": [
+      {
+        "source_id": "editorial-fiqh-summary"
+      }
+    ]
+  },
+  "audible_recitation": {
+    "loud_rakat": [
+      1,
+      2
+    ],
+    "description": "Laute Rezitation in den genannten Rak'a, sofern im Gemeinschaftsgebet oder als Imam gebetet wird.",
+    "sources": [
+      {
+        "source_id": "editorial-fiqh-summary"
+      }
+    ]
+  },
+  "prerequisites": [
+    {
+      "id": "taharah",
+      "description": "Rituelle Reinheit durch Wudu oder, wo erforderlich, Ghusl.",
+      "module_link": "purification/wudu",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "id": "qibla",
+      "description": "Ausrichtung zur Kaaba in Mekka.",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "id": "satr",
+      "description": "Bedeckung des Koerpers nach den Regeln der jeweiligen Rechtsschule.",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "id": "waqt",
+      "description": "Das Gebet faellt in sein Zeitfenster. Dieses System berechnet keine Gebetszeiten - dafuer ist eine astronomische Berechnung mit lokaler Konvention erforderlich.",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "id": "place",
+      "description": "Ein reiner Ort fuer das Gebet.",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    }
+  ],
+  "sequence": [
+    {
+      "step": 1,
+      "movement_id": "niyyah",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "movement_id": "takbir_ihram",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 3,
+      "movement_id": "qiyam",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 4,
+      "movement_id": "thana",
+      "ruling": "sunnah",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 5,
+      "movement_id": "taawwudh_basmala",
+      "ruling": "sunnah",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 6,
+      "movement_id": "fatiha_recitation",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1,
+      "audible": true
+    },
+    {
+      "step": 7,
+      "movement_id": "surah_recitation",
+      "ruling": "wajib",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1,
+      "audible": true,
+      "madhhab": "hanafi"
+    },
+    {
+      "step": 8,
+      "movement_id": "ruku",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 9,
+      "movement_id": "qiyam_after_ruku",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 10,
+      "movement_id": "sujud",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 11,
+      "movement_id": "jalsa",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 12,
+      "movement_id": "sujud",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 1
+    },
+    {
+      "step": 13,
+      "movement_id": "qiyam",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 14,
+      "movement_id": "fatiha_recitation",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2,
+      "audible": true
+    },
+    {
+      "step": 15,
+      "movement_id": "surah_recitation",
+      "ruling": "wajib",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2,
+      "audible": true,
+      "madhhab": "hanafi"
+    },
+    {
+      "step": 16,
+      "movement_id": "ruku",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 17,
+      "movement_id": "qiyam_after_ruku",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 18,
+      "movement_id": "sujud",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 19,
+      "movement_id": "jalsa",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 20,
+      "movement_id": "sujud",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 21,
+      "movement_id": "qada_final",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    },
+    {
+      "step": 22,
+      "movement_id": "taslim",
+      "ruling": "fard",
+      "provenance": "scholar_review_pending",
+      "sources": [
+        {
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "rakah": 2
+    }
+  ],
+  "learning_note": "Fajr ist mit zwei Rak'a das kuerzeste Pflichtgebet und deshalb ein guter Einstieg zum Lernen der Abfolge."
+}

@@ -1,0 +1,83 @@
+{
+  "project": "islam-tutor",
+  "version": "0.1.0",
+  "updated": "2026-07-29",
+  "inherits_from": "../../../configs/mcp_registry.json",
+  "note": "Erbt den MCP-Layer des Genesis Harness. Ergaenzt projektspezifische Sicherheitsgrenzen fuer religioese Inhalte.",
+  "servers": {
+    "filesystem": {
+      "purpose": "Wissensbasis lesen und schreiben, Assets verwalten",
+      "security_class": "restricted",
+      "cost_tier": "free",
+      "allowed_paths": [
+        "projects/islam-tutor/knowledge/**",
+        "projects/islam-tutor/assets/**",
+        "projects/islam-tutor/voice/audio_assets/**",
+        "projects/islam-tutor/docs/**"
+      ],
+      "denied_paths": [
+        "projects/islam-tutor/knowledge/quran/**"
+      ],
+      "deny_reason": "Korantext wird ausschliesslich ueber scripts/ingest_quran.py mit Pruefsummen-Validierung geschrieben. Direkter Schreibzugriff ist gesperrt, damit kein Agent den Text versehentlich veraendert.",
+      "required_agent": ["islamic-content-agent", "backend-agent", "frontend-agent"]
+    },
+    "github": {
+      "purpose": "Commits, Pull Requests fuer Content-Review",
+      "security_class": "restricted",
+      "cost_tier": "free",
+      "constraints": [
+        "Content-Aenderungen in knowledge/ laufen immer ueber Pull Request, nie direkt auf main",
+        "Kein force-push",
+        "PR-Beschreibung muss Quellenangabe enthalten"
+      ],
+      "required_agent": ["islamic-content-agent", "quran-research-agent", "qa-agent"]
+    },
+    "browser_research": {
+      "purpose": "Quellen recherchieren und verifizieren",
+      "security_class": "restricted",
+      "cost_tier": "low",
+      "constraints": [
+        "Recherche-Ergebnisse sind Kandidaten, keine Inhalte",
+        "Uebernahme in knowledge/ nur nach Eintrag in sources/registry.json",
+        "Keine Uebernahme von Inhalten ohne klaren Lizenzstatus",
+        "Scraping von Seiten mit restriktiven Nutzungsbedingungen ist untersagt"
+      ],
+      "required_agent": ["quran-research-agent", "islamic-content-agent"]
+    },
+    "ai_models": {
+      "purpose": "Tutor-Generierung, Embeddings, Lernplan-Erstellung",
+      "security_class": "restricted",
+      "cost_tier": "metered",
+      "constraints": [
+        "Generierung nur mit Retrieval-Kontext, nie freilaufend",
+        "Kein Modellaufruf zur Erzeugung arabischen Korantexts",
+        "Kein Modellaufruf zur Erzeugung von Hadith-Texten",
+        "Token-Verbrauch wird pro Anfrage protokolliert"
+      ],
+      "model_routing": {
+        "tutor_generation": "high_reasoning",
+        "embedding": "embedding_model",
+        "learning_plan": "standard",
+        "guardrail_classification": "fast"
+      }
+    }
+  },
+  "planned": {
+    "vector_store": {
+      "purpose": "Externer Vector Store ab Phase 3",
+      "candidates": ["pgvector", "qdrant"],
+      "status": "not_connected",
+      "note": "Interface in ai/rag/vector_store.py steht; Implementierung SQLite-basiert"
+    },
+    "tts_stt": {
+      "purpose": "Sprachein- und -ausgabe",
+      "candidates": ["whisper_local", "whisper_api", "elevenlabs"],
+      "status": "abstraction_ready_provider_not_connected"
+    }
+  },
+  "global_prohibitions": [
+    "Kein MCP-Server darf arabischen Korantext generieren oder modifizieren",
+    "Kein MCP-Server darf Nutzer-Religionszugehoerigkeit oder Madhhab exportieren",
+    "Kein MCP-Server darf Chatverlaeufe an externe Trainingspipelines geben"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "voice-agent",
+  "version": "1.0.0",
+  "description": "Handles Speech, Audio, and Voice MCPs",
+  "skills": ["audio-processing", "speech-recognition", "text-to-speech"],
+  "layer": "Data"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ui-agent",
+  "version": "1.0.0",
+  "description": "Handles Design, Animations, and UX",
+  "skills": ["ui-design", "frontend-engineering", "ux-research"],
+  "layer": "Development"
+}

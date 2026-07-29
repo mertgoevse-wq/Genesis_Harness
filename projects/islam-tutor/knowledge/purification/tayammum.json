@@ -1,0 +1,90 @@
+{
+  "$comment": "Tayammum - Trockenreinigung, wenn Wasser nicht verfuegbar oder nicht nutzbar ist. Provenance: scholar_review_pending.",
+  "id": "tayammum",
+  "type": "purification",
+  "name": {
+    "arabic": "التَّيَمُّم",
+    "transliteration": "at-tayammum",
+    "translations": { "de": "Trockenreinigung", "en": "Dry ablution", "tr": "Teyemmüm" }
+  },
+  "provenance": "scholar_review_pending",
+  "sources": [{ "source_id": "editorial-fiqh-summary" }],
+  "review_note": "Fachliche Abnahme steht aus.",
+  "last_updated": "2026-07-29",
+
+  "purpose": {
+    "de": "Ersatz für Wudu oder Ghusl, wenn Wasser nicht verfügbar ist oder seine Verwendung gesundheitlich nicht möglich ist.",
+    "en": "Substitute for wudu or ghusl when water is unavailable or its use is not medically possible."
+  },
+
+  "conditions": {
+    "note": "Lerninhalt. Ob eine konkrete Situation Tayammum erlaubt, ist eine Frage für einen Gelehrten, nicht für dieses System.",
+    "items": [
+      { "id": "no_water", "description": "Kein Wasser verfügbar" },
+      { "id": "insufficient_water", "description": "Wasser vorhanden, aber für andere lebensnotwendige Zwecke benötigt" },
+      { "id": "illness", "description": "Verwendung von Wasser wäre gesundheitlich schädlich" },
+      { "id": "inaccessible", "description": "Wasser vorhanden, aber nicht erreichbar" }
+    ],
+    "sources": [{ "source_id": "editorial-fiqh-summary" }]
+  },
+
+  "steps": [
+    {
+      "step": 1,
+      "id": "niyyah",
+      "label": { "de": "Absicht fassen", "en": "Form the intention" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "tayammum_intention",
+      "instruction": { "de": "Die Absicht der Reinigung wird im Herzen gefasst.", "en": "Form the intention of purification in the heart." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 2,
+      "id": "strike",
+      "label": { "de": "Hände auf reine Erde legen", "en": "Place hands on clean earth" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "tayammum_strike",
+      "instruction": {
+        "de": "Beide Handflächen werden auf reine Erde, Sand oder Stein gelegt und überschüssiger Staub abgeschüttelt.",
+        "en": "Place both palms on clean earth, sand, or stone and shake off excess dust."
+      },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 3,
+      "id": "face",
+      "label": { "de": "Gesicht abstreichen", "en": "Wipe the face" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "tayammum_face",
+      "instruction": { "de": "Mit beiden Händen über das gesamte Gesicht streichen.", "en": "Wipe the entire face with both hands." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 4,
+      "id": "arms",
+      "label": { "de": "Arme abstreichen", "en": "Wipe the arms" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "disputed",
+      "animation_key": "tayammum_arms",
+      "instruction": {
+        "de": "Die Hände werden erneut aufgelegt, dann wird der rechte, danach der linke Arm abgestrichen. Der erforderliche Umfang unterscheidet sich zwischen den Rechtsschulen.",
+        "en": "Place the hands again, then wipe the right arm, then the left. The required extent differs between schools of law."
+      },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Bis einschließlich der Ellbogen.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "shafii", "position": "Bis einschließlich der Ellbogen.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "maliki", "position": "Bis zu den Handgelenken genügt als Fard; bis zu den Ellbogen ist Sunnah.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ],
+
+  "learning_note": "Tayammum ist der kürzeste der drei Reinigungswege: Absicht, Erde berühren, Gesicht, Arme. Es ist eine Erleichterung und kein Notbehelf zweiter Klasse."
+}

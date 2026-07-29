@@ -1,0 +1,8 @@
+{
+    "start": "Başla",
+    "settings": "Ayarlar",
+    "namaz_qiyam": "Kıyam",
+    "namaz_ruku": "Rüku",
+    "namaz_sujud": "Secde",
+    "error_hash": "Güvenlik Uyarısı: Kuran kaynağı doğrulanamadı!"
+}

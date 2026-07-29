@@ -1,0 +1,170 @@
+{
+  "$comment": "Ghusl - die grosse rituelle Waschung. Die Anlaesse werden bewusst sachlich und knapp beschrieben, ohne unnoetige Detaillierung. Provenance: scholar_review_pending.",
+  "id": "ghusl",
+  "type": "purification",
+  "name": {
+    "arabic": "الغُسْل",
+    "transliteration": "al-ghusl",
+    "translations": { "de": "Große rituelle Waschung", "en": "Full ritual washing", "tr": "Gusül" }
+  },
+  "provenance": "scholar_review_pending",
+  "sources": [{ "source_id": "editorial-fiqh-summary" }],
+  "review_note": "Fachliche Abnahme steht aus. Die Fard-Zuordnung ist madhhab-abhaengig.",
+  "last_updated": "2026-07-29",
+
+  "purpose": {
+    "de": "Herstellung ritueller Reinheit in Zuständen, in denen Wudu nicht ausreicht.",
+    "en": "Establishing ritual purity in states where wudu does not suffice."
+  },
+
+  "occasions": {
+    "note": "Sachliche Auflistung als Lerninhalt. Das System beurteilt keine persönliche Situation.",
+    "items": [
+      { "id": "janabah", "description": "Zustand der Janabah", "madhhab": "common" },
+      { "id": "menstruation_end", "description": "Nach dem Ende der Menstruation", "madhhab": "common" },
+      { "id": "postnatal_end", "description": "Nach dem Ende der Nachgeburtsblutung", "madhhab": "common" },
+      { "id": "friday", "description": "Vor dem Freitagsgebet", "ruling": "sunnah_muakkadah", "madhhab": "common" },
+      { "id": "eid", "description": "Vor den Festgebeten", "ruling": "sunnah", "madhhab": "common" },
+      { "id": "ihram", "description": "Vor dem Anlegen des Ihram", "ruling": "sunnah", "madhhab": "common" },
+      { "id": "conversion", "description": "Beim Eintritt in den Islam", "madhhab": "common" }
+    ],
+    "sources": [{ "source_id": "editorial-fiqh-summary" }]
+  },
+
+  "fard_count_by_madhhab": [
+    {
+      "madhhab": "hanafi",
+      "count": 3,
+      "elements": ["Mund ausspülen", "Nase ausspülen", "Den gesamten Körper mit Wasser bedecken"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "shafii",
+      "count": 2,
+      "elements": ["Absicht", "Den gesamten Körper mit Wasser bedecken"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "maliki",
+      "count": 4,
+      "elements": ["Absicht", "Den gesamten Körper bedecken", "Reiben (Dalk)", "Zusammenhang ohne Unterbrechung"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "hanbali",
+      "count": 2,
+      "elements": ["Absicht", "Den gesamten Körper bedecken"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ],
+
+  "steps": [
+    {
+      "step": 1,
+      "id": "niyyah",
+      "label": { "de": "Absicht fassen", "en": "Form the intention" },
+      "ruling": "fard",
+      "madhhab": "shafii",
+      "provenance": "scholar_review_pending",
+      "animation_key": "ghusl_intention",
+      "instruction": { "de": "Die Absicht der Reinigung wird im Herzen gefasst.", "en": "Form the intention of purification in the heart." },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Sunnah, nicht Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "shafii", "position": "Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 2,
+      "id": "wash_hands",
+      "label": { "de": "Hände waschen", "en": "Wash the hands" },
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "ghusl_hands",
+      "instruction": { "de": "Die Hände dreimal waschen.", "en": "Wash the hands three times." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 3,
+      "id": "wash_private_parts",
+      "label": { "de": "Intimbereich reinigen", "en": "Cleanse the private parts" },
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "ghusl_neutral",
+      "instruction": { "de": "Der Intimbereich wird gereinigt.", "en": "The private parts are cleansed." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 4,
+      "id": "wudu",
+      "label": { "de": "Wudu vollziehen", "en": "Perform wudu" },
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "module_link": "purification/wudu",
+      "animation_key": "wudu_face",
+      "instruction": {
+        "de": "Ein vollständiges Wudu wird vollzogen. Das Waschen der Füße kann bis zum Ende aufgeschoben werden.",
+        "en": "A complete wudu is performed. Washing the feet may be deferred to the end."
+      },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 5,
+      "id": "mouth_nose",
+      "label": { "de": "Mund und Nase ausspülen", "en": "Rinse mouth and nose" },
+      "ruling": "fard",
+      "madhhab": "hanafi",
+      "provenance": "disputed",
+      "repetitions": 3,
+      "animation_key": "wudu_mouth",
+      "instruction": { "de": "Mund und Nase werden je dreimal ausgespült.", "en": "Rinse the mouth and nose three times each." },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Fard beim Ghusl.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "shafii", "position": "Sunnah.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 6,
+      "id": "head",
+      "label": { "de": "Kopf und Haare durchnässen", "en": "Wet the head and hair" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "ghusl_head",
+      "instruction": {
+        "de": "Wasser dreimal über den Kopf gießen, sodass es die Kopfhaut und die gesamte Haarlänge erreicht.",
+        "en": "Pour water over the head three times so that it reaches the scalp and the full length of the hair."
+      },
+      "common_mistakes": ["Nur die Haaroberfläche nässen, ohne dass Wasser die Kopfhaut erreicht"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 7,
+      "id": "body",
+      "label": { "de": "Gesamten Körper waschen", "en": "Wash the entire body" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "ghusl_body",
+      "instruction": {
+        "de": "Wasser über die rechte, dann die linke Körperseite gießen, sodass jede Stelle der Haut erreicht wird.",
+        "en": "Pour water over the right side of the body, then the left, so that every part of the skin is reached."
+      },
+      "common_mistakes": [
+        "Stellen auslassen, die vom Wasserstrahl nicht direkt getroffen werden",
+        "Hautfalten und den Bereich hinter den Ohren übersehen"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ],
+
+  "learning_note": "Der Kern des Ghusl ist einfach: das Wasser muss jede Stelle der Haut und der Haare erreichen. Die Sunnah-Schritte geben dem Ablauf eine Ordnung, ändern aber nichts an diesem Kern.",
+
+  "wellbeing_note": "Wiederholtes Waschen aus Unsicherheit, ob 'jede Stelle' erreicht wurde, ist ein bekanntes Muster. Es lässt sich nicht durch genauere Regeln lösen. Wenn dieses Bedürfnis belastend wird, ist ein Gespräch mit einer Vertrauensperson oder professionelle Unterstützung der richtige Weg — nicht mehr Detailwissen."
+}

@@ -11,3 +11,21 @@ Genesis connects to external tools, databases, APIs, and cloud services via the 
 2. **Validate Permissions**: Ensure the agent calling the MCP tool has the appropriate access level.
 3. **Validate Inputs**: Prevent prompt injection or malformed data before passing to an MCP tool.
 4. **Validate Outputs**: Cleanse and verify the data returned from an MCP tool before integrating it into the codebase or memory.
+
+## Registered MCP Categories (Phase 4 Extension)
+
+### 1. System MCPs
+- **Filesystem MCP**: Direct disk interaction under restrictive sandbox.
+- **Terminal MCP**: Shell execution with isolated execution bounds.
+- **Docker MCP**: Container generation and lifecycle management.
+- **Database MCP**: Secure querying against internal databases (PostgreSQL/Supabase).
+
+### 2. External Integration MCPs
+- **GitHub MCP**: Pull Requests, Issues, Repository state reading/writing.
+- **Browser MCP**: Playwright-based DOM interaction for Live Previews and Visual QA.
+
+### 3. AI & Media MCPs (Islam Tutor Expansion)
+- **AI Backend MCP**: Routing to Claude, Gemini, GPT, Ollama.
+- **Video MCP**: Integration with Wan Video, Wan2.1, HeyGem.
+- **Voice MCP**: OmniVoiceStudio, STT, TTS for Arabic pronunciation.
+- **Mobile MCP**: Android emulator control, Camera input (Pose Detection), Microphone input.

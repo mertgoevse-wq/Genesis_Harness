@@ -5,7 +5,7 @@ hard-coded; anything missing simply falls back to safe defaults (e.g. the LLM
 layer defaults to a deterministic offline client).
 """
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -23,14 +23,16 @@ class Settings(BaseSettings):
     # keeps the system runnable without API keys and makes tests deterministic.
     llm_provider: str = Field(default="fallback", alias="LLM_PROVIDER")
     llm_model: str | None = Field(default=None, alias="LLM_MODEL")
-    anthropic_api_key: str | None = Field(default=None, alias="ANTHROPIC_API_KEY")
-    openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
+    anthropic_api_key: SecretStr | None = Field(default=None, alias="ANTHROPIC_API_KEY")
+    openai_api_key: SecretStr | None = Field(default=None, alias="OPENAI_API_KEY")
     anthropic_base_url: str | None = Field(default=None, alias="ANTHROPIC_BASE_URL")
     openai_base_url: str | None = Field(default=None, alias="OPENAI_BASE_URL")
 
     # Conservative request limits.
     llm_max_tokens: int = Field(default=1024, alias="LLM_MAX_TOKENS")
     llm_temperature: float = Field(default=0.7, alias="LLM_TEMPERATURE")
+    llm_timeout: float = Field(default=30.0, alias="LLM_TIMEOUT")
+    llm_max_retries: int = Field(default=3, alias="LLM_MAX_RETRIES")
 
 
 # Singleton exposed for import convenience. Consumers can also instantiate

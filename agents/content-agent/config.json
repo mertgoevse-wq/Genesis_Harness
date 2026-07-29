@@ -1,0 +1,7 @@
+{
+  "name": "content-agent",
+  "version": "1.0.0",
+  "description": "Manages religious texts and translations",
+  "skills": ["religious-texts", "data-validation", "translation-management"],
+  "layer": "Data"
+}

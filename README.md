@@ -1,4 +1,4 @@
-# Genesis Harness 🚀
+# Genesis Harness (V2 - Autonomous Meta-Loop) 🚀
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-cyan.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

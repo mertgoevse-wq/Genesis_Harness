@@ -1,0 +1,208 @@
+{
+  "$comment": "Referenzimplementierung des Koran-Datenmodells. WICHTIG: provenance ist scholar_review_pending, weil der arabische Text noch nicht ueber scripts/ingest_quran.py aus einer registrierten Quelle mit SHA-256-Abgleich importiert wurde. Erst der Import setzt verified. Bis dahin zeigt die UI den Status an. Der Text darf nicht durch manuelle Bearbeitung 'verbessert' werden - Korrekturen erfolgen ausschliesslich durch erneuten Import.",
+  "id": "surah_001",
+  "number": 1,
+  "name": {
+    "arabic": "الفاتحة",
+    "transliteration": "Al-Fatihah",
+    "translations": {
+      "de": "Die Eröffnende",
+      "en": "The Opening",
+      "tr": "Fatiha"
+    }
+  },
+  "ayah_count": 7,
+  "revelation_place": "makkah",
+  "provenance": "scholar_review_pending",
+  "sources": [
+    { "source_id": "editorial-fiqh-summary", "note": "Vorlaeufige Erfassung. Ersetzung durch Import aus tanzil-uthmani steht aus." }
+  ],
+  "pending_import": {
+    "target_source_id": "tanzil-uthmani",
+    "script": "scripts/ingest_quran.py",
+    "sets_provenance_to": "verified",
+    "checksum_algorithm": "sha256"
+  },
+  "review_note": "Arabischer Text noch nicht gegen eine registrierte Primaerquelle abgeglichen. Der Nutzer sieht diesen Status im Frontend.",
+  "last_updated": "2026-07-29",
+
+  "learning_note": "Al-Fatiha wird in jeder Rak'a jedes Gebets rezitiert und ist deshalb der erste Text, den Lernende meist auswendig lernen. Sieben Verse, kurz und rhythmisch.",
+
+  "ayat": [
+    {
+      "number": 1,
+      "arabic": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "transliteration": "Bismi llāhi r-raḥmāni r-raḥīm",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Im Namen Allahs, des Allerbarmers, des Barmherzigen.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "word_analysis": [
+        { "arabic": "بِسْمِ", "transliteration": "bismi", "gloss_de": "im Namen", "root": "س م و" },
+        { "arabic": "ٱللَّهِ", "transliteration": "llāhi", "gloss_de": "Allahs", "root": "أ ل ه" },
+        { "arabic": "ٱلرَّحْمَٰنِ", "transliteration": "r-raḥmāni", "gloss_de": "des Allerbarmers", "root": "ر ح م" },
+        { "arabic": "ٱلرَّحِيمِ", "transliteration": "r-raḥīm", "gloss_de": "des Barmherzigen", "root": "ر ح م" }
+      ]
+    },
+    {
+      "number": 2,
+      "arabic": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+      "transliteration": "Al-ḥamdu li-llāhi rabbi l-ʿālamīn",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Alles Lob gehört Allah, dem Herrn der Welten.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "All praise is due to Allah, Lord of the worlds.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "word_analysis": [
+        { "arabic": "ٱلْحَمْدُ", "transliteration": "al-ḥamdu", "gloss_de": "das Lob", "root": "ح م د" },
+        { "arabic": "لِلَّهِ", "transliteration": "li-llāhi", "gloss_de": "gehört Allah", "root": "أ ل ه" },
+        { "arabic": "رَبِّ", "transliteration": "rabbi", "gloss_de": "dem Herrn", "root": "ر ب ب" },
+        { "arabic": "ٱلْعَٰلَمِينَ", "transliteration": "l-ʿālamīn", "gloss_de": "der Welten", "root": "ع ل م" }
+      ]
+    },
+    {
+      "number": 3,
+      "arabic": "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "transliteration": "Ar-raḥmāni r-raḥīm",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Dem Allerbarmer, dem Barmherzigen.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "The Entirely Merciful, the Especially Merciful.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "arabic": "مَٰلِكِ يَوْمِ ٱلدِّينِ",
+      "transliteration": "Māliki yawmi d-dīn",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Dem Herrscher am Tag des Gerichts.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "Sovereign of the Day of Recompense.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "note": "Es existieren zwei kanonische Lesarten: Māliki und Maliki. Beide sind ueberliefert. Die Darstellung folgt der hier importierten Ausgabe."
+    },
+    {
+      "number": 5,
+      "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+      "transliteration": "Iyyāka naʿbudu wa-iyyāka nastaʿīn",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Dir allein dienen wir, und Dich allein bitten wir um Hilfe.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "It is You we worship and You we ask for help.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "word_analysis": [
+        { "arabic": "إِيَّاكَ", "transliteration": "iyyāka", "gloss_de": "Dich allein" },
+        { "arabic": "نَعْبُدُ", "transliteration": "naʿbudu", "gloss_de": "dienen wir", "root": "ع ب د" },
+        { "arabic": "نَسْتَعِينُ", "transliteration": "nastaʿīn", "gloss_de": "bitten wir um Hilfe", "root": "ع و ن" }
+      ]
+    },
+    {
+      "number": 6,
+      "arabic": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+      "transliteration": "Ihdinā ṣ-ṣirāṭa l-mustaqīm",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Leite uns den geraden Weg.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "Guide us to the straight path.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "word_analysis": [
+        { "arabic": "ٱهْدِنَا", "transliteration": "ihdinā", "gloss_de": "leite uns", "root": "ه د ي" },
+        { "arabic": "ٱلصِّرَٰطَ", "transliteration": "ṣ-ṣirāṭa", "gloss_de": "den Weg" },
+        { "arabic": "ٱلْمُسْتَقِيمَ", "transliteration": "l-mustaqīm", "gloss_de": "den geraden", "root": "ق و م" }
+      ]
+    },
+    {
+      "number": 7,
+      "arabic": "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+      "transliteration": "Ṣirāṭa lladhīna anʿamta ʿalayhim ghayri l-maghḍūbi ʿalayhim wa-lā ḍ-ḍāllīn",
+      "translations": [
+        {
+          "language": "de",
+          "text": "Den Weg derjenigen, denen Du Gunst erwiesen hast, nicht derjenigen, die Deinen Zorn erregt haben, und nicht der Irrenden.",
+          "translator": "Islam Tutor AI Redaktion",
+          "source_id": "editorial-fiqh-summary"
+        },
+        {
+          "language": "en",
+          "text": "The path of those upon whom You have bestowed favour, not of those who have earned Your anger, nor of those who go astray.",
+          "translator": "Islam Tutor AI editorial",
+          "source_id": "editorial-fiqh-summary"
+        }
+      ],
+      "tajwid_notes": [
+        "In ٱلضَّآلِّينَ wird das Alif lang gehalten (Madd) und das Lām verdoppelt. Dieser Vers ist fuer Lernende der schwierigste der Sure."
+      ]
+    }
+  ],
+
+  "audio": {
+    "available": false,
+    "reason": "Kein Rezitations-Audio mit geklaerter Lizenz vorhanden. Es wird KEIN TTS als Ersatz verwendet - siehe docs/adr/0002-no-tts-for-quran.md.",
+    "manifest": "../../voice/audio_assets/manifest.json"
+  },
+
+  "memorization": {
+    "recommended_chunks": [
+      { "ayat": [1], "label": "Basmala" },
+      { "ayat": [2, 3, 4], "label": "Lobpreis und Attribute" },
+      { "ayat": [5], "label": "Bekenntnis" },
+      { "ayat": [6, 7], "label": "Bitte um Leitung" }
+    ],
+    "note": "Die Aufteilung folgt inhaltlichen Einheiten, nicht gleicher Laenge. Kurze Verse werden gruppiert, der lange Vers 7 steht mit Vers 6 zusammen, weil er dessen Fortsetzung ist."
+  }
+}

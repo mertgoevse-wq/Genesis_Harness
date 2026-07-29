@@ -27,6 +27,34 @@
       "recommended_agents": [
         "database-engineer"
       ]
+    },
+    {
+      "name": "browser-mcp",
+      "server_url": "mcp://localhost/browser",
+      "capabilities": ["dom_read", "screenshot"],
+      "security_boundary": "Read",
+      "recommended_agents": ["visual-qa-agent"]
+    },
+    {
+      "name": "voice-mcp",
+      "server_url": "mcp://localhost/voice",
+      "capabilities": ["stt", "tts"],
+      "security_boundary": "Execute",
+      "recommended_agents": ["voice-agent", "content-agent"]
+    },
+    {
+      "name": "video-mcp",
+      "server_url": "mcp://localhost/video",
+      "capabilities": ["video_gen"],
+      "security_boundary": "Execute",
+      "recommended_agents": ["ui-agent"]
+    },
+    {
+      "name": "mobile-mcp",
+      "server_url": "mcp://localhost/mobile",
+      "capabilities": ["camera", "microphone", "emulator"],
+      "security_boundary": "Execute",
+      "recommended_agents": ["visual-qa-agent", "ui-agent"]
     }
   ]
 }

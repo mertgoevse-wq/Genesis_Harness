@@ -1,0 +1,1 @@
+Agent Voice Agent completed task 'voice_sync'. Used skills: text-to-speech.

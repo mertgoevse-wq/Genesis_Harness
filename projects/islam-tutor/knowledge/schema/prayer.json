@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://islam-tutor.local/schema/prayer.json",
+  "title": "Gebet (Salah)",
+  "description": "Ablauf eines Pflichtgebets. Die Rak'a-Zaehlung und Bewegungsdetails sind madhhab-abhaengig und werden entsprechend gekennzeichnet.",
+  "type": "object",
+  "required": ["id", "name", "provenance", "sources", "units", "sequence"],
+  "additionalProperties": false,
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "enum": ["fajr", "dhuhr", "asr", "maghrib", "isha"]
+    },
+    "name": {
+      "type": "object",
+      "required": ["arabic", "transliteration"],
+      "properties": {
+        "arabic": { "type": "string" },
+        "transliteration": { "type": "string" },
+        "translations": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "provenance": { "$ref": "common.json#/$defs/provenance" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.json#/$defs/source_ref" }
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Reihenfolge im Tagesverlauf"
+    },
+    "time_window": {
+      "type": "object",
+      "description": "Beschreibung des Zeitfensters in Worten. Das System berechnet KEINE Gebetszeiten - dafuer braucht es astronomische Berechnung und lokale Konvention.",
+      "required": ["description", "sources"],
+      "properties": {
+        "description": { "type": "string" },
+        "starts": { "type": "string" },
+        "ends": { "type": "string" },
+        "madhhab_variations": { "$ref": "common.json#/$defs/disputed_positions" },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.json#/$defs/source_ref" }
+        }
+      }
+    },
+
+    "units": {
+      "type": "object",
+      "description": "Rak'a-Zaehlung nach Kategorie. Sunnah-Zahlen weichen zwischen den Rechtsschulen ab.",
+      "required": ["fard"],
+      "properties": {
+        "fard": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "description": "Anzahl der Pflicht-Rak'a. Hierueber besteht Konsens."
+        },
+        "sunnah_before": { "$ref": "#/$defs/unit_count" },
+        "sunnah_after": { "$ref": "#/$defs/unit_count" },
+        "witr": { "$ref": "#/$defs/unit_count" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "audible_recitation": {
+      "type": "object",
+      "description": "Ob die Rezitation in den ersten Rak'a laut oder still erfolgt.",
+      "properties": {
+        "loud_rakat": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "description": { "type": "string" },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "common.json#/$defs/source_ref" }
+        }
+      }
+    },
+
+    "sequence": {
+      "type": "array",
+      "description": "Geordnete Schrittfolge. Jeder Schritt referenziert eine Bewegung aus movements.json.",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/prayer_step" }
+    },
+
+    "prerequisites": {
+      "type": "array",
+      "description": "Voraussetzungen als Lerninhalt, z.B. Wudu, Gebetsrichtung, Bedeckung. Keine Gueltigkeitspruefung im Einzelfall.",
+      "items": {
+        "type": "object",
+        "required": ["id", "description", "sources"],
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "module_link": {
+            "type": "string",
+            "description": "Verweis auf ein Lernmodul, z.B. purification/wudu"
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "common.json#/$defs/source_ref" }
+          }
+        }
+      }
+    },
+
+    "learning_note": {
+      "type": "string",
+      "description": "Didaktischer Hinweis fuer Anfaenger. Kein religioeses Urteil."
+    },
+    "last_updated": { "type": "string", "format": "date" },
+    "review_note": { "type": "string" }
+  },
+
+  "$defs": {
+    "unit_count": {
+      "type": "object",
+      "required": ["count", "ruling", "madhhab"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "ruling": { "$ref": "common.json#/$defs/ruling_category" },
+        "madhhab": { "$ref": "common.json#/$defs/madhhab" },
+        "variations": { "$ref": "common.json#/$defs/disputed_positions" },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "common.json#/$defs/source_ref" }
+        }
+      }
+    },
+
+    "prayer_step": {
+      "type": "object",
+      "required": ["step", "movement_id", "ruling", "provenance", "sources"],
+      "additionalProperties": false,
+      "properties": {
+        "step": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Position in der Sequenz"
+        },
+        "rakah": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Zu welcher Rak'a der Schritt gehoert"
+        },
+        "movement_id": {
+          "type": "string",
+          "description": "Referenz auf einen Eintrag in movements.json"
+        },
+        "ruling": { "$ref": "common.json#/$defs/ruling_category" },
+        "madhhab": { "$ref": "common.json#/$defs/madhhab" },
+        "provenance": { "$ref": "common.json#/$defs/provenance" },
+        "recitation": {
+          "type": "array",
+          "description": "Was in diesem Schritt gesprochen wird. Arabischer Text kommt aus registrierten Quellen, nie aus Modellgenerierung.",
+          "items": { "$ref": "#/$defs/recitation_text" }
+        },
+        "instruction": {
+          "type": "object",
+          "description": "Anleitung in der Nutzersprache",
+          "additionalProperties": { "type": "string" }
+        },
+        "animation_key": {
+          "type": "string",
+          "description": "Schluessel fuer die Animation in assets/animations/. Fehlt der Asset, zeigt die UI nur Text."
+        },
+        "duration_hint_seconds": { "type": "number", "minimum": 0 },
+        "common_mistakes": {
+          "type": "array",
+          "description": "Haeufige Lernfehler als Hinweis, ohne Beschaemung",
+          "items": { "type": "string" }
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.json#/$defs/source_ref" }
+        },
+        "variations": { "$ref": "common.json#/$defs/disputed_positions" }
+      }
+    },
+
+    "recitation_text": {
+      "type": "object",
+      "required": ["id", "arabic", "transliteration", "provenance", "sources"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "arabic": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nur aus registrierter Quelle. Niemals generiert."
+        },
+        "transliteration": { "type": "string" },
+        "translations": {
+          "type": "array",
+          "items": { "$ref": "common.json#/$defs/translation" }
+        },
+        "quran_ref": {
+          "type": "string",
+          "pattern": "^[0-9]{1,3}:[0-9]{1,3}(-[0-9]{1,3})?$",
+          "description": "Sure:Vers, falls der Text aus dem Koran stammt"
+        },
+        "audio": { "$ref": "common.json#/$defs/audio_ref" },
+        "ruling": { "$ref": "common.json#/$defs/ruling_category" },
+        "repetitions": { "type": "integer", "minimum": 1 },
+        "provenance": { "$ref": "common.json#/$defs/provenance" },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.json#/$defs/source_ref" }
+        }
+      }
+    }
+  }
+}

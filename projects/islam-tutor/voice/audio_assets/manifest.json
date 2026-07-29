@@ -1,0 +1,58 @@
+{
+  "$comment": "Zuordnung von Audio-Dateien zu Inhalten. Fuer Rezitationen sind reciter und license Pflichtfelder — ADR-0002: Koranrezitation kommt ausschliesslich von menschlichen Rezitatoren mit Quellenangabe, niemals aus Sprachsynthese. Fehlt eine Aufnahme, zeigt die Oberflaeche den Text ohne Audio-Schaltflaeche. Es gibt keinen TTS-Fallback.",
+  "version": "0.1.0",
+  "updated": "2026-07-30",
+
+  "kinds": {
+    "recitation": {
+      "description": "Menschliche Koran- oder Gebetsrezitation",
+      "required_fields": ["path", "reciter", "license", "source_id"],
+      "tts_allowed": false,
+      "reason": "Rezitation folgt Tajwid-Regeln, die ein generisches Sprachmodell nicht anwendet. Eine synthetische Stimme waere ein fehlerhaftes Aussprachevorbild."
+    },
+    "pronunciation": {
+      "description": "Einzelner Laut oder Vokabel als Lernhilfe",
+      "required_fields": ["path"],
+      "tts_allowed": true,
+      "reason": "Ein isolierter Buchstabenlaut ist Lauthilfe, keine Rezitation. Der Unterschied ist in voice/base.py ueber den Schwellwert ARABIC_SHARE_THRESHOLD abgebildet."
+    },
+    "instruction": {
+      "description": "Gesprochene Anleitung in der Nutzersprache",
+      "required_fields": ["path"],
+      "tts_allowed": true,
+      "reason": "Kein religioeser Text, sondern didaktische Anleitung."
+    }
+  },
+
+  "reciters": [],
+
+  "entries": [],
+
+  "coverage": {
+    "quran_ayat": 0,
+    "prayer_recitations": 0,
+    "arabic_letters": 0,
+    "instructions": 0
+  },
+
+  "pending": {
+    "note": "Kein Audio vorhanden. Beschaffung ist durch Lizenzklaerung blockiert, nicht durch technischen Aufwand.",
+    "blocked_on": [
+      "Auswahl der Rezitatoren mit klarer Nutzungslizenz fuer digitale Verbreitung",
+      "Klaerung, ob everyayah.com oder die Quran.com Audio API eine geeignete Lizenz bieten",
+      "Aufnahmen fuer die 28 Buchstaben — besonders fuer die vier Rachenlaute und die vier emphatischen Laute, wo eine Textbeschreibung allein nicht ausreicht"
+    ],
+    "priority": "Buchstaben-Audio vor Rezitations-Audio. Begruendung: fuer die Laute ohne deutsche Entsprechung ist ein Hoerbeispiel funktional unersetzlich, waehrend Korantext auch ohne Audio gelesen und gelernt werden kann."
+  },
+
+  "entry_schema_example": {
+    "id": "quran:1:1",
+    "kind": "recitation",
+    "path": "quran/001/001_mishary.mp3",
+    "reciter": "Name des Rezitators",
+    "license": "Konkrete Lizenzangabe",
+    "source_id": "muss in knowledge/sources/registry.json stehen",
+    "duration_seconds": 0,
+    "quran_ref": "1:1"
+  }
+}

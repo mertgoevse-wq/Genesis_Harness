@@ -14,12 +14,23 @@ from genesis.revenue import (
     PricingEngine,
     SubscriptionModelSelector,
 )
+from genesis.core import TaskQueue, WorkflowEngine, SkillLoader, AgentRegistry, MetaAgent
+from genesis.memory.state import AgentStateStore
 
 
 class MasterGenesisOrchestrator:
     """Coordinates the consolidated Genesis subsystems."""
 
     def __init__(self) -> None:
+        self.state_store = AgentStateStore()
+        self.task_queue = TaskQueue()
+        self.workflow_engine = WorkflowEngine(self.task_queue, self.state_store)
+        self.agent_registry = AgentRegistry()
+        self.skill_loader = SkillLoader()
+        
+        # Meta Agent
+        self.meta_agent = MetaAgent(self.agent_registry, self.skill_loader, self.workflow_engine)
+        
         self.opportunity_detector = OpportunityDetector()
         self.venture_decision = VentureDecisionEngine()
         self.product_validator = ProductValidationEngine()
@@ -36,6 +47,11 @@ class MasterGenesisOrchestrator:
         self.founder_memory = FounderMemoryStore()
         self.improvement_engine = ImprovementEngine()
         self.autonomous_improvement = AutonomousImprovementLoop()
+        
+        # Phase 1: New Core Components
+        self.workflow_engine = WorkflowEngine()
+        self.skill_loader = SkillLoader()
+        self.agent_state = AgentStateStore()
 
     def evaluate_venture(self, idea: str, context: Dict[str, Any] | None = None) -> Dict[str, Any]:
         """Run a full venture evaluation for *idea*."""

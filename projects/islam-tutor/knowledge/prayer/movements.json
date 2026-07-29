@@ -1,0 +1,618 @@
+{
+  "$comment": "Bewegungen und Texte des Gebets. Wird von allen fuenf Gebeten referenziert, damit ein Text nur an einer Stelle steht. Alle Eintraege stehen auf scholar_review_pending: die Inhalte sind in Standardwerken breit dokumentiert, wurden aber in diesem Projekt noch nicht von einer qualifizierten Person abgenommen. Der Nutzer sieht diesen Status.",
+  "version": "0.1.0",
+  "last_updated": "2026-07-29",
+  "schema": "../schema/prayer.json",
+
+  "movements": [
+    {
+      "id": "niyyah",
+      "label": { "de": "Absicht", "en": "Intention", "tr": "Niyet" },
+      "arabic_term": "النِّيَّة",
+      "transliteration": "an-niyyah",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_neutral",
+      "instruction": {
+        "de": "Die Absicht wird im Herzen gefasst: welches Gebet, wie viele Rak'a. Sie muss nicht laut gesprochen werden.",
+        "en": "The intention is formed in the heart: which prayer, how many units. It does not need to be spoken aloud."
+      },
+      "common_mistakes": [
+        "Die Absicht laut und formelhaft aufsagen, in der Annahme, das sei Pflicht"
+      ],
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Absicht im Herzen genuegt; das Aussprechen gilt als nicht erforderlich.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Absicht im Herzen, zeitlich mit dem Eroeffnungs-Takbir zusammenfallend.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "takbir_ihram",
+      "label": { "de": "Eröffnungs-Takbir", "en": "Opening Takbir", "tr": "İftitah tekbiri" },
+      "arabic_term": "تَكْبِيرَةُ الإِحْرَام",
+      "transliteration": "takbirat al-ihram",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "takbir_hands_raised",
+      "instruction": {
+        "de": "Die Hände werden erhoben und 'Allāhu akbar' gesprochen. Damit beginnt das Gebet; ab hier gelten die Gebetsregeln.",
+        "en": "Raise the hands and say 'Allahu akbar'. The prayer begins here."
+      },
+      "recitation": [
+        {
+          "id": "takbir",
+          "label": "Takbir",
+          "arabic": "اللَّهُ أَكْبَرُ",
+          "transliteration": "Allāhu akbar",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Allah ist größer",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            },
+            {
+              "language": "en",
+              "text": "Allah is greater",
+              "translator": "Islam Tutor AI editorial",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "fard",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Hände bis zur Höhe der Ohrläppchen (Männer), bis zur Schulterhöhe (Frauen).",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Hände bis zur Schulterhöhe.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "qiyam",
+      "label": { "de": "Stehen", "en": "Standing", "tr": "Kıyam" },
+      "arabic_term": "القِيَام",
+      "transliteration": "al-qiyam",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_hands_folded",
+      "instruction": {
+        "de": "Aufrechtes Stehen, Blick zur Stelle der Niederwerfung. Die Handhaltung unterscheidet sich zwischen den Rechtsschulen.",
+        "en": "Stand upright, gaze towards the place of prostration. Hand position differs between schools of law."
+      },
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Hände unterhalb des Nabels gefaltet (Männer); auf der Brust (Frauen).",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Hände zwischen Brust und Nabel gefaltet.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "maliki",
+          "position": "Hände seitlich hängend gilt als vorzugswürdig; das Falten wird ebenfalls überliefert.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "hanbali",
+          "position": "Hände unterhalb des Nabels gefaltet.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "common_mistakes": [
+        "Blick nach oben oder umherwandernd statt zur Stelle der Niederwerfung",
+        "Gewicht einseitig verlagern, sodass der Stand nicht ruhig ist"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "thana",
+      "label": { "de": "Eröffnungsbittgebet", "en": "Opening supplication", "tr": "Sübhaneke" },
+      "arabic_term": "الثَّنَاء",
+      "transliteration": "ath-thana / du'a al-istiftah",
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_hands_folded",
+      "instruction": {
+        "de": "Ein stilles Eröffnungsbittgebet. Der Wortlaut variiert; mehrere Formen sind überliefert.",
+        "en": "A silent opening supplication. Several wordings are transmitted."
+      },
+      "recitation": [
+        {
+          "id": "subhanaka",
+          "label": "Subhanaka Allahumma",
+          "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+          "transliteration": "Subhānaka Allāhumma wa bi-hamdika, wa tabāraka ismuka, wa taʿālā jadduka, wa lā ilāha ghayruka",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Gepriesen seist Du, o Allah, und Dir sei Lob; gesegnet ist Dein Name, erhaben ist Deine Majestät, und es gibt keinen Gott außer Dir.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "taawwudh_basmala",
+      "label": { "de": "Ta'awwudh und Basmala", "en": "Seeking refuge and Basmala" },
+      "arabic_term": "التَّعَوُّذ وَالبَسْمَلَة",
+      "transliteration": "at-taʿawwudh wa-l-basmala",
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_hands_folded",
+      "instruction": {
+        "de": "Vor der Rezitation wird Zuflucht gesucht und mit der Basmala begonnen. Die Zuordnung der Basmala zur Sure Al-Fatiha wird zwischen den Rechtsschulen unterschiedlich bewertet.",
+        "en": "Before recitation, refuge is sought and the Basmala is said. Schools differ on whether the Basmala is part of Surah Al-Fatiha."
+      },
+      "recitation": [
+        {
+          "id": "taawwudh",
+          "arabic": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+          "transliteration": "Aʿūdhu bi-llāhi min ash-shayṭāni r-rajīm",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Ich suche Zuflucht bei Allah vor dem Satan, dem Verfluchten.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "id": "basmala",
+          "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "transliteration": "Bismi llāhi r-raḥmāni r-raḥīm",
+          "quran_ref": "1:1",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Im Namen Allahs, des Allerbarmers, des Barmherzigen.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "variations": [
+        {
+          "madhhab": "shafii",
+          "position": "Die Basmala gilt als Vers der Sure Al-Fatiha und wird im lauten Gebet laut gesprochen.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "hanafi",
+          "position": "Die Basmala wird still gesprochen und nicht als Vers der Sure gezählt.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "fatiha_recitation",
+      "label": { "de": "Rezitation von Al-Fatiha", "en": "Recitation of Al-Fatiha" },
+      "arabic_term": "قِرَاءَةُ الفَاتِحَة",
+      "transliteration": "qirāʾat al-Fātiḥa",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_hands_folded",
+      "quran_module_link": "quran/surah_001",
+      "instruction": {
+        "de": "Die erste Sure des Korans wird in jeder Rak'a rezitiert. Der Text liegt im Koran-Modul mit Übersetzung und Rezitations-Audio.",
+        "en": "The first surah of the Quran is recited in every unit. The text is in the Quran module with translation and recitation audio."
+      },
+      "common_mistakes": [
+        "Zu schnell rezitieren, sodass Buchstaben verschluckt werden",
+        "Die langen Vokale nicht ausreichend halten"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "surah_recitation",
+      "label": { "de": "Rezitation einer weiteren Sure", "en": "Recitation of an additional surah" },
+      "arabic_term": "قِرَاءَةُ السُّورَة",
+      "transliteration": "qirāʾat as-sūra",
+      "ruling": "wajib",
+      "madhhab": "hanafi",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_hands_folded",
+      "instruction": {
+        "de": "In den ersten beiden Rak'a folgt nach Al-Fatiha eine weitere Sure oder ein Abschnitt daraus.",
+        "en": "In the first two units, an additional surah or passage follows Al-Fatiha."
+      },
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Wajib in den ersten beiden Rak'a des Fard-Gebets.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Sunnah in den ersten beiden Rak'a.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "ruku",
+      "label": { "de": "Verbeugung", "en": "Bowing", "tr": "Rükû" },
+      "arabic_term": "الرُّكُوع",
+      "transliteration": "ar-rukūʿ",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "bowing",
+      "animation_key": "ruku",
+      "instruction": {
+        "de": "Mit 'Allāhu akbar' verbeugen, bis der Rücken waagerecht ist. Die Hände greifen die Knie, der Rücken bleibt gerade, der Blick geht zu den Füßen. Die Position wird ruhig gehalten.",
+        "en": "Bow with 'Allahu akbar' until the back is level. Hands grasp the knees, back stays straight, gaze towards the feet. Hold the position calmly."
+      },
+      "recitation": [
+        {
+          "id": "tasbih_ruku",
+          "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+          "transliteration": "Subḥāna rabbiya l-ʿaẓīm",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Gepriesen sei mein Herr, der Erhabene.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            },
+            {
+              "language": "en",
+              "text": "Glory be to my Lord, the Most Great.",
+              "translator": "Islam Tutor AI editorial",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "repetitions": 3,
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "duration_hint_seconds": 5,
+      "common_mistakes": [
+        "Rücken gerundet statt waagerecht",
+        "Zu schnell aufrichten, ohne die Position ruhig zu halten"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "qiyam_after_ruku",
+      "label": { "de": "Aufrichten aus der Verbeugung", "en": "Rising from bowing", "tr": "Kavme" },
+      "arabic_term": "الاعْتِدَال",
+      "transliteration": "al-iʿtidāl",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "standing",
+      "animation_key": "standing_neutral",
+      "instruction": {
+        "de": "Vollständig aufrichten und die Position kurz ruhig halten, bevor die Niederwerfung folgt.",
+        "en": "Rise fully and hold the position calmly before prostrating."
+      },
+      "recitation": [
+        {
+          "id": "sami_allahu",
+          "arabic": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ",
+          "transliteration": "Samiʿa llāhu li-man ḥamidah",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Allah hört den, der Ihn lobt.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "id": "rabbana_lakal_hamd",
+          "arabic": "رَبَّنَا لَكَ الْحَمْدُ",
+          "transliteration": "Rabbanā laka l-ḥamd",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Unser Herr, Dir sei Lob.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "common_mistakes": [
+        "Nicht vollständig aufrichten, sondern direkt in die Niederwerfung übergehen"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "sujud",
+      "label": { "de": "Niederwerfung", "en": "Prostration", "tr": "Secde" },
+      "arabic_term": "السُّجُود",
+      "transliteration": "as-sujūd",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "prostrating",
+      "animation_key": "sujud",
+      "instruction": {
+        "de": "Mit 'Allāhu akbar' niederwerfen. Sieben Körperstellen berühren den Boden: Stirn, Nase, beide Handflächen, beide Knie und die Zehen beider Füße.",
+        "en": "Prostrate with 'Allahu akbar'. Seven parts touch the ground: forehead, nose, both palms, both knees, and the toes of both feet."
+      },
+      "recitation": [
+        {
+          "id": "tasbih_sujud",
+          "arabic": "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+          "transliteration": "Subḥāna rabbiya l-aʿlā",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Gepriesen sei mein Herr, der Allerhöchste.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            },
+            {
+              "language": "en",
+              "text": "Glory be to my Lord, the Most High.",
+              "translator": "Islam Tutor AI editorial",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "repetitions": 3,
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "duration_hint_seconds": 5,
+      "common_mistakes": [
+        "Nur die Stirn aufsetzen, ohne die Nase",
+        "Die Ellbogen auf dem Boden ablegen",
+        "Die Zehen nicht aufstellen"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "jalsa",
+      "label": { "de": "Sitzen zwischen den Niederwerfungen", "en": "Sitting between prostrations", "tr": "Celse" },
+      "arabic_term": "الجَلْسَة",
+      "transliteration": "al-jalsa",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "sitting",
+      "animation_key": "sitting",
+      "instruction": {
+        "de": "Mit 'Allāhu akbar' aufrichten und ruhig sitzen, bevor die zweite Niederwerfung folgt.",
+        "en": "Rise with 'Allahu akbar' and sit calmly before the second prostration."
+      },
+      "recitation": [
+        {
+          "id": "rabbighfirli",
+          "arabic": "رَبِّ اغْفِرْ لِي",
+          "transliteration": "Rabbi ghfir lī",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Mein Herr, vergib mir.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "qada_intermediate",
+      "label": { "de": "Zwischensitzen", "en": "Intermediate sitting", "tr": "İlk oturuş" },
+      "arabic_term": "القَعْدَةُ الأُولَى",
+      "transliteration": "al-qaʿda al-ūlā",
+      "ruling": "wajib",
+      "madhhab": "hanafi",
+      "provenance": "scholar_review_pending",
+      "body_position": "sitting",
+      "animation_key": "sitting",
+      "instruction": {
+        "de": "Bei Gebeten mit drei oder vier Rak'a wird nach der zweiten Rak'a gesessen und der Tashahhud gesprochen. Danach wird zur nächsten Rak'a aufgestanden.",
+        "en": "In prayers of three or four units, one sits after the second unit and recites the Tashahhud, then rises for the next unit."
+      },
+      "recitation": [
+        {
+          "id": "tashahhud_ref",
+          "label": "Tashahhud",
+          "arabic": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+          "transliteration": "At-taḥiyyātu li-llāhi wa-ṣ-ṣalawātu wa-ṭ-ṭayyibāt, as-salāmu ʿalayka ayyuhā n-nabiyyu wa raḥmatu llāhi wa barakātuh, as-salāmu ʿalaynā wa ʿalā ʿibādi llāhi ṣ-ṣāliḥīn, ashhadu an lā ilāha illā llāh wa ashhadu anna Muḥammadan rasūlu llāh",
+          "ruling": "wajib",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }],
+          "note": "Gleicher Wortlaut wie im abschließenden Sitzen. Im Zwischensitzen folgt kein Salawat und kein Bittgebet."
+        }
+      ],
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Wajib. Wird das Zwischensitzen unterlassen, ist eine Ausgleichs-Niederwerfung (Sajdat as-Sahw) erforderlich.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Sunnah.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "common_mistakes": [
+        "Im Zwischensitzen zusätzlich Salawat und Bittgebet sprechen"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "qada_final",
+      "label": { "de": "Abschließendes Sitzen", "en": "Final sitting", "tr": "Son oturuş" },
+      "arabic_term": "القَعْدَةُ الأَخِيرَة",
+      "transliteration": "al-qaʿda al-akhīra",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "sitting",
+      "animation_key": "sitting",
+      "instruction": {
+        "de": "Nach der letzten Niederwerfung wird zum abschließenden Sitzen aufgerichtet. Hier folgen Tashahhud, Salawat und ein Bittgebet.",
+        "en": "After the final prostration, rise to the closing sitting. Tashahhud, Salawat, and a supplication follow."
+      },
+      "recitation": [
+        {
+          "id": "tashahhud",
+          "label": "Tashahhud",
+          "arabic": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+          "transliteration": "At-taḥiyyātu li-llāhi wa-ṣ-ṣalawātu wa-ṭ-ṭayyibāt, as-salāmu ʿalayka ayyuhā n-nabiyyu wa raḥmatu llāhi wa barakātuh, as-salāmu ʿalaynā wa ʿalā ʿibādi llāhi ṣ-ṣāliḥīn, ashhadu an lā ilāha illā llāh wa ashhadu anna Muḥammadan rasūlu llāh",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Die Grüße gebühren Allah, ebenso die Gebete und die guten Werke. Friede sei mit dir, o Prophet, und die Barmherzigkeit Allahs und Seine Segnungen. Friede sei mit uns und mit den rechtschaffenen Dienern Allahs. Ich bezeuge, dass es keinen Gott außer Allah gibt, und ich bezeuge, dass Muhammad der Gesandte Allahs ist.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "wajib",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "id": "salawat",
+          "label": "Salawat (Durud)",
+          "arabic": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+          "transliteration": "Allāhumma ṣalli ʿalā Muḥammadin wa ʿalā āli Muḥammad, kamā ṣallayta ʿalā Ibrāhīma wa ʿalā āli Ibrāhīm, innaka ḥamīdun majīd",
+          "translations": [
+            {
+              "language": "de",
+              "text": "O Allah, segne Muhammad und die Familie Muhammads, wie Du Ibrahim und die Familie Ibrahims gesegnet hast. Du bist wahrlich der Lobenswürdige, der Ruhmreiche.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "ruling": "sunnah",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }],
+          "note": "Es sind mehrere Wortlaute überliefert. Dies ist eine verbreitete Form."
+        }
+      ],
+      "variations": [
+        {
+          "madhhab": "hanafi",
+          "position": "Sitzhaltung: auf dem linken Fuß sitzend, der rechte Fuß aufgestellt.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        },
+        {
+          "madhhab": "shafii",
+          "position": "Im letzten Sitzen wird die Tawarruk-Haltung eingenommen.",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+
+    {
+      "id": "taslim",
+      "label": { "de": "Friedensgruß", "en": "Salutation of peace", "tr": "Selam" },
+      "arabic_term": "التَّسْلِيم",
+      "transliteration": "at-taslīm",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "body_position": "sitting",
+      "animation_key": "sitting_turn_head",
+      "instruction": {
+        "de": "Der Kopf wird nach rechts gewandt und der Friedensgruß gesprochen, dann nach links. Damit ist das Gebet beendet.",
+        "en": "Turn the head to the right and give the salutation, then to the left. The prayer ends here."
+      },
+      "recitation": [
+        {
+          "id": "salam",
+          "arabic": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+          "transliteration": "As-salāmu ʿalaykum wa raḥmatu llāh",
+          "translations": [
+            {
+              "language": "de",
+              "text": "Friede sei mit euch und die Barmherzigkeit Allahs.",
+              "translator": "Islam Tutor AI Redaktion",
+              "source_id": "editorial-fiqh-summary"
+            }
+          ],
+          "repetitions": 2,
+          "ruling": "fard",
+          "provenance": "scholar_review_pending",
+          "sources": [{ "source_id": "editorial-fiqh-summary" }]
+        }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ]
+}

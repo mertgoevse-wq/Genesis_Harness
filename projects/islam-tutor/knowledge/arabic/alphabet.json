@@ -1,0 +1,1391 @@
+{
+  "$comment": "Generiert von scripts/generate_alphabet.py. Nicht von Hand bearbeiten - Aenderungen im Generator vornehmen und neu erzeugen. Die Positionsformen nutzen Tatweel (U+0640) als Verbindungsstrich.",
+  "id": "arabic_alphabet",
+  "version": "0.1.0",
+  "last_updated": "2026-07-29",
+  "provenance": "verified",
+  "sources": [
+    {
+      "source_id": "editorial-arabic-didactics"
+    }
+  ],
+  "provenance_note": "Sprachliche Inhalte sind linguistisch, nicht religionsrechtlich. Sie duerfen verified sein, wenn sie sprachwissenschaftlich korrekt sind - siehe knowledge/sources/registry.json, editorial-arabic-didactics.",
+  "script_direction": "rtl",
+  "letter_count": 28,
+  "letters": [
+    {
+      "id": "alif",
+      "order": 1,
+      "glyph": "ا",
+      "name": {
+        "arabic": "أَلِف",
+        "transliteration": "alif"
+      },
+      "transliteration": "alif",
+      "ipa": "aː",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "ا",
+        "initial": "ا",
+        "medial": "ـا",
+        "final": "ـا",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Langes a. Traeger fuer Hamza und Vokalzeichen; kein eigener Konsonant.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "alif",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/alif.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ba",
+      "order": 2,
+      "glyph": "ب",
+      "name": {
+        "arabic": "بَاء",
+        "transliteration": "bāʾ"
+      },
+      "transliteration": "bāʾ",
+      "ipa": "b",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ب",
+        "initial": "بـ",
+        "medial": "ـبـ",
+        "final": "ـب"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches b in Ball.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "b_t_th",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ba.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ta",
+      "order": 3,
+      "glyph": "ت",
+      "name": {
+        "arabic": "تَاء",
+        "transliteration": "tāʾ"
+      },
+      "transliteration": "tāʾ",
+      "ipa": "t",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ت",
+        "initial": "تـ",
+        "medial": "ـتـ",
+        "final": "ـت"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches t in Tag.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "b_t_th",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ta.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "tha",
+      "order": 4,
+      "glyph": "ث",
+      "name": {
+        "arabic": "ثَاء",
+        "transliteration": "thāʾ"
+      },
+      "transliteration": "thāʾ",
+      "ipa": "θ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ث",
+        "initial": "ثـ",
+        "medial": "ـثـ",
+        "final": "ـث"
+      },
+      "pronunciation": {
+        "de": "Stimmloses th wie im englischen think. Zungenspitze zwischen den Zaehnen.",
+        "difficulty_for_german_speakers": 2,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "b_t_th",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/tha.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "jim",
+      "order": 5,
+      "glyph": "ج",
+      "name": {
+        "arabic": "جِيم",
+        "transliteration": "jīm"
+      },
+      "transliteration": "jīm",
+      "ipa": "d͡ʒ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ج",
+        "initial": "جـ",
+        "medial": "ـجـ",
+        "final": "ـج"
+      },
+      "pronunciation": {
+        "de": "Wie dsch in Dschungel.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "j_h_kh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/jim.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "hha",
+      "order": 6,
+      "glyph": "ح",
+      "name": {
+        "arabic": "حَاء",
+        "transliteration": "ḥāʾ"
+      },
+      "transliteration": "ḥāʾ",
+      "ipa": "ħ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ح",
+        "initial": "حـ",
+        "medial": "ـحـ",
+        "final": "ـح"
+      },
+      "pronunciation": {
+        "de": "Kein deutsches Gegenstueck. Stimmloser Rachenlaut, tief im Hals, ohne Reibung am Gaumen.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "j_h_kh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/hha.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "kha",
+      "order": 7,
+      "glyph": "خ",
+      "name": {
+        "arabic": "خَاء",
+        "transliteration": "khāʾ"
+      },
+      "transliteration": "khāʾ",
+      "ipa": "x",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "خ",
+        "initial": "خـ",
+        "medial": "ـخـ",
+        "final": "ـخ"
+      },
+      "pronunciation": {
+        "de": "Wie ch in Bach, aber weiter hinten.",
+        "difficulty_for_german_speakers": 2,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "j_h_kh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/kha.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "dal",
+      "order": 8,
+      "glyph": "د",
+      "name": {
+        "arabic": "دَال",
+        "transliteration": "dāl"
+      },
+      "transliteration": "dāl",
+      "ipa": "d",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "د",
+        "initial": "د",
+        "medial": "ـد",
+        "final": "ـد",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Wie deutsches d in dann.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "d_dh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/dal.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "dhal",
+      "order": 9,
+      "glyph": "ذ",
+      "name": {
+        "arabic": "ذَال",
+        "transliteration": "dhāl"
+      },
+      "transliteration": "dhāl",
+      "ipa": "ð",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "ذ",
+        "initial": "ذ",
+        "medial": "ـذ",
+        "final": "ـذ",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Stimmhaftes th wie im englischen this.",
+        "difficulty_for_german_speakers": 2,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "d_dh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/dhal.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ra",
+      "order": 10,
+      "glyph": "ر",
+      "name": {
+        "arabic": "رَاء",
+        "transliteration": "rāʾ"
+      },
+      "transliteration": "rāʾ",
+      "ipa": "r",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "ر",
+        "initial": "ر",
+        "medial": "ـر",
+        "final": "ـر",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Gerolltes Zungenspitzen-r, wie im Italienischen. Nicht das deutsche Rachen-r.",
+        "difficulty_for_german_speakers": 2,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "r_z",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ra.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "zay",
+      "order": 11,
+      "glyph": "ز",
+      "name": {
+        "arabic": "زَاي",
+        "transliteration": "zāy"
+      },
+      "transliteration": "zāy",
+      "ipa": "z",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "ز",
+        "initial": "ز",
+        "medial": "ـز",
+        "final": "ـز",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Stimmhaftes s wie in Rose.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "r_z",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/zay.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "sin",
+      "order": 12,
+      "glyph": "س",
+      "name": {
+        "arabic": "سِين",
+        "transliteration": "sīn"
+      },
+      "transliteration": "sīn",
+      "ipa": "s",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "س",
+        "initial": "سـ",
+        "medial": "ـسـ",
+        "final": "ـس"
+      },
+      "pronunciation": {
+        "de": "Stimmloses s wie in Gras.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "s_sh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/sin.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "shin",
+      "order": 13,
+      "glyph": "ش",
+      "name": {
+        "arabic": "شِين",
+        "transliteration": "shīn"
+      },
+      "transliteration": "shīn",
+      "ipa": "ʃ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ش",
+        "initial": "شـ",
+        "medial": "ـشـ",
+        "final": "ـش"
+      },
+      "pronunciation": {
+        "de": "Wie sch in Schule.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "s_sh",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/shin.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "sad",
+      "order": 14,
+      "glyph": "ص",
+      "name": {
+        "arabic": "صَاد",
+        "transliteration": "ṣād"
+      },
+      "transliteration": "ṣād",
+      "ipa": "sɣ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ص",
+        "initial": "صـ",
+        "medial": "ـصـ",
+        "final": "ـص"
+      },
+      "pronunciation": {
+        "de": "Emphatisches s. Gleicher Laut wie Sin, aber mit gehobenem Zungenruecken und dunklerem Klang.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "emphatic",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/sad.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "dad",
+      "order": 15,
+      "glyph": "ض",
+      "name": {
+        "arabic": "ضَاد",
+        "transliteration": "ḍād"
+      },
+      "transliteration": "ḍād",
+      "ipa": "dɣ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ض",
+        "initial": "ضـ",
+        "medial": "ـضـ",
+        "final": "ـض"
+      },
+      "pronunciation": {
+        "de": "Emphatisches d. Der charakteristischste Laut des Arabischen.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "emphatic",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/dad.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "tta",
+      "order": 16,
+      "glyph": "ط",
+      "name": {
+        "arabic": "طَاء",
+        "transliteration": "ṭāʾ"
+      },
+      "transliteration": "ṭāʾ",
+      "ipa": "tɣ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ط",
+        "initial": "طـ",
+        "medial": "ـطـ",
+        "final": "ـط"
+      },
+      "pronunciation": {
+        "de": "Emphatisches t. Dunkler und voller als Ta.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "emphatic",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/tta.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "zza",
+      "order": 17,
+      "glyph": "ظ",
+      "name": {
+        "arabic": "ظَاء",
+        "transliteration": "ẓāʾ"
+      },
+      "transliteration": "ẓāʾ",
+      "ipa": "ðɣ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ظ",
+        "initial": "ظـ",
+        "medial": "ـظـ",
+        "final": "ـظ"
+      },
+      "pronunciation": {
+        "de": "Emphatisches stimmhaftes th.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "emphatic",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/zza.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ain",
+      "order": 18,
+      "glyph": "ع",
+      "name": {
+        "arabic": "عَيْن",
+        "transliteration": "ʿayn"
+      },
+      "transliteration": "ʿayn",
+      "ipa": "ʕ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ع",
+        "initial": "عـ",
+        "medial": "ـعـ",
+        "final": "ـع"
+      },
+      "pronunciation": {
+        "de": "Kein deutsches Gegenstueck. Stimmhafter Rachenlaut durch Verengung im tiefen Hals.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "ain_ghain",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ain.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ghain",
+      "order": 19,
+      "glyph": "غ",
+      "name": {
+        "arabic": "غَيْن",
+        "transliteration": "ghayn"
+      },
+      "transliteration": "ghayn",
+      "ipa": "ʁ",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "غ",
+        "initial": "غـ",
+        "medial": "ـغـ",
+        "final": "ـغ"
+      },
+      "pronunciation": {
+        "de": "Wie ein gerolltes Rachen-r, aehnlich dem franzoesischen r.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "ain_ghain",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ghain.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "fa",
+      "order": 20,
+      "glyph": "ف",
+      "name": {
+        "arabic": "فَاء",
+        "transliteration": "fāʾ"
+      },
+      "transliteration": "fāʾ",
+      "ipa": "f",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ف",
+        "initial": "فـ",
+        "medial": "ـفـ",
+        "final": "ـف"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches f in fein.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "f_q",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/fa.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "qaf",
+      "order": 21,
+      "glyph": "ق",
+      "name": {
+        "arabic": "قَاف",
+        "transliteration": "qāf"
+      },
+      "transliteration": "qāf",
+      "ipa": "q",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ق",
+        "initial": "قـ",
+        "medial": "ـقـ",
+        "final": "ـق"
+      },
+      "pronunciation": {
+        "de": "Wie k, aber weit hinten am Gaumensegel gebildet.",
+        "difficulty_for_german_speakers": 3,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "f_q",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/qaf.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "kaf",
+      "order": 22,
+      "glyph": "ك",
+      "name": {
+        "arabic": "كَاف",
+        "transliteration": "kāf"
+      },
+      "transliteration": "kāf",
+      "ipa": "k",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ك",
+        "initial": "كـ",
+        "medial": "ـكـ",
+        "final": "ـك"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches k in kalt.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "k_l",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/kaf.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "lam",
+      "order": 23,
+      "glyph": "ل",
+      "name": {
+        "arabic": "لَام",
+        "transliteration": "lām"
+      },
+      "transliteration": "lām",
+      "ipa": "l",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ل",
+        "initial": "لـ",
+        "medial": "ـلـ",
+        "final": "ـل"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches l in Land.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "k_l",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/lam.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "mim",
+      "order": 24,
+      "glyph": "م",
+      "name": {
+        "arabic": "مِيم",
+        "transliteration": "mīm"
+      },
+      "transliteration": "mīm",
+      "ipa": "m",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "م",
+        "initial": "مـ",
+        "medial": "ـمـ",
+        "final": "ـم"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches m in Mut.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "m_n",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/mim.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "nun",
+      "order": 25,
+      "glyph": "ن",
+      "name": {
+        "arabic": "نُون",
+        "transliteration": "nūn"
+      },
+      "transliteration": "nūn",
+      "ipa": "n",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ن",
+        "initial": "نـ",
+        "medial": "ـنـ",
+        "final": "ـن"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches n in nein.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "m_n",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/nun.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ha",
+      "order": 26,
+      "glyph": "ه",
+      "name": {
+        "arabic": "هَاء",
+        "transliteration": "hāʾ"
+      },
+      "transliteration": "hāʾ",
+      "ipa": "h",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ه",
+        "initial": "هـ",
+        "medial": "ـهـ",
+        "final": "ـه"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches h in Haus. Nicht zu verwechseln mit dem tieferen Ha.",
+        "difficulty_for_german_speakers": 2,
+        "has_german_equivalent": false
+      },
+      "confusion_group": "h_w_y",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ha.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "waw",
+      "order": 27,
+      "glyph": "و",
+      "name": {
+        "arabic": "وَاو",
+        "transliteration": "wāw"
+      },
+      "transliteration": "wāw",
+      "ipa": "w",
+      "connects_forward": false,
+      "forms": {
+        "isolated": "و",
+        "initial": "و",
+        "medial": "ـو",
+        "final": "ـو",
+        "note": "Dieser Buchstabe verbindet sich nicht mit dem folgenden Buchstaben."
+      },
+      "pronunciation": {
+        "de": "Wie englisches w in water. Auch langes u als Vokal.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "h_w_y",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/waw.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ya",
+      "order": 28,
+      "glyph": "ي",
+      "name": {
+        "arabic": "يَاء",
+        "transliteration": "yāʾ"
+      },
+      "transliteration": "yāʾ",
+      "ipa": "j",
+      "connects_forward": true,
+      "forms": {
+        "isolated": "ي",
+        "initial": "يـ",
+        "medial": "ـيـ",
+        "final": "ـي"
+      },
+      "pronunciation": {
+        "de": "Wie deutsches j in ja. Auch langes i als Vokal.",
+        "difficulty_for_german_speakers": 1,
+        "has_german_equivalent": true
+      },
+      "confusion_group": "h_w_y",
+      "audio": {
+        "available": false,
+        "expected_path": "letters/ya.mp3",
+        "kind": "pronunciation",
+        "note": "Aussprache-Audio ist als Lernhilfe zulaessig. Fehlt die Datei, zeigt die UI nur Text."
+      },
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    }
+  ],
+  "vowel_marks": [
+    {
+      "id": "fatha",
+      "glyph": "َ",
+      "example": "بَ",
+      "name_ar": "فَتْحَة",
+      "translit": "fatha",
+      "sound": "kurzes a",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "kasra",
+      "glyph": "ِ",
+      "example": "بِ",
+      "name_ar": "كَسْرَة",
+      "translit": "kasra",
+      "sound": "kurzes i",
+      "position": "unter dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "damma",
+      "glyph": "ُ",
+      "example": "بُ",
+      "name_ar": "ضَمَّة",
+      "translit": "damma",
+      "sound": "kurzes u",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "sukun",
+      "glyph": "ْ",
+      "example": "بْ",
+      "name_ar": "سُكُون",
+      "translit": "sukun",
+      "sound": "kein Vokal",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "shadda",
+      "glyph": "ّ",
+      "example": "بّ",
+      "name_ar": "شَدَّة",
+      "translit": "shadda",
+      "sound": "Verdoppelung des Konsonanten",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "fathatan",
+      "glyph": "ً",
+      "example": "بً",
+      "name_ar": "فَتْحَتَان",
+      "translit": "fathatan",
+      "sound": "an",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "kasratan",
+      "glyph": "ٍ",
+      "example": "بٍ",
+      "name_ar": "كَسْرَتَان",
+      "translit": "kasratan",
+      "sound": "in",
+      "position": "unter dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "dammatan",
+      "glyph": "ٌ",
+      "example": "بٌ",
+      "name_ar": "ضَمَّتَان",
+      "translit": "dammatan",
+      "sound": "un",
+      "position": "ueber dem Buchstaben",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    }
+  ],
+  "confusion_groups": [
+    {
+      "id": "b_t_th",
+      "label": "Ba, Ta, Tha und Nun",
+      "letters": [
+        "ba",
+        "ta",
+        "tha",
+        "nun"
+      ],
+      "why": "Gleicher Grundkoerper, Unterscheidung nur ueber Zahl und Lage der Punkte.",
+      "tip": "Punkt unten = Ba. Zwei oben = Ta. Drei oben = Tha. Ein Punkt oben bei tieferer Schale = Nun.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "j_h_kh",
+      "label": "Jim, Ha und Kha",
+      "letters": [
+        "jim",
+        "hha",
+        "kha"
+      ],
+      "why": "Identische Form, Unterscheidung nur ueber den Punkt.",
+      "tip": "Punkt innen = Jim. Kein Punkt = Ha. Punkt oben = Kha.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "d_dh",
+      "label": "Dal und Dhal",
+      "letters": [
+        "dal",
+        "dhal"
+      ],
+      "why": "Unterschied nur ein Punkt.",
+      "tip": "Ohne Punkt = Dal. Mit Punkt = Dhal.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "r_z",
+      "label": "Ra und Zay",
+      "letters": [
+        "ra",
+        "zay"
+      ],
+      "why": "Unterschied nur ein Punkt.",
+      "tip": "Ohne Punkt = Ra. Mit Punkt = Zay.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "s_sh",
+      "label": "Sin und Shin",
+      "letters": [
+        "sin",
+        "shin"
+      ],
+      "why": "Unterschied nur drei Punkte.",
+      "tip": "Ohne Punkte = Sin. Drei Punkte = Shin.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "emphatic",
+      "label": "Emphatische Laute",
+      "letters": [
+        "sad",
+        "dad",
+        "tta",
+        "zza"
+      ],
+      "why": "Vier Laute ohne deutsches Gegenstueck. Sie klingen dunkler als ihre nicht-emphatischen Gegenstuecke.",
+      "tip": "Sad zu Sin, Dad zu Dal, Ta zu Ta, Za zu Dhal jeweils im Paar ueben. Der Unterschied liegt im gehobenen Zungenruecken.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "ain_ghain",
+      "label": "Ain und Ghain",
+      "letters": [
+        "ain",
+        "ghain"
+      ],
+      "why": "Rachenlaute ohne deutsche Entsprechung, gleiche Form.",
+      "tip": "Ohne Punkt = Ain. Mit Punkt = Ghain. Beide brauchen Hoerbeispiele - Beschreibung allein genuegt nicht.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "h_w_y",
+      "label": "Ha, Waw und Ya",
+      "letters": [
+        "ha",
+        "waw",
+        "ya"
+      ],
+      "why": "Waw und Ya sind zugleich Konsonant und langer Vokal. Ha wird oft mit dem tieferen Ha verwechselt.",
+      "tip": "Waw und Ya zuerst als Konsonant lernen, dann als Vokal.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    },
+    {
+      "id": "alif",
+      "label": "Alif",
+      "letters": [
+        "alif"
+      ],
+      "why": "Kein eigener Konsonant, sondern Traeger und Laengezeichen.",
+      "tip": "Alif als Sonderfall behandeln, nicht als 'A' wie im deutschen Alphabet.",
+      "provenance": "verified",
+      "sources": [
+        {
+          "source_id": "editorial-arabic-didactics"
+        }
+      ]
+    }
+  ],
+  "curriculum": [
+    {
+      "unit": 1,
+      "title": "Buchstaben mit deutscher Entsprechung",
+      "goal": "Die Buchstaben erkennen und schreiben, deren Laut aus dem Deutschen bekannt ist.",
+      "letters": [
+        "ba",
+        "ta",
+        "dal",
+        "ra",
+        "zay",
+        "sin",
+        "fa",
+        "kaf",
+        "lam",
+        "mim",
+        "nun"
+      ],
+      "estimated_sessions": 4
+    },
+    {
+      "unit": 2,
+      "title": "Neue, aber gut beschreibbare Laute",
+      "goal": "Laute lernen, die im Deutschen fehlen, sich aber ueber bekannte Sprachen erklaeren lassen.",
+      "letters": [
+        "tha",
+        "jim",
+        "dhal",
+        "shin",
+        "kha",
+        "ha",
+        "waw",
+        "ya"
+      ],
+      "estimated_sessions": 4
+    },
+    {
+      "unit": 3,
+      "title": "Emphatische Laute",
+      "goal": "Die vier emphatischen Konsonanten im Kontrast zu ihren Gegenstuecken unterscheiden.",
+      "letters": [
+        "sad",
+        "dad",
+        "tta",
+        "zza"
+      ],
+      "estimated_sessions": 5,
+      "note": "Diese Einheit braucht Hoerbeispiele. Reines Textlernen genuegt hier nicht."
+    },
+    {
+      "unit": 4,
+      "title": "Rachenlaute",
+      "goal": "Ain, Ghain, Ha und Qaf bilden - die schwierigste Gruppe fuer deutsche Sprecher.",
+      "letters": [
+        "ain",
+        "ghain",
+        "hha",
+        "qaf"
+      ],
+      "estimated_sessions": 6,
+      "note": "Realistische Erwartung setzen: diese Laute brauchen Wochen, nicht Tage. Kein Grund zur Entmutigung."
+    },
+    {
+      "unit": 5,
+      "title": "Alif, Vokalzeichen und Verbindungen",
+      "goal": "Kurzvokale, Sukun und Shadda lesen; Buchstaben zu Woertern verbinden.",
+      "letters": [
+        "alif"
+      ],
+      "includes_vowel_marks": true,
+      "estimated_sessions": 5
+    },
+    {
+      "unit": 6,
+      "title": "Erste Woerter lesen",
+      "goal": "Kurze Woerter und die Sure Al-Fatiha Wort fuer Wort lesen.",
+      "letters": [],
+      "module_link": "quran/surah_001",
+      "estimated_sessions": 6
+    }
+  ],
+  "didactic_notes": [
+    "Arabisch wird von rechts nach links geschrieben. Das ist fuer Lernende die erste Umstellung und braucht Uebung mit der Hand, nicht nur mit den Augen.",
+    "Buchstaben aendern ihre Form je nach Position im Wort. Alle vier Formen gehoeren von Anfang an zum Lernstoff, sonst wird spaeter neu gelernt.",
+    "Sechs Buchstaben verbinden sich nicht nach vorne. Wer diese sechs kennt, kann Wortgrenzen im Schriftbild schneller erkennen.",
+    "Im Korantext sind die Vokalzeichen gesetzt. In modernem Alltagsarabisch fehlen sie meist. Fuer das Lesen des Korantexts ist das eine Erleichterung."
+  ]
+}

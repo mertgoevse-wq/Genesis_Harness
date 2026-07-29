@@ -1,0 +1,189 @@
+{
+  "project": "islam-tutor",
+  "version": "0.1.0",
+  "updated": "2026-07-29",
+  "parent_registry": "../../../configs/agent_registry.json",
+  "policy_document": "docs/CONTENT_POLICY.md",
+  "agents": [
+    {
+      "id": "islamic-content-agent",
+      "name": "Islamic Content Agent",
+      "layer": "content",
+      "veto": true,
+      "model_class": "high_reasoning",
+      "owns": [
+        "knowledge/prayer/**",
+        "knowledge/purification/**",
+        "ai/prompts/**",
+        "ai/guardrails/**"
+      ],
+      "responsibilities": [
+        "Content Policy durchsetzen",
+        "Madhhab-Varianten korrekt zuordnen",
+        "Hadith-Metadaten auf Vollstaendigkeit pruefen",
+        "provenance-Feld setzen"
+      ],
+      "blocks": [
+        "Inhalte ohne registrierte Quelle",
+        "Fatwa-artige Formulierungen",
+        "Bevorzugung einer Rechtsschule",
+        "Vermischung von Fard/Wajib/Sunnah/Mustahabb"
+      ],
+      "cannot": [
+        "Theologische Richtigkeit fachlich abnehmen",
+        "provenance auf verified setzen ohne menschliche Gelehrtenpruefung"
+      ]
+    },
+    {
+      "id": "quran-research-agent",
+      "name": "Quran Research Agent",
+      "layer": "content",
+      "veto": true,
+      "veto_scope": "knowledge/quran/**",
+      "model_class": "high_reasoning",
+      "owns": [
+        "knowledge/quran/**",
+        "knowledge/sources/registry.json",
+        "scripts/ingest_quran.py"
+      ],
+      "responsibilities": [
+        "Import aus registrierten Quellen mit SHA-256-Pruefsumme",
+        "Uebersetzungszuordnung mit Uebersetzername",
+        "Transliteration",
+        "Tafsir-Verweise dem Exegeten zuschreiben"
+      ],
+      "hard_rules": [
+        "NIEMALS arabischen Korantext generieren",
+        "Fehlender Vers ergibt 'nicht vorhanden', keine Rekonstruktion",
+        "Uebersetzung nie als 'der Koran sagt' ausgeben"
+      ]
+    },
+    {
+      "id": "arabic-teacher-agent",
+      "name": "Arabic Teacher Agent",
+      "layer": "content",
+      "veto": false,
+      "model_class": "standard",
+      "owns": [
+        "knowledge/arabic/**"
+      ],
+      "responsibilities": [
+        "Alphabet mit allen vier Positionsformen",
+        "Aussprache inkl. Laute ohne deutsche Entsprechung",
+        "Lernprogression Buchstaben bis Koranarabisch",
+        "Tajwid als Lerninhalt, nicht als Bewertung",
+        "Vokabular mit Koran-Haeufigkeit"
+      ],
+      "cannot": [
+        "Aussprache eines Nutzers als tajwid-korrekt zertifizieren"
+      ]
+    },
+    {
+      "id": "ux-agent",
+      "name": "UX Agent",
+      "layer": "design",
+      "veto": false,
+      "model_class": "standard",
+      "owns": [
+        "frontend/src/styles/**",
+        "docs/UX_GUIDELINES.md"
+      ],
+      "responsibilities": [
+        "Lernfluss und Modulreihenfolge",
+        "RTL/LTR-Mischlayout",
+        "Lesbarkeit arabischer Diakritika",
+        "Tonalitaet der UI-Texte",
+        "Zugaenglichkeit: Tastatur, Screenreader, lang-Attribute"
+      ],
+      "constraints": [
+        "Keine Gamification die religioese Schuld erzeugt",
+        "Kein Gebetszeit-Countdown mit Druckwirkung"
+      ]
+    },
+    {
+      "id": "frontend-agent",
+      "name": "Frontend Agent",
+      "layer": "development",
+      "veto": false,
+      "model_class": "standard",
+      "owns": [
+        "frontend/**"
+      ],
+      "responsibilities": [
+        "Chat-UI mit sichtbaren Quellenangaben",
+        "Namaz-Trainer Schritt-Ansicht",
+        "Wudu-Modul sequenzielle Lektion",
+        "Arabisch-Modul Buchstabenraster und Uebungsmodus",
+        "Madhhab-Auswahl im Profil"
+      ],
+      "phase_1_constraint": "Vanilla JS, kein Build-Schritt"
+    },
+    {
+      "id": "backend-agent",
+      "name": "Backend Agent",
+      "layer": "development",
+      "veto": false,
+      "model_class": "standard",
+      "owns": [
+        "backend/**"
+      ],
+      "responsibilities": [
+        "FastAPI-Routen und Pydantic-Schemas",
+        "Knowledge-Service mit Madhhab- und Provenance-Filter",
+        "Progress-Service",
+        "Caching der Wissensbasis"
+      ],
+      "hard_rules": [
+        "Provenance-Filter im Service-Layer, nicht in der Route"
+      ]
+    },
+    {
+      "id": "voice-agent",
+      "name": "Voice Agent",
+      "layer": "development",
+      "veto": false,
+      "model_class": "standard",
+      "owns": [
+        "voice/**"
+      ],
+      "responsibilities": [
+        "VoiceProvider-Abstraktion und Implementierungen",
+        "Audio-Manifest fuer Rezitationen mit Quellenangabe",
+        "Aussprache-Feedback als Hinweis"
+      ],
+      "hard_rules": [
+        "Kein TTS fuer arabischen Korantext"
+      ],
+      "adr": "docs/adr/0002-no-tts-for-quran.md"
+    },
+    {
+      "id": "qa-agent",
+      "name": "QA Agent",
+      "layer": "quality",
+      "veto": true,
+      "model_class": "standard",
+      "owns": [
+        "tests/**",
+        "scripts/verify_knowledge.py"
+      ],
+      "responsibilities": [
+        "Unit-, Integration- und Policy-Tests",
+        "Ein Test pro Regel in CONTENT_POLICY.md 3.1",
+        "Schema-Validierung der Wissensbasis im CI",
+        "Regressionstest fuer jede gefixte Policy-Luecke"
+      ],
+      "blocks": [
+        "Commit mit fehlgeschlagenen Policy-Tests",
+        "Neue Inhalte ohne Schema-Validierung",
+        "placeholder-Inhalte auf auslieferbarem Pfad"
+      ]
+    }
+  ],
+  "escalation_triggers": [
+    "Quellen widersprechen sich und die Datenlage loest es nicht auf",
+    "Anforderung beruehrt die Content Policy",
+    "Inhalt braucht fachliche Pruefung durch einen Gelehrten",
+    "islamic-content-agent und ein anderer Agent sind uneinig"
+  ],
+  "handoff_template": "../../../templates/HANDOFF_TEMPLATE.md"
+}

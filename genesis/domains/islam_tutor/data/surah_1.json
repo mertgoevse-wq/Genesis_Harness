@@ -1,0 +1,14 @@
+{
+    "surah_id": 1,
+    "verses": {
+        "1": {
+            "arabic_tajweed": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+            "transliteration": "Bismillāhi r-raḥmāni r-raḥīm",
+            "translations": {
+                "de": "Im Namen Allahs, des Allerbarmers, des Barmherzigen.",
+                "en": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+                "tr": "Rahmân ve Rahîm olan Allah'ın adıyla."
+            }
+        }
+    }
+}

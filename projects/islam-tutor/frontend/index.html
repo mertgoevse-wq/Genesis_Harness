@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Islam Tutor AI — Lernplattform</title>
+<style>
+/* ------------------------------------------------------------------
+   Design-Entscheidungen:
+   - Arabischer Text braucht deutlich mehr Zeilenhoehe und Schriftgroesse
+     als Lateinschrift, weil Diakritika (Fatha, Kasra, Sukun) sonst
+     unlesbar werden. Daher eine eigene Klasse .ar statt globaler Werte.
+   - dir="rtl" wird pro Element gesetzt, nicht pro Seite: Arabisch und
+     Uebersetzung stehen im selben View nebeneinander.
+   - Keine Streak-Anzeige, kein Gebetszeit-Countdown. Content Policy 6.2:
+     Gamification darf keine religioese Schuld erzeugen.
+------------------------------------------------------------------ */
+:root{
+  --bg:#0f1417; --surface:#161d21; --surface-2:#1d262b; --line:#2a353b;
+  --text:#e6edf0; --muted:#8fa3ac; --accent:#4db6a0; --accent-dim:#2d6b5e;
+  --warn:#d9a441; --info:#5b9dd9; --radius:10px;
+  --font: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-ar: "Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--font)}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+a{color:var(--accent)}
+
+/* Layout */
+.shell{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:20}
+.head-in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:600;font-size:16px}
+.brand small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);letter-spacing:.2px}
+.spacer{flex:1}
+select{background:var(--surface-2);color:var(--text);border:1px solid var(--line);
+  border-radius:6px;padding:6px 9px;font-size:13px}
+label.field{font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
+
+/* Disclaimer — bewusst nicht wegklickbar */
+.disclaimer{background:#1a2226;border-bottom:1px solid var(--line);
+  padding:9px 20px;font-size:12.5px;color:var(--muted);text-align:center}
+.disclaimer b{color:var(--text);font-weight:600}
+
+/* Tabs */
+nav.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);
+  margin:0 0 22px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{padding:12px 15px;font-size:14px;color:var(--muted);
+  border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs button:hover{color:var(--text)}
+nav.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* Panels */
+.panel{display:none}
+.panel.on{display:block}
+h2{font-size:19px;margin:22px 0 4px;font-weight:600}
+h3{font-size:15px;margin:20px 0 8px;font-weight:600}
+.lead{color:var(--muted);font-size:13.5px;margin:0 0 18px;max-width:70ch}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.grid{display:grid;gap:10px}
+.grid.c2{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.grid.c3{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.clickable{text-align:left;width:100%;transition:border-color .12s}
+.clickable:hover{border-color:var(--accent-dim)}
+
+/* Arabisch */
+.ar{font-family:var(--font-ar);font-size:27px;line-height:2.15;direction:rtl;
+  text-align:right;unicode-bidi:isolate}
+.ar.big{font-size:44px;line-height:1.9}
+.ar.huge{font-size:82px;line-height:1.5}
+.translit{font-style:italic;color:var(--muted);font-size:13.5px;margin-top:4px}
+.trans{font-size:14px;margin-top:7px}
+.trans cite{display:block;font-size:11.5px;color:var(--muted);font-style:normal;margin-top:2px}
+
+/* Badges */
+.badge{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:20px;
+  border:1px solid var(--line);color:var(--muted);vertical-align:middle}
+.badge.fard{border-color:#7a4a4a;color:#e39b9b}
+.badge.wajib{border-color:#7a6a3a;color:#e0c88a}
+.badge.sunnah{border-color:var(--accent-dim);color:var(--accent)}
+.badge.review{border-color:#7a6a3a;color:var(--warn)}
+.badge.disputed{border-color:#4a5f7a;color:var(--info)}
+.badge.verified{border-color:var(--accent-dim);color:var(--accent)}
+
+/* Notices */
+.notice{border-left:3px solid var(--warn);background:#1e1f19;padding:10px 13px;
+  border-radius:0 6px 6px 0;font-size:12.5px;color:#d8cba8;margin:10px 0}
+.notice.info{border-color:var(--info);background:#181d24;color:#b9cfe4}
+.notice.block{border-color:#c97a5a;background:#231a17;color:#e8bda9}
+
+/* Chat */
+#log{min-height:200px;margin-bottom:14px}
+.msg{margin-bottom:16px}
+.msg .who{font-size:11px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.7px;margin-bottom:5px}
+.msg.me .bubble{background:var(--surface-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:11px 14px}
+.msg.ai .bubble{background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px 16px}
+.bubble p{margin:0 0 10px}
+.bubble p:last-child{margin-bottom:0}
+.bubble strong{color:var(--accent)}
+.cites{margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}
+.cites .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.7px;margin-bottom:7px}
+.cite{display:flex;gap:8px;align-items:baseline;font-size:12.5px;
+  padding:4px 0;flex-wrap:wrap}
+.cite a{text-decoration:none}
+.cite .src{color:var(--muted);font-size:11.5px}
+form.ask{display:flex;gap:8px;align-items:flex-end}
+textarea{flex:1;background:var(--surface-2);color:var(--text);border:1px solid var(--line);
+  border-radius:var(--radius);padding:11px 13px;font:inherit;resize:vertical;min-height:52px}
+.btn{background:var(--accent);color:#08120f;font-weight:600;padding:12px 20px;
+  border-radius:var(--radius);white-space:nowrap}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--text);font-weight:400}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 0}
+.chip{border:1px solid var(--line);border-radius:20px;padding:6px 12px;
+  font-size:12.5px;color:var(--muted)}
+.chip:hover{border-color:var(--accent-dim);color:var(--text)}
+
+/* Steps */
+.step{border-left:2px solid var(--line);padding:0 0 20px 18px;position:relative}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;
+  border-radius:50%;background:var(--surface-2);border:2px solid var(--line)}
+.step.is-fard::before{border-color:#7a4a4a}
+.step .n{font-size:11px;color:var(--muted);letter-spacing:.7px}
+.step .t{font-weight:600;margin:2px 0 6px}
+.step .instr{font-size:13.5px;color:#c6d3d9}
+.mistakes{margin:9px 0 0;padding:9px 12px;background:#1b1614;border-radius:6px;
+  font-size:12.5px;color:#d6b3a4}
+.mistakes ul{margin:4px 0 0;padding-left:18px}
+.var{margin-top:9px;font-size:12.5px}
+.var .row{padding:4px 0;border-top:1px solid var(--line)}
+.var .m{color:var(--accent);font-weight:600;text-transform:capitalize}
+
+/* Letter grid */
+.letters{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:8px}
+.letter{background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:12px 4px;text-align:center;transition:border-color .12s}
+.letter:hover{border-color:var(--accent)}
+.letter .g{font-family:var(--font-ar);font-size:34px;line-height:1.35}
+.letter .nm{font-size:10.5px;color:var(--muted);font-style:italic}
+.letter[data-diff="3"]{border-color:#5f4a3a}
+.forms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.form-cell{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;
+  padding:12px 6px;text-align:center}
+.form-cell .lbl{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.form-cell .g{font-family:var(--font-ar);font-size:38px;line-height:1.6}
+
+/* Misc */
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.5px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.bar{height:7px;background:var(--surface-2);border-radius:4px;overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid var(--line);
+  border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.back{font-size:13px;color:var(--muted);margin-bottom:10px}
+.back:hover{color:var(--text)}
+@media(max-width:600px){
+  .ar{font-size:23px}.ar.huge{font-size:62px}
+  .forms{grid-template-columns:repeat(2,1fr)}
+  form.ask{flex-direction:column;align-items:stretch}
+}
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  <b>Lernhilfe, kein religiöses Urteilssystem.</b>
+  Dieses System erteilt keine Fatwas, beurteilt keine Einzelfälle und bevorzugt keine
+  Rechtsschule. Für Rechtsfragen ist ein Gelehrter zuständig.
+</div>
+
+<header>
+  <div class="head-in">
+    <div class="brand">Islam Tutor AI<small>Lernplattform · Version 0.1.0</small></div>
+    <div class="spacer"></div>
+    <label class="field">Rechtsschule
+      <select id="madhhab">
+        <option value="">alle anzeigen</option>
+        <option value="hanafi">Hanafi</option>
+        <option value="shafii">Shafi'i</option>
+        <option value="maliki">Maliki</option>
+        <option value="hanbali">Hanbali</option>
+        <option value="jafari">Ja'fari</option>
+      </select>
+    </label>
+    <label class="field">Sprache
+      <select id="lang"><option value="de">Deutsch</option><option value="en">English</option></select>
+    </label>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="chat">Tutor</button>
+    <button role="tab" aria-selected="false" data-tab="prayer">Namaz-Trainer</button>
+    <button role="tab" aria-selected="false" data-tab="purif">Wudu &amp; Ghusl</button>
+    <button role="tab" aria-selected="false" data-tab="arabic">Arabisch</button>
+    <button role="tab" aria-selected="false" data-tab="quran">Koran</button>
+    <button role="tab" aria-selected="false" data-tab="plan">Lernplan</button>
+    <button role="tab" aria-selected="false" data-tab="about">Quellen &amp; Status</button>
+  </nav>
+
+  <!-- ================= TUTOR ================= -->
+  <section class="panel on" id="p-chat">
+    <h2>Lern-Tutor</h2>
+    <p class="lead">Stelle eine Lernfrage. Jede Antwort führt die Quellen mit, aus denen sie
+      stammt. Wenn zu einer Frage kein belegter Inhalt vorliegt, sagt der Tutor das —
+      statt zu raten.</p>
+    <div id="log"></div>
+    <form class="ask" id="ask">
+      <textarea id="q" placeholder="Zum Beispiel: Wie viele Rak'a hat das Fajr-Gebet?"
+        aria-label="Deine Frage"></textarea>
+      <button class="btn" type="submit" id="send">Fragen</button>
+    </form>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <!-- ================= NAMAZ ================= -->
+  <section class="panel" id="p-prayer">
+    <div id="prayer-list"><h2>Namaz-Trainer</h2>
+      <p class="lead">Die fünf Pflichtgebete mit vollständigem Ablauf: Bewegungen, Texte,
+        Übersetzungen und häufige Fehler. Wo sich die Rechtsschulen unterscheiden, sind
+        alle dokumentierten Positionen aufgeführt.</p>
+      <div class="grid c2" id="prayers"></div>
+    </div>
+    <div id="prayer-detail" hidden></div>
+  </section>
+
+  <!-- ================= PURIFICATION ================= -->
+  <section class="panel" id="p-purif">
+    <div id="purif-list"><h2>Rituelle Reinigung</h2>
+      <p class="lead">Wudu, Ghusl und Tayammum als schrittweise Lektionen. Die Zuordnung zu
+        Pflicht und Sunnah unterscheidet sich zwischen den Rechtsschulen — die Zahl der
+        Pflichtelemente steht deshalb je Schule getrennt.</p>
+      <div class="grid c3" id="purifs"></div>
+    </div>
+    <div id="purif-detail" hidden></div>
+  </section>
+
+  <!-- ================= ARABIC ================= -->
+  <section class="panel" id="p-arabic">
+    <div id="arabic-list"><h2>Arabisch lernen</h2>
+      <p class="lead">28 Buchstaben, jeder in vier Positionsformen. Die Lernreihenfolge folgt
+        der Schwierigkeit, nicht dem Alphabet — dadurch gibt es früher erste Leseerfolge.
+        Dunkel umrandete Buchstaben haben keine deutsche Entsprechung.</p>
+      <div class="letters" id="letters"></div>
+      <h3>Lernreihenfolge</h3>
+      <div id="curriculum"></div>
+      <h3>Vokalzeichen</h3>
+      <div class="grid c3" id="vowels"></div>
+      <h3>Verwechslungsgefahr</h3>
+      <div id="confusions"></div>
+    </div>
+    <div id="letter-detail" hidden></div>
+  </section>
+
+  <!-- ================= QURAN ================= -->
+  <section class="panel" id="p-quran">
+    <div id="quran-list"><h2>Koran</h2>
+      <p class="lead">Der arabische Text wird ausschließlich aus registrierten Quellen
+        importiert und nie vom System erzeugt. Übersetzungen sind als Übersetzung
+        gekennzeichnet und nennen ihren Übersetzer.</p>
+      <div class="grid c2" id="surahs"></div>
+    </div>
+    <div id="surah-detail" hidden></div>
+  </section>
+
+  <!-- ================= PLAN ================= -->
+  <section class="panel" id="p-plan">
+    <h2>Lernplan</h2>
+    <p class="lead">Ein Plan mit fester didaktischer Reihenfolge. Die Zeitangaben sind
+      Anhaltspunkte, kein Soll — und es gibt keine Streak-Anzeige.</p>
+    <div class="card">
+      <div class="grid c2">
+        <label class="field" style="flex-direction:column;align-items:stretch;gap:5px">Ziel
+          <select id="goal">
+            <option value="learn_to_pray">Das Gebet lernen</option>
+            <option value="learn_purification">Rituelle Reinigung lernen</option>
+            <option value="learn_arabic_script">Arabische Schrift lesen lernen</option>
+            <option value="memorize_fatiha">Al-Fatiha auswendig lernen</option>
+          </select></label>
+        <label class="field" style="flex-direction:column;align-items:stretch;gap:5px">Minuten pro Tag
+          <select id="mins"><option>10</option><option selected>15</option>
+            <option>20</option><option>30</option><option>45</option></select></label>
+        <label class="field" style="flex-direction:column;align-items:stretch;gap:5px">Vorkenntnisse
+          <select id="prior"><option value="none">keine</option>
+            <option value="some">etwas</option><option value="solid">gut</option></select></label>
+        <div style="display:flex;align-items:flex-end">
+          <button class="btn" id="mkplan" style="width:100%">Plan erstellen</button></div>
+      </div>
+    </div>
+    <div id="plan-out"></div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="panel" id="p-about">
+    <h2>Quellen und Inhaltsstatus</h2>
+    <p class="lead">Die Auswahl der Quellen ist eine menschliche Entscheidung mit
+      Perspektive. Sie hier offenzulegen gehört zur Ehrlichkeit des Systems — auch
+      dort, wo der Reifegrad noch niedrig ist.</p>
+    <div id="status"></div>
+    <h3>Registrierte Quellen</h3>
+    <div id="sources"></div>
+  </section>
+</div>
+
+<script>
+"use strict";
+const API = "/api/v1";
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const state = {madhhab:"", lang:"de", loaded:{}};
+
+/* --- Zustand wird im Speicher gehalten, nicht in localStorage. ------------
+   Die Rechtsschule ist eine besonders geschuetzte Angabe (Content Policy 8).
+   Sie bleibt in dieser Sitzung und wird nicht persistiert.               */
+
+async function api(path, opts){
+  const r = await fetch(API+path, opts);
+  if(!r.ok){
+    let msg = r.status+" "+r.statusText;
+    try{ const j = await r.json(); if(j.detail) msg = j.detail; }catch(e){}
+    throw new Error(msg);
+  }
+  return r.json();
+}
+const q = extra => {
+  const p = new URLSearchParams({language:state.lang, ...extra});
+  if(state.madhhab) p.set("madhhab", state.madhhab);
+  return "?"+p;
+};
+
+/* ---------- Statushinweise ---------- */
+function provBadge(p){
+  if(p==="verified")  return '<span class="badge verified">geprüft</span>';
+  if(p==="disputed")  return '<span class="badge disputed">mehrere Positionen</span>';
+  if(p==="scholar_review_pending")
+    return '<span class="badge review">fachliche Prüfung offen</span>';
+  return "";
+}
+function rulingBadge(r){
+  const map={fard:["fard","Fard (Pflicht)"],wajib:["wajib","Wajib"],
+    sunnah_muakkadah:["sunnah","Sunnah mu'akkadah"],sunnah:["sunnah","Sunnah"],
+    mustahabb:["sunnah","Mustahabb"]};
+  const m=map[r]; return m?`<span class="badge ${m[0]}">${m[1]}</span>`:"";
+}
+function noticeFor(d){
+  const out=[];
+  if(d && d._meta && d._meta.review_pending_count>0)
+    out.push('<div class="notice">Teile dieser Inhalte sind noch nicht von einer fachlich '+
+      'qualifizierten Person geprüft. Sie stammen aus einer redaktionellen Zusammenfassung '+
+      'breit dokumentierter Quellen.</div>');
+  if(d && d._meta && d._meta.disputed_count>0)
+    out.push('<div class="notice info">Zu einzelnen Punkten bestehen unterschiedliche '+
+      'Positionen der Rechtsschulen. Alle dokumentierten Positionen werden gezeigt; '+
+      'es wird keine ausgewählt.</div>');
+  return out.join("");
+}
+function varBlock(list){
+  if(!list || !list.length) return "";
+  return '<div class="var"><div class="small muted">Positionen der Rechtsschulen:</div>'+
+    list.map(v=>`<div class="row"><span class="m">${esc(v.madhhab)}</span> — ${esc(v.position)}</div>`)
+    .join("")+"</div>";
+}
+function localName(n,fallback){
+  if(!n) return fallback||"";
+  const t=n.translations||{};
+  return t[state.lang]||t.en||n.transliteration||fallback||"";
+}
+
+/* ================= TABS ================= */
+$$("nav.tabs button").forEach(b=>b.addEventListener("click",()=>{
+  $$("nav.tabs button").forEach(x=>x.setAttribute("aria-selected", x===b));
+  $$(".panel").forEach(p=>p.classList.remove("on"));
+  $("#p-"+b.dataset.tab).classList.add("on");
+  load(b.dataset.tab);
+}));
+
+$("#madhhab").addEventListener("change",e=>{
+  state.madhhab=e.target.value; state.loaded={}; resetViews();
+  load($$("nav.tabs button").find(b=>b.getAttribute("aria-selected")==="true").dataset.tab);
+});
+$("#lang").addEventListener("change",e=>{
+  state.lang=e.target.value; state.loaded={}; resetViews();
+  load($$("nav.tabs button").find(b=>b.getAttribute("aria-selected")==="true").dataset.tab);
+});
+function resetViews(){
+  [["prayer-list","prayer-detail"],["purif-list","purif-detail"],
+   ["arabic-list","letter-detail"],["quran-list","surah-detail"]]
+  .forEach(([l,d])=>{ $("#"+l).hidden=false; $("#"+d).hidden=true; });
+}
+
+function load(tab){
+  if(state.loaded[tab]) return;
+  state.loaded[tab]=true;
+  ({prayer:loadPrayers, purif:loadPurifs, arabic:loadArabic,
+    quran:loadSurahs, about:loadAbout}[tab]||(()=>{}))();
+}
+
+/* ================= CHAT ================= */
+const SUGGESTIONS=[
+  "Wie viele Rak'a hat das Fajr-Gebet?",
+  "Was passiert im Ruku?",
+  "Welche Schritte gehören zum Wudu?",
+  "Wie spreche ich den Buchstaben Ain aus?",
+  "Was sagt man im Tashahhud?",
+  "Was ist der Unterschied zwischen Ghusl und Wudu?"
+];
+$("#chips").innerHTML = SUGGESTIONS.map(s=>`<button class="chip">${esc(s)}</button>`).join("");
+$$("#chips .chip").forEach(c=>c.addEventListener("click",()=>{
+  $("#q").value=c.textContent; $("#ask").requestSubmit();
+}));
+
+function bubble(who,html,cls=""){
+  const d=document.createElement("div");
+  d.className="msg "+cls;
+  d.innerHTML=`<div class="who">${esc(who)}</div><div class="bubble">${html}</div>`;
+  $("#log").appendChild(d);
+  d.scrollIntoView({behavior:"smooth",block:"nearest"});
+  return d;
+}
+function mdish(t){
+  return esc(t).split(/\n{2,}/).map(p=>
+    "<p>"+p.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>")+"</p>"
+  ).join("");
+}
+
+$("#ask").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const text=$("#q").value.trim();
+  if(!text) return;
+  $("#q").value=""; $("#send").disabled=true;
+  bubble("Du", mdish(text), "me");
+  const pending=bubble("Tutor", '<span class="spin"></span>', "ai");
+
+  try{
+    const r = await api("/chat",{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({message:text, madhhab:state.madhhab||null,
+        language:state.lang, include_trace:false})
+    });
+
+    let html = mdish(r.text);
+    if(r.blocked){
+      html = '<div class="notice block">Diese Anfrage wurde nicht als Lernfrage '+
+        'beantwortet — sie verlangte ein religiöses Urteil oder betraf eine persönliche '+
+        'Belastung.</div>' + html;
+    }
+    if(r.notices && r.notices.disputed){
+      html += '<div class="notice info">Zu einzelnen Punkten bestehen unterschiedliche '+
+        'Positionen der Rechtsschulen.</div>';
+    }
+    if(r.notices && r.notices.review_pending){
+      html += '<div class="notice">Teile dieser Inhalte sind fachlich noch nicht geprüft.</div>';
+    }
+    if(r.citations && r.citations.length){
+      html += '<div class="cites"><div class="lbl">Quellen dieser Antwort</div>'+
+        r.citations.map(c=>{
+          const link = c.deep_link
+            ? `<a href="#" data-link="${esc(c.deep_link)}">${esc(c.title)}</a>`
+            : esc(c.title);
+          return `<div class="cite">${link} ${provBadge(c.provenance)}
+            <span class="src">${esc((c.source_ids||[]).join(", "))}</span></div>`;
+        }).join("")+"</div>";
+    }
+    pending.querySelector(".bubble").innerHTML = html;
+  }catch(err){
+    pending.querySelector(".bubble").innerHTML =
+      `<div class="notice block">Die Anfrage ist fehlgeschlagen: ${esc(err.message)}</div>`;
+  }finally{
+    $("#send").disabled=false; $("#q").focus();
+  }
+});
+
+/* Deep-Links aus Quellenangaben */
+$("#log").addEventListener("click",e=>{
+  const a=e.target.closest("[data-link]"); if(!a) return;
+  e.preventDefault();
+  const link=a.dataset.link;
+  const go=(tab,fn)=>{ $$("nav.tabs button").find(b=>b.dataset.tab===tab).click(); fn&&setTimeout(fn,120); };
+  if(link.startsWith("/prayer/movement/")) go("prayer");
+  else if(link.startsWith("/prayer/")) go("prayer",()=>openPrayer(link.split("/")[2]));
+  else if(link.startsWith("/purification/")) go("purif",()=>openPurif(link.split("/")[2].split("#")[0]));
+  else if(link.startsWith("/arabic/letter/")) go("arabic",()=>openLetter(link.split("/")[3]));
+  else if(link.startsWith("/arabic")) go("arabic");
+  else if(link.startsWith("/quran/")) go("quran",()=>openSurah(+link.split("/")[2].split("#")[0]));
+});
+
+/* ================= NAMAZ ================= */
+async function loadPrayers(){
+  const box=$("#prayers"); box.innerHTML='<span class="spin"></span>';
+  try{
+    const list = await api("/prayer"+q());
+    box.innerHTML = list.map(p=>`
+      <button class="card clickable" data-prayer="${esc(p.id)}">
+        <div class="ar">${esc(p.name_arabic||"")}</div>
+        <div style="font-weight:600;margin-top:6px">${esc(p.name_transliteration||p.id)}</div>
+        <div class="small muted">${esc(p.name_local||"")}</div>
+        <div class="small" style="margin-top:8px">
+          ${p.fard_rakat} Rak'a Fard · ${p.step_count} Schritte ${provBadge(p.provenance)}
+        </div>
+      </button>`).join("");
+    $$("[data-prayer]",box).forEach(b=>b.addEventListener("click",()=>openPrayer(b.dataset.prayer)));
+  }catch(e){ box.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+}
+
+async function openPrayer(id){
+  const view=$("#prayer-detail");
+  $("#prayer-list").hidden=true; view.hidden=false;
+  view.innerHTML='<span class="spin"></span>';
+  try{
+    const d = await api("/prayer/"+id+q());
+    const u = d.units||{};
+    const units = [["fard","Fard"],["sunnah_before","Sunnah davor"],
+      ["sunnah_after","Sunnah danach"],["witr","Witr"]]
+      .map(([k,lbl])=>{
+        const v=u[k];
+        if(v==null) return "";
+        if(typeof v==="number") return `<dt>${lbl}</dt><dd>${v} Rak'a</dd>`;
+        return `<dt>${lbl}</dt><dd>${v.count} Rak'a ${rulingBadge(v.ruling)}
+          ${v.madhhab&&v.madhhab!=="common"?`<span class="badge">${esc(v.madhhab)}</span>`:""}</dd>`;
+      }).join("");
+
+    const tw=d.time_window||{};
+    view.innerHTML = `
+      <button class="back">← zurück zur Übersicht</button>
+      <h2>${esc(d.name?.transliteration||id)} <span class="muted">${esc(localName(d.name,""))}</span></h2>
+      <div class="ar big">${esc(d.name?.arabic||"")}</div>
+      ${noticeFor(d)}
+      <div class="card">
+        <dl class="kv">${units}
+          <dt>Zeitfenster</dt><dd>${esc(tw.description||"—")}</dd>
+          <dt>Rezitation</dt><dd>${esc(d.audible_recitation?.description||"—")}</dd>
+        </dl>
+        ${varBlock(tw.madhhab_variations)}
+      </div>
+      ${d.learning_note?`<div class="notice info">${esc(d.learning_note)}</div>`:""}
+      <h3>Voraussetzungen</h3>
+      <div class="card"><dl class="kv">${(d.prerequisites||[])
+        .map(p=>`<dt>${esc(p.id)}</dt><dd>${esc(p.description)}</dd>`).join("")}</dl></div>
+      <h3>Ablauf — ${(d.sequence||[]).length} Schritte</h3>
+      <div>${(d.sequence||[]).map(stepHtml).join("")}</div>`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#prayer-list").hidden=false; });
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(e){
+    view.innerHTML=`<button class="back">← zurück</button>
+      <div class="notice block">${esc(e.message)}</div>`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#prayer-list").hidden=false; });
+  }
+}
+
+function stepHtml(s){
+  const m=s.movement||{};
+  const rec=(m.recitation||[]).map(r=>`
+    <div style="margin:11px 0;padding:11px;background:var(--surface-2);border-radius:8px">
+      ${r.label?`<div class="small muted">${esc(r.label)}</div>`:""}
+      <div class="ar">${esc(r.arabic||"")}</div>
+      <div class="translit">${esc(r.transliteration||"")}</div>
+      ${(r.translations||[]).filter(t=>t.language===state.lang||t.language==="de")
+        .slice(0,1).map(t=>`<div class="trans">${esc(t.text)}
+          <cite>Übersetzung: ${esc(t.translator)}</cite></div>`).join("")}
+      ${r.repetitions>1?`<div class="small muted" style="margin-top:5px">${r.repetitions}-mal</div>`:""}
+    </div>`).join("");
+
+  const mistakes=(m.common_mistakes||[]).length
+    ? `<div class="mistakes">Häufige Fehler beim Lernen:<ul>${
+        m.common_mistakes.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>` : "";
+
+  return `<div class="step ${s.ruling==="fard"?"is-fard":""}">
+    <div class="n">Schritt ${s.step}${s.rakah?` · Rak'a ${s.rakah}`:""}</div>
+    <div class="t">${esc(typeof m.label==="object"?(m.label[state.lang]||m.label.de||""):(m.label||s.movement_id))}
+      ${rulingBadge(s.ruling)}</div>
+    ${m.arabic_term?`<div class="small muted">${esc(m.arabic_term)} · ${esc(m.transliteration||"")}</div>`:""}
+    <div class="instr" style="margin-top:6px">${esc(
+      typeof m.instruction==="object"?(m.instruction[state.lang]||m.instruction.de||""):(m.instruction||""))}</div>
+    ${rec}${mistakes}${varBlock(m.variations)}
+  </div>`;
+}
+
+/* ================= PURIFICATION ================= */
+async function loadPurifs(){
+  const box=$("#purifs"); box.innerHTML='<span class="spin"></span>';
+  try{
+    const list = await api("/purification"+q());
+    box.innerHTML = list.map(p=>`
+      <button class="card clickable" data-purif="${esc(p.id)}">
+        <div class="ar">${esc(p.name_arabic||"")}</div>
+        <div style="font-weight:600;margin-top:6px">${esc(p.name_transliteration||p.id)}</div>
+        <div class="small muted">${esc(p.name_local||"")}</div>
+        <div class="small" style="margin-top:8px">${p.step_count} Schritte ${provBadge(p.provenance)}</div>
+      </button>`).join("");
+    $$("[data-purif]",box).forEach(b=>b.addEventListener("click",()=>openPurif(b.dataset.purif)));
+  }catch(e){ box.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+}
+
+async function openPurif(kind){
+  const view=$("#purif-detail");
+  $("#purif-list").hidden=true; view.hidden=false;
+  view.innerHTML='<span class="spin"></span>';
+  try{
+    const d = await api("/purification/"+kind+q());
+    const fard=(d.fard_count_by_madhhab||[]).map(f=>`
+      <div class="row"><span class="m">${esc(f.madhhab)}</span> — ${f.count} Pflichtelemente:
+      ${esc((f.elements||[]).join(", "))}</div>`).join("");
+
+    const inv=d.invalidators
+      ? `<h3>Was ${esc(d.name?.transliteration||kind)} aufhebt</h3>
+         <div class="notice info">${esc(d.invalidators.note||"")}</div>
+         <div class="card"><dl class="kv">${(d.invalidators.items||[])
+           .map(i=>`<dt>${esc(i.id)}</dt><dd>${esc(i.description)}
+             ${provBadge(i.provenance)}${varBlock(i.variations)}</dd>`).join("")}</dl></div>` : "";
+
+    view.innerHTML=`
+      <button class="back">← zurück zur Übersicht</button>
+      <h2>${esc(d.name?.transliteration||kind)} <span class="muted">${esc(localName(d.name,""))}</span></h2>
+      <div class="ar big">${esc(d.name?.arabic||"")}</div>
+      ${noticeFor(d)}
+      <div class="card"><div class="small muted">Zweck</div>
+        <div>${esc(d.purpose?.[state.lang]||d.purpose?.de||"")}</div>
+        <div class="var" style="margin-top:12px">
+          <div class="small muted">Zahl der Pflichtelemente je Rechtsschule:</div>${fard}</div>
+      </div>
+      ${d.occasions?`<h3>Anlässe</h3><div class="card">
+        <div class="notice info">${esc(d.occasions.note||"")}</div>
+        <dl class="kv">${(d.occasions.items||[]).map(i=>
+          `<dt>${esc(i.id)}</dt><dd>${esc(i.description)} ${rulingBadge(i.ruling)}</dd>`).join("")}</dl></div>`:""}
+      <h3>Schritte</h3>
+      <div>${(d.steps||[]).map(purifStep).join("")}</div>
+      ${inv}
+      ${d.learning_note?`<div class="notice info">${esc(d.learning_note)}</div>`:""}
+      ${d.wellbeing_note?`<div class="notice">${esc(d.wellbeing_note)}</div>`:""}`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#purif-list").hidden=false; });
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(e){
+    view.innerHTML=`<button class="back">← zurück</button>
+      <div class="notice block">${esc(e.message)}</div>`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#purif-list").hidden=false; });
+  }
+}
+
+function purifStep(s){
+  const r=s.recitation;
+  return `<div class="step ${s.ruling==="fard"?"is-fard":""}">
+    <div class="n">Schritt ${s.step}</div>
+    <div class="t">${esc(s.label?.[state.lang]||s.label?.de||s.id)} ${rulingBadge(s.ruling)}
+      ${s.repetitions>1?`<span class="badge">${s.repetitions}-mal</span>`:""}</div>
+    ${s.arabic_term?`<div class="small muted">${esc(s.arabic_term)} · ${esc(s.transliteration||"")}</div>`:""}
+    <div class="instr" style="margin-top:6px">${esc(s.instruction?.[state.lang]||s.instruction?.de||"")}</div>
+    ${r?`<div style="margin:11px 0;padding:11px;background:var(--surface-2);border-radius:8px">
+      <div class="ar">${esc(r.arabic||"")}</div>
+      <div class="translit">${esc(r.transliteration||"")}</div></div>`:""}
+    ${(s.common_mistakes||[]).length?`<div class="mistakes">Häufige Fehler:<ul>${
+      s.common_mistakes.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+    ${varBlock(s.variations)}
+  </div>`;
+}
+
+/* ================= ARABIC ================= */
+let ALPHABET=null;
+async function loadArabic(){
+  const grid=$("#letters"); grid.innerHTML='<span class="spin"></span>';
+  try{
+    ALPHABET = await api("/arabic/alphabet"+q());
+    grid.innerHTML = (ALPHABET.letters||[]).map(l=>`
+      <button class="letter" data-letter="${esc(l.id)}"
+        data-diff="${l.pronunciation?.difficulty_for_german_speakers||1}"
+        title="${esc(l.pronunciation?.de||"")}">
+        <div class="g">${esc(l.glyph)}</div>
+        <div class="nm">${esc(l.transliteration)}</div>
+      </button>`).join("");
+    $$("[data-letter]",grid).forEach(b=>b.addEventListener("click",()=>openLetter(b.dataset.letter)));
+
+    $("#curriculum").innerHTML = (ALPHABET.curriculum||[]).map(u=>`
+      <div class="step"><div class="n">Einheit ${u.unit} · ca. ${u.estimated_sessions} Lerneinheiten</div>
+        <div class="t">${esc(u.title)}</div>
+        <div class="instr">${esc(u.goal)}</div>
+        ${(u.letters||[]).length?`<div class="small muted" style="margin-top:6px">
+          ${esc(u.letters.join(", "))}</div>`:""}
+        ${u.note?`<div class="notice info">${esc(u.note)}</div>`:""}
+      </div>`).join("");
+
+    $("#vowels").innerHTML = (ALPHABET.vowel_marks||[]).map(v=>`
+      <div class="card"><div class="ar big">${esc(v.example)}</div>
+        <div style="font-weight:600;margin-top:4px">${esc(v.translit)}
+          <span class="muted">${esc(v.name_ar)}</span></div>
+        <div class="small">${esc(v.sound)}</div>
+        <div class="small muted">${esc(v.position)}</div></div>`).join("");
+
+    $("#confusions").innerHTML = (ALPHABET.confusion_groups||[]).map(g=>`
+      <div class="card"><div style="font-weight:600">${esc(g.label)}</div>
+        <div class="ar" style="font-size:32px">${(g.letters||[]).map(id=>{
+          const l=(ALPHABET.letters||[]).find(x=>x.id===id); return l?esc(l.glyph):"";
+        }).join(" ")}</div>
+        <div class="small muted" style="margin-top:6px">${esc(g.why)}</div>
+        <div class="small" style="margin-top:6px"><b>Merkhilfe:</b> ${esc(g.tip)}</div></div>`).join("");
+  }catch(e){ grid.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+}
+
+function openLetter(id){
+  const l=(ALPHABET?.letters||[]).find(x=>x.id===id);
+  if(!l) return;
+  const view=$("#letter-detail");
+  $("#arabic-list").hidden=true; view.hidden=false;
+  const f=l.forms||{}, p=l.pronunciation||{};
+  const diffText=["","aus dem Deutschen bekannt","neu, aber gut beschreibbar",
+    "schwierig für deutsche Sprecher — braucht Hörbeispiele und Wochen, nicht Tage"];
+  const group=(ALPHABET.confusion_groups||[]).find(g=>g.id===l.confusion_group);
+
+  view.innerHTML=`
+    <button class="back">← zurück zum Alphabet</button>
+    <h2>${esc(l.transliteration)} <span class="muted">Buchstabe ${l.order} von 28</span></h2>
+    <div class="ar huge">${esc(l.glyph)}</div>
+    <div class="card"><dl class="kv">
+      <dt>Name</dt><dd class="ar" style="font-size:20px;line-height:1.8">${esc(l.name?.arabic||"")}</dd>
+      <dt>Aussprache</dt><dd>${esc(p.de||"")}</dd>
+      <dt>IPA</dt><dd>${esc(l.ipa||"")}</dd>
+      <dt>Schwierigkeit</dt><dd>${esc(diffText[p.difficulty_for_german_speakers||1])}</dd>
+      <dt>Verbindung</dt><dd>${l.connects_forward
+        ? "verbindet sich mit dem folgenden Buchstaben"
+        : "verbindet sich <b>nicht</b> mit dem folgenden Buchstaben"}</dd>
+    </dl></div>
+    <h3>Die vier Positionsformen</h3>
+    <div class="forms">
+      <div class="form-cell"><div class="lbl">isoliert</div><div class="g">${esc(f.isolated||"")}</div></div>
+      <div class="form-cell"><div class="lbl">initial</div><div class="g">${esc(f.initial||"")}</div></div>
+      <div class="form-cell"><div class="lbl">medial</div><div class="g">${esc(f.medial||"")}</div></div>
+      <div class="form-cell"><div class="lbl">final</div><div class="g">${esc(f.final||"")}</div></div>
+    </div>
+    ${f.note?`<div class="notice info">${esc(f.note)}</div>`:""}
+    ${group?`<h3>Verwechslungsgefahr</h3><div class="card">
+      <div style="font-weight:600">${esc(group.label)}</div>
+      <div class="small muted" style="margin-top:5px">${esc(group.why)}</div>
+      <div class="small" style="margin-top:6px"><b>Merkhilfe:</b> ${esc(group.tip)}</div></div>`:""}
+    ${!l.audio?.available?`<div class="notice">Für diesen Buchstaben liegt noch kein
+      Aussprache-Audio vor. Bei Lauten ohne deutsche Entsprechung ist eine Beschreibung
+      allein nur ein Behelf — ein Hörbeispiel oder ein Lehrer ist hier nicht ersetzbar.</div>`:""}`;
+  $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#arabic-list").hidden=false; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ================= QURAN ================= */
+async function loadSurahs(){
+  const box=$("#surahs"); box.innerHTML='<span class="spin"></span>';
+  try{
+    const list = await api("/quran"+q());
+    box.innerHTML = list.length ? list.map(s=>`
+      <button class="card clickable" data-surah="${s.number}">
+        <div class="ar">${esc(s.name_arabic||"")}</div>
+        <div style="font-weight:600;margin-top:6px">${s.number}. ${esc(s.name_transliteration||"")}</div>
+        <div class="small muted">${esc(s.name_local||"")} · ${s.ayah_count} Verse</div>
+        <div class="small" style="margin-top:8px">${provBadge(s.provenance)}
+          ${s.audio_available?'<span class="badge verified">Audio</span>'
+            :'<span class="badge">kein Audio</span>'}</div>
+      </button>`).join("")
+      : '<div class="notice">Noch keine Suren in der Wissensbasis.</div>';
+    $$("[data-surah]",box).forEach(b=>b.addEventListener("click",()=>openSurah(+b.dataset.surah)));
+  }catch(e){ box.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+}
+
+async function openSurah(num){
+  const view=$("#surah-detail");
+  $("#quran-list").hidden=true; view.hidden=false;
+  view.innerHTML='<span class="spin"></span>';
+  try{
+    const d = await api("/quran/"+num+q());
+    const pending = d.pending_import
+      ? `<div class="notice">Der arabische Text ist noch nicht über
+         <code>${esc(d.pending_import.script||"")}</code> aus der registrierten Quelle
+         <b>${esc(d.pending_import.target_source_id||"")}</b> importiert und mit Prüfsumme
+         abgeglichen. Bis dahin trägt er den Status „fachliche Prüfung offen".</div>` : "";
+
+    view.innerHTML=`
+      <button class="back">← zurück zur Übersicht</button>
+      <h2>${d.number}. ${esc(d.name?.transliteration||"")}
+        <span class="muted">${esc(localName(d.name,""))}</span></h2>
+      <div class="ar big">${esc(d.name?.arabic||"")}</div>
+      ${noticeFor(d)}${pending}
+      ${d.learning_note?`<div class="notice info">${esc(d.learning_note)}</div>`:""}
+      ${!d.audio?.available?`<div class="notice">Kein Rezitations-Audio verfügbar.
+        Für arabischen Korantext wird bewusst keine Sprachsynthese eingesetzt: Rezitation
+        folgt den Tajwid-Regeln, die ein Sprachmodell nicht anwendet, und wäre damit ein
+        fehlerhaftes Aussprachevorbild.</div>`:""}
+      <div>${(d.ayat||[]).map(a=>`
+        <div class="card">
+          <div class="small muted">Vers ${a.number}</div>
+          <div class="ar">${esc(a.arabic||"")}</div>
+          <div class="translit">${esc(a.transliteration||"")}</div>
+          ${(a.translations||[]).filter(t=>t.language===state.lang||t.language==="de")
+            .slice(0,1).map(t=>`<div class="trans">${esc(t.text)}
+              <cite>Übersetzung: ${esc(t.translator)}</cite></div>`).join("")}
+          ${(a.word_analysis||[]).length?`<details style="margin-top:9px">
+            <summary class="small muted" style="cursor:pointer">Wort für Wort</summary>
+            <div class="grid c3" style="margin-top:9px">${a.word_analysis.map(w=>`
+              <div class="card" style="margin:0;padding:9px">
+                <div class="ar" style="font-size:22px">${esc(w.arabic)}</div>
+                <div class="translit">${esc(w.transliteration||"")}</div>
+                <div class="small">${esc(w.gloss_de||"")}</div>
+                ${w.root?`<div class="small muted">Wurzel ${esc(w.root)}</div>`:""}
+              </div>`).join("")}</div></details>`:""}
+          ${(a.tajwid_notes||[]).length?`<div class="notice info">${
+            esc(a.tajwid_notes.join(" "))}</div>`:""}
+          ${a.note?`<div class="small muted" style="margin-top:7px">${esc(a.note)}</div>`:""}
+        </div>`).join("")}</div>
+      ${d.memorization?`<h3>Empfohlene Lernabschnitte</h3><div class="card">
+        <dl class="kv">${(d.memorization.recommended_chunks||[]).map(c=>
+          `<dt>Verse ${c.ayat.join(", ")}</dt><dd>${esc(c.label)}</dd>`).join("")}</dl>
+        <div class="small muted" style="margin-top:9px">${esc(d.memorization.note||"")}</div></div>`:""}`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#quran-list").hidden=false; });
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(e){
+    view.innerHTML=`<button class="back">← zurück</button>
+      <div class="notice block">${esc(e.message)}</div>`;
+    $(".back",view).addEventListener("click",()=>{ view.hidden=true; $("#quran-list").hidden=false; });
+  }
+}
+
+/* ================= PLAN ================= */
+$("#mkplan").addEventListener("click", async ()=>{
+  const out=$("#plan-out"); out.innerHTML='<span class="spin"></span>';
+  try{
+    const p = await api("/learning-plan",{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({goal:$("#goal").value, minutes_per_day:+$("#mins").value,
+        prior_knowledge:$("#prior").value, madhhab:state.madhhab||null, language:state.lang})
+    });
+    const days={};
+    p.steps.forEach(s=>{ (days[s.day]=days[s.day]||[]).push(s); });
+    out.innerHTML = `
+      <div class="notice info">${esc(p.note)}</div>
+      <div class="card small"><b>${p.total_days} Tage</b> · ${p.steps.length} Lernbausteine ·
+        ${p.minutes_per_day} Minuten pro Tag geplant</div>
+      ${Object.entries(days).map(([day,steps])=>`
+        <div class="card"><div class="small muted">Tag ${day} · ${
+          steps.reduce((a,s)=>a+s.estimated_minutes,0)} Minuten</div>
+          ${steps.map(s=>`<div class="step" style="padding-bottom:14px">
+            <div class="t">${esc(s.title)}
+              <span class="badge">${s.estimated_minutes} min</span></div>
+            <div class="instr">${esc(s.focus)}</div>
+            ${s.practice?`<div class="small" style="margin-top:6px;color:var(--accent)">
+              Übung: ${esc(s.practice)}</div>`:""}
+          </div>`).join("")}
+        </div>`).join("")}`;
+  }catch(e){ out.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+});
+
+/* ================= ABOUT ================= */
+async function loadAbout(){
+  const st=$("#status"), sr=$("#sources");
+  st.innerHTML='<span class="spin"></span>';
+  try{
+    const s = await api("/content-status");
+    const t=s.totals, total=Object.values(t).reduce((a,b)=>a+b,0)||1;
+    const seg=(n,c,lbl)=>n?`<i style="width:${n/total*100}%;background:${c}" title="${lbl}: ${n}"></i>`:"";
+    st.innerHTML=`
+      <div class="card">
+        <div class="bar">
+          ${seg(t.verified,"#4db6a0","geprüft")}
+          ${seg(t.scholar_review_pending,"#d9a441","Prüfung offen")}
+          ${seg(t.disputed,"#5b9dd9","mehrere Positionen")}
+          ${seg(t.placeholder,"#7a4a4a","Platzhalter")}
+        </div>
+        <dl class="kv" style="margin-top:14px">
+          <dt>geprüft</dt><dd>${t.verified}</dd>
+          <dt>fachliche Prüfung offen</dt><dd>${t.scholar_review_pending}</dd>
+          <dt>mehrere Positionen</dt><dd>${t.disputed}</dd>
+          <dt>Platzhalter (wird nie ausgeliefert)</dt><dd>${t.placeholder}</dd>
+        </dl>
+        <div class="notice">${esc(s.note)}</div>
+      </div>`;
+
+    const reg = await api("/sources");
+    sr.innerHTML = reg.sources.map(x=>`
+      <div class="card">
+        <div style="font-weight:600">${esc(x.title)}</div>
+        <div class="small muted">${esc(x.publisher||"")}${x.translator?" · Übersetzung: "+esc(x.translator):""}</div>
+        <dl class="kv" style="margin-top:9px">
+          <dt>Typ</dt><dd>${esc(x.type)}</dd>
+          <dt>Lizenz</dt><dd>${esc(x.license||"—")}
+            ${x.license_status==="needs_verification"
+              ?'<span class="badge review">Lizenz ungeklärt</span>':""}</dd>
+          <dt>Importiert</dt><dd>${x.imported?"ja":"nein"}</dd>
+          ${x.url?`<dt>Quelle</dt><dd><a href="${esc(x.url)}" target="_blank"
+            rel="noopener noreferrer">${esc(x.url)}</a></dd>`:""}
+        </dl>
+        ${x.note?`<div class="small muted" style="margin-top:8px">${esc(x.note)}</div>`:""}
+      </div>`).join("") + `
+      <h3>Geplante Quellen</h3>
+      ${reg.planned_sources.map(p=>`<div class="card small">
+        <b>${esc(p.type)}</b><div class="muted">Kandidaten: ${
+          esc((p.candidates||[]).join(", "))}</div>
+        <div class="muted">Blockiert durch: ${esc(p.blocked_on||"")}</div>
+        ${p.note?`<div class="muted" style="margin-top:5px">${esc(p.note)}</div>`:""}</div>`).join("")}
+      <h3>Regeln der Quellenverwaltung</h3>
+      <div class="card"><ul class="small" style="margin:0;padding-left:20px">${
+        reg.rules.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></div>`;
+  }catch(e){ st.innerHTML=`<div class="notice block">${esc(e.message)}</div>`; }
+}
+
+/* Start */
+bubble("Tutor", mdish(
+  "Willkommen. Ich bin ein Lernwerkzeug für islamisches Wissen und Arabisch.\n\n"+
+  "Was ich tue: erklären, üben, Lernpfade strukturieren — und zu jeder Aussage die Quelle nennen.\n\n"+
+  "Was ich nicht tue: religiöse Rechtsurteile erteilen, beurteilen ob eine Handlung von dir "+
+  "gültig war, oder eine Rechtsschule als die richtige darstellen. Dafür ist ein Gelehrter "+
+  "zuständig, der deinen Kontext kennt.\n\n"+
+  "Wenn ich zu etwas keinen belegten Inhalt habe, sage ich das — statt zu raten."
+), "ai");
+</script>
+</body>
+</html>

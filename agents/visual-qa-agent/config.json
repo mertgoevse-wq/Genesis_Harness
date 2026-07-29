@@ -1,0 +1,7 @@
+{
+  "name": "visual-qa-agent",
+  "version": "1.0.0",
+  "description": "Evaluates screenshots and UI visually",
+  "skills": ["visual-testing", "ui-design", "qa"],
+  "layer": "Quality"
+}

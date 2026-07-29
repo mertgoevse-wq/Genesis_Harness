@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Genesis Harness - Live Development</title>
+    <style>
+        body { font-family: sans-serif; background: #1e1e1e; color: #fff; padding: 20px; }
+        .dashboard { display: flex; gap: 20px; }
+        .panel { flex: 1; background: #2d2d2d; border-radius: 8px; padding: 15px; }
+        h2 { border-bottom: 1px solid #444; padding-bottom: 10px; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; background: #3d3d3d; margin-bottom: 5px; border-radius: 4px; }
+        .status-running { color: #f39c12; }
+        .status-completed { color: #2ecc71; }
+        .status-failed { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <h1>Genesis Harness - Autonomous Loop</h1>
+    <div class="dashboard">
+        <div class="panel">
+            <h2>Agent Activity Viewer</h2>
+            <ul id="agents">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+        <div class="panel">
+            <h2>Live Logs</h2>
+            <ul id="logs">
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        const ws = new WebSocket("ws://localhost:8000/ws");
+        
+        ws.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            
+            // Log append
+            const logs = document.getElementById('logs');
+            const logItem = document.createElement('li');
+            logItem.textContent = `[${data.agent}] ${data.message} (${data.status})`;
+            logs.insertBefore(logItem, logs.firstChild);
+            
+            // Agent Activity Update
+            const agents = document.getElementById('agents');
+            let agentItem = document.getElementById('agent-' + data.agent);
+            if (!agentItem) {
+                agentItem = document.createElement('li');
+                agentItem.id = 'agent-' + data.agent;
+                agents.appendChild(agentItem);
+            }
+            
+            let statusColor = 'white';
+            if(data.status === 'RUNNING') statusColor = '#f39c12';
+            if(data.status === 'COMPLETED') statusColor = '#2ecc71';
+            
+            agentItem.innerHTML = `<strong>${data.agent}</strong>: <span style="color:${statusColor}">${data.status}</span> - ${data.message}`;
+        };
+    </script>
+</body>
+</html>

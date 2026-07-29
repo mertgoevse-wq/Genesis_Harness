@@ -1,0 +1,272 @@
+{
+  "$comment": "Wudu - die kleine rituelle Waschung. Die Zuordnung der Schritte zu Fard und Sunnah unterscheidet sich zwischen den Rechtsschulen erheblich. Deshalb tragen alle betroffenen Schritte Varianten. Provenance: scholar_review_pending.",
+  "id": "wudu",
+  "type": "purification",
+  "name": {
+    "arabic": "الوُضُوء",
+    "transliteration": "al-wudu",
+    "translations": {
+      "de": "Kleine rituelle Waschung",
+      "en": "Ablution",
+      "tr": "Abdest"
+    }
+  },
+  "provenance": "scholar_review_pending",
+  "sources": [{ "source_id": "editorial-fiqh-summary" }],
+  "review_note": "Fachliche Abnahme durch eine qualifizierte Person steht aus. Besonders die Fard-Zuordnung und die Anzahl der Waschungen sind madhhab-abhaengig.",
+  "last_updated": "2026-07-29",
+
+  "purpose": {
+    "de": "Voraussetzung fuer das Gebet und andere Handlungen, die rituelle Reinheit erfordern.",
+    "en": "Prerequisite for prayer and other acts requiring ritual purity."
+  },
+
+  "fard_count_by_madhhab": [
+    {
+      "madhhab": "hanafi",
+      "count": 4,
+      "elements": ["Gesicht waschen", "Arme bis einschließlich Ellbogen waschen", "Ein Viertel des Kopfes abstreichen", "Füße bis einschließlich Knöchel waschen"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "shafii",
+      "count": 6,
+      "elements": ["Absicht", "Gesicht waschen", "Arme bis einschließlich Ellbogen waschen", "Einen Teil des Kopfes abstreichen", "Füße bis einschließlich Knöchel waschen", "Reihenfolge einhalten"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "maliki",
+      "count": 7,
+      "elements": ["Absicht", "Gesicht waschen", "Arme waschen", "Gesamten Kopf abstreichen", "Füße waschen", "Reiben (Dalk)", "Zusammenhang ohne Unterbrechung (Muwalat)"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "madhhab": "hanbali",
+      "count": 6,
+      "elements": ["Gesicht waschen", "Arme waschen", "Gesamten Kopf inkl. Ohren abstreichen", "Füße waschen", "Reihenfolge", "Zusammenhang ohne Unterbrechung"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ],
+
+  "steps": [
+    {
+      "step": 1,
+      "id": "niyyah",
+      "label": { "de": "Absicht fassen", "en": "Form the intention" },
+      "ruling": "fard",
+      "madhhab": "shafii",
+      "provenance": "scholar_review_pending",
+      "animation_key": "wudu_intention",
+      "instruction": {
+        "de": "Die Absicht wird im Herzen gefasst, sich für das Gebet zu reinigen. Sie muss nicht ausgesprochen werden.",
+        "en": "Form the intention in the heart to purify oneself for prayer. It need not be spoken."
+      },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Sunnah, nicht Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "shafii", "position": "Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "maliki", "position": "Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 2,
+      "id": "basmala",
+      "label": { "de": "Mit der Basmala beginnen", "en": "Begin with the Basmala" },
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "wudu_intention",
+      "recitation": {
+        "arabic": "بِسْمِ اللَّهِ",
+        "transliteration": "Bismi llāh",
+        "translations": [
+          { "language": "de", "text": "Im Namen Allahs.", "translator": "Islam Tutor AI Redaktion", "source_id": "editorial-fiqh-summary" }
+        ]
+      },
+      "instruction": { "de": "Vor dem ersten Waschen wird die Basmala gesprochen.", "en": "Say the Basmala before the first washing." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 3,
+      "id": "hands",
+      "label": { "de": "Hände waschen", "en": "Wash the hands" },
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_hands",
+      "instruction": {
+        "de": "Beide Hände bis zu den Handgelenken dreimal waschen, zwischen den Fingern hindurch.",
+        "en": "Wash both hands up to the wrists three times, including between the fingers."
+      },
+      "common_mistakes": ["Die Zwischenräume der Finger auslassen"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 4,
+      "id": "mouth",
+      "label": { "de": "Mund ausspülen", "en": "Rinse the mouth" },
+      "arabic_term": "المَضْمَضَة",
+      "transliteration": "al-madmada",
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_mouth",
+      "instruction": { "de": "Den Mund dreimal ausspülen.", "en": "Rinse the mouth three times." },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 5,
+      "id": "nose",
+      "label": { "de": "Nase ausspülen", "en": "Rinse the nose" },
+      "arabic_term": "الاسْتِنْشَاق",
+      "transliteration": "al-istinshaq",
+      "ruling": "sunnah",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_nose",
+      "instruction": {
+        "de": "Wasser mit der rechten Hand in die Nase ziehen und mit der linken Hand ausschnauben. Dreimal.",
+        "en": "Draw water into the nose with the right hand and expel it with the left. Three times."
+      },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 6,
+      "id": "face",
+      "label": { "de": "Gesicht waschen", "en": "Wash the face" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_face",
+      "instruction": {
+        "de": "Das gesamte Gesicht dreimal waschen: von der Stirn bis zum Kinn und von einem Ohr zum anderen.",
+        "en": "Wash the entire face three times: from the hairline to the chin and from ear to ear."
+      },
+      "common_mistakes": [
+        "Die Ränder des Gesichts auslassen, besonders zwischen Ohr und Wange",
+        "Nur einmal statt dreimal waschen, obwohl dreimal Sunnah ist"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 7,
+      "id": "arms",
+      "label": { "de": "Arme waschen", "en": "Wash the arms" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_arms",
+      "instruction": {
+        "de": "Erst den rechten, dann den linken Arm von der Hand bis einschließlich Ellbogen dreimal waschen.",
+        "en": "Wash the right arm, then the left, from hand up to and including the elbow, three times each."
+      },
+      "common_mistakes": ["Den Ellbogen selbst nicht mitwaschen"],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 8,
+      "id": "head",
+      "label": { "de": "Kopf abstreichen", "en": "Wipe the head" },
+      "arabic_term": "المَسْح",
+      "transliteration": "al-mash",
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "disputed",
+      "repetitions": 1,
+      "animation_key": "wudu_head",
+      "instruction": {
+        "de": "Mit feuchten Händen über den Kopf streichen. Der erforderliche Umfang ist zwischen den Rechtsschulen unterschiedlich.",
+        "en": "Wipe over the head with wet hands. The required extent differs between schools of law."
+      },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Ein Viertel des Kopfes genügt als Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "shafii", "position": "Ein Teil des Kopfes genügt, auch einzelne Haare.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "maliki", "position": "Der gesamte Kopf ist Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "hanbali", "position": "Der gesamte Kopf einschließlich der Ohren ist Fard.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 9,
+      "id": "ears",
+      "label": { "de": "Ohren abstreichen", "en": "Wipe the ears" },
+      "ruling": "sunnah",
+      "madhhab": "hanafi",
+      "provenance": "scholar_review_pending",
+      "repetitions": 1,
+      "animation_key": "wudu_ears",
+      "instruction": {
+        "de": "Mit den Zeigefingern die Innenseiten der Ohren, mit den Daumen die Rückseiten abstreichen.",
+        "en": "Wipe the inside of the ears with the index fingers and the back with the thumbs."
+      },
+      "variations": [
+        { "madhhab": "hanafi", "position": "Sunnah.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+        { "madhhab": "hanbali", "position": "Teil des Fard-Abstreichens des Kopfes.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 10,
+      "id": "feet",
+      "label": { "de": "Füße waschen", "en": "Wash the feet" },
+      "ruling": "fard",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "repetitions": 3,
+      "animation_key": "wudu_feet",
+      "instruction": {
+        "de": "Erst den rechten, dann den linken Fuß bis einschließlich der Knöchel dreimal waschen, zwischen den Zehen hindurch.",
+        "en": "Wash the right foot, then the left, up to and including the ankles, three times, between the toes."
+      },
+      "common_mistakes": [
+        "Die Knöchel nicht mitwaschen",
+        "Die Zwischenräume der Zehen auslassen",
+        "Die Fersen auslassen"
+      ],
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    },
+    {
+      "step": 11,
+      "id": "shahada_after",
+      "label": { "de": "Abschließendes Bittgebet", "en": "Closing supplication" },
+      "ruling": "mustahabb",
+      "madhhab": "common",
+      "provenance": "scholar_review_pending",
+      "animation_key": "wudu_complete",
+      "instruction": {
+        "de": "Nach dem Wudu wird ein Bittgebet gesprochen. Mehrere Wortlaute sind überliefert.",
+        "en": "A supplication is said after the wudu. Several wordings are transmitted."
+      },
+      "sources": [{ "source_id": "editorial-fiqh-summary" }]
+    }
+  ],
+
+  "invalidators": {
+    "note": "Diese Liste ist Lerninhalt. Das System beurteilt NICHT, ob das Wudu einer Person im Einzelfall gültig ist. Bei konkreten Fragen ist ein Gelehrter zuständig.",
+    "items": [
+      { "id": "hadath", "description": "Austritt von Körperausscheidungen", "madhhab": "common", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+      { "id": "deep_sleep", "description": "Tiefer Schlaf im Liegen", "madhhab": "common", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+      { "id": "loss_of_consciousness", "description": "Bewusstlosigkeit", "madhhab": "common", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+      {
+        "id": "touch",
+        "description": "Bestimmte Formen körperlicher Berührung",
+        "madhhab": "common",
+        "provenance": "disputed",
+        "variations": [
+          { "madhhab": "hanafi", "position": "Bloße Berührung hebt das Wudu nicht auf.", "sources": [{ "source_id": "editorial-fiqh-summary" }] },
+          { "madhhab": "shafii", "position": "Direkter Hautkontakt zwischen nicht verwandten Personen unterschiedlichen Geschlechts hebt das Wudu auf.", "sources": [{ "source_id": "editorial-fiqh-summary" }] }
+        ],
+        "sources": [{ "source_id": "editorial-fiqh-summary" }]
+      }
+    ]
+  },
+
+  "learning_note": "Die vier Fard-Elemente nach hanafitischer Zuordnung sind eine gute Merkstruktur: Gesicht, Arme, Kopf, Füße. Die Sunnah-Schritte umrahmen diese vier.",
+
+  "wellbeing_note": "Wenn beim Lernen Unsicherheit entsteht, ob das Wudu 'richtig' war, und diese Frage sich wiederholt aufdrängt: Das System liefert bewusst keine immer feinteiligeren Detailregeln. Wiederholte Zweifel dieser Art lassen sich nicht durch mehr Regelwissen auflösen. Ein Gespräch mit einer Vertrauensperson oder einem Gelehrten ist der bessere Weg."
+}
