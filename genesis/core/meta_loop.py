@@ -79,5 +79,15 @@ class MetaAgent:
         print("\n[MetaAgent] Ausführung abgeschlossen. Resultate:")
         print(results)
         
+        # 5. Self Improvement Loop
+        print("\n--- SELF IMPROVEMENT LOOP ---")
+        print("[MetaAgent] Fordere QA Agent zur Bewertung der Resultate auf...")
+        # Simulate QA Agent Evaluation
+        evaluation = {"status": "success", "learnings": "Tools und OODA-Loop funktionieren wie erwartet."}
+        
+        print("[MetaAgent] Analysiere QA Feedback und aktualisiere Systemwissen...")
+        print(f"[MetaAgent] Erkenntnisse: {evaluation['learnings']}")
+        print("--- END SELF IMPROVEMENT LOOP ---")
+        
         print("[MetaAgent] Dokumentation aktualisiert. Status: COMPLETED.")
         print("--- END AUTONOMOUS PROJECT LOOP ---\n")

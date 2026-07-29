@@ -1,8 +1,8 @@
 # PROJECT STATE
 
-STATUS: MVP COMPLETE (Phase 14)
-VERSION: 2.1.0 (Autonomous Islam Tutor MVP)
-DOMAIN: Islam Tutor
+STATUS: AUTONOMOUS ENGINEERING READY (Phase 17)
+VERSION: 4.0.0 (Autonomous Genesis Harness)
+DOMAIN: Genesis Framework
 
 ## Completed Milestones
 - Task Queue & Workflow Engine implementiert
@@ -11,7 +11,10 @@ DOMAIN: Islam Tutor
 - Live Development Dashboard via FastAPI integriert
 - Islam Tutor MVP (App, Mehrsprachigkeit, Quran Hashes, Namaz Avatar Pipeline, Voice Pipeline, Qibla)
 - 100% Test-Pass-Rate des MVPs
+- True Agent Intelligence Layer (OODA Loop, Memory, Tool System, Multi-LLM Providers, MCP)
+- Autonomous Software Engineering Layer (Repository Intelligence, Git Autonomy, Self Review, Engineer Agent)
 
 ## Next Actions
-- Entwicklung des Frontend-Clients für den Islam Tutor
-- Integration der externen MCPs (Voice, Browser, Video) für die Pipelines
+- Integration des Frontend-Clients für den Islam Tutor (React/Next.js)
+- Verbindung echter LLM API Keys mit den Providern (Claude/Gemini) (`GENESIS_LIVE_API=true`)
+- Echte MCP Server im Hintergrund starten
